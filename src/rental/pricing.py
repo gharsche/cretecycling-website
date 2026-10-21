@@ -1,5 +1,5 @@
 """Tagessätze und Mehrtagestarife."""
-DAILY_RATES = {"e_bike": 35.0, "gravel": 30.0, "mtb": 30.0, "kid": 15.0}
+DAILY_RATES = {"e_bike": 35.0, "gravel": 30.0, "mtb": 30.0}
 
 MULTIDAY_DISCOUNT = {  # Tage -> Rabatt auf Tage > 1
     3: 0.10,   # ab 3 Tagen 10 % auf den Gesamtpreis

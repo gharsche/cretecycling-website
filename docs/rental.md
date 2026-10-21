@@ -16,7 +16,7 @@ Jedes Bike hat einen Status: `available` → `rented` → `maintenance` → `ava
 | Feld | Werte |
 |---|---|
 | `id` | Eindeutige Bike-ID (z. B. `EB-01`) |
-| `model` | `e_bike` · `gravel` · `mtb` · `kid` |
+| `model` | `e_bike` · `gravel` · `mtb` |
 | `status` | `available` · `rented` · `maintenance` |
 | `service_due` | Optional, Datum der nächsten Wartung |
 

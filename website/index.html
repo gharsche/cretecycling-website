@@ -262,14 +262,13 @@ footer .legal{flex-basis:100%;font-size:.85rem;opacity:.85;border-top:1px solid 
       <article class="bike"><span class="tag">Beliebt</span><svg aria-hidden="true"><use href="#bike"/></svg><h3>E-Bike</h3><div class="price">35 €<small> / Tag</small></div><p>Kretas Hügel? Kein Problem. Perfekt für lange Küstenstrecken.</p><div class="dep">Kaution 200 € bei Übergabe</div><span class="storno">Gratis stornierbar bis 24 Std. vorher</span></article>
       <article class="bike"><svg aria-hidden="true"><use href="#bike"/></svg><h3>Gravel</h3><div class="price">30 €<small> / Tag</small></div><p>Bequem, robust und ideal für Straße &amp; Feldweg.</p><div class="dep">Kaution 100 € bei Übergabe</div><span class="storno">Gratis stornierbar bis 24 Std. vorher</span></article>
       <article class="bike"><svg aria-hidden="true"><use href="#bike"/></svg><h3>Mountainbike</h3><div class="price">30 €<small> / Tag</small></div><p>Für Schotter, Trails und die wilden Ecken der Insel.</p><div class="dep">Kaution 150 € bei Übergabe</div><span class="storno">Gratis stornierbar bis 24 Std. vorher</span></article>
-      <article class="bike"><svg aria-hidden="true"><use href="#bike"/></svg><h3>Kinderrad</h3><div class="price">15 €<small> / Tag</small></div><p>Kleine Räder für kleine Entdecker.</p><div class="dep">Kaution 50 € bei Übergabe</div><span class="storno">Gratis stornierbar bis 24 Std. vorher</span></article>
     </div>
     <div class="rental-cta reveal"><a class="btn btn-ocean" href="#kontakt" data-pick="rental:">Rad reservieren →</a></div>
     <div class="discount reveal">
       <div><strong>10 % Rabatt</strong> ab 3 Tagen · <strong>20 % Rabatt</strong> ab 7 Tagen</div>
       <div class="calc">
         <label>Modell<br>
-          <select id="cModel"><option value="e_bike">E-Bike</option><option value="gravel">Gravel</option><option value="mtb">MTB</option><option value="kid">Kind</option></select></label>
+          <select id="cModel"><option value="e_bike">E-Bike</option><option value="gravel">Gravel</option><option value="mtb">MTB</option></select></label>
         <label>Tage<br>
           <input id="cDays" type="number" min="1" max="60" value="5" inputmode="numeric"></label>
         <output id="cOut" for="cModel cDays">157,50 €</output>
@@ -368,7 +367,7 @@ footer .legal{flex-basis:100%;font-size:.85rem;opacity:.85;border-top:1px solid 
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div data-for="rental">
           <div class="f2">
-            <label>Modell<select name="model"><option value="e_bike">E-Bike (35 €/Tag)</option><option value="gravel">Gravel (30 €/Tag)</option><option value="mtb">Mountainbike (30 €/Tag)</option><option value="kid">Kind (15 €/Tag)</option></select></label>
+            <label>Modell<select name="model"><option value="e_bike">E-Bike (35 €/Tag)</option><option value="gravel">Gravel (30 €/Tag)</option><option value="mtb">Mountainbike (30 €/Tag)</option></select></label>
             <label>Anzahl Bikes<input type="number" name="qty" min="1" max="20" value="1"></label>
           </div>
           <div class="f2" style="margin-top:.9rem">
@@ -377,7 +376,6 @@ footer .legal{flex-basis:100%;font-size:.85rem;opacity:.85;border-top:1px solid 
           </div>
           <fieldset class="addons" style="margin-top:.9rem">
             <legend>Extras</legend>
-            <label><input type="checkbox" name="ad" value="seat"> Kindersitz <span class="ap">kostenlos</span></label>
             <label><input type="checkbox" name="ad" value="gps"> GPS-Gerät mit Touren-Karten <span class="ap">5 € / Tag</span></label>
             <label><input type="checkbox" name="ad" value="ins"> Versicherung (Diebstahl &amp; Schaden) <span class="ap">3 € / Tag</span></label>
             <label><input type="checkbox" name="ad" value="hotel"> Lieferung ans Hotel (Sissi / Malia / Gouves) <span class="ap">10 € einmalig</span></label>
@@ -453,9 +451,9 @@ $("#cModel").addEventListener("change", calc); $("#cDays").addEventListener("inp
 
 const f = $("#bf");
 // Preise der Extras (Platzhalter laut docs/landing-copy.md – vor Livegang bestätigen!)
-const ADDONS = {seat: {label: "Kindersitz", perDay: 0, once: 0}, gps: {label: "GPS-Gerät", perDay: 5, once: 0}, ins: {label: "Versicherung", perDay: 3, once: 0}, hotel: {label: "Hotel-Lieferung", perDay: 0, once: 10}};
-const RATES = {e_bike: 35, gravel: 30, mtb: 30, kid: 15};
-const DEPOSIT = {e_bike: 200, gravel: 100, mtb: 150, kid: 50};
+const ADDONS = {gps: {label: "GPS-Gerät", perDay: 5, once: 0}, ins: {label: "Versicherung", perDay: 3, once: 0}, hotel: {label: "Hotel-Lieferung", perDay: 0, once: 10}};
+const RATES = {e_bike: 35, gravel: 30, mtb: 30};
+const DEPOSIT = {e_bike: 200, gravel: 100, mtb: 150};
 const addonKeys = () => $$("[name=ad]:checked", f).map(c => c.value);
 function setType(t) {
   $$(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.type === t));

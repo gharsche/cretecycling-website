@@ -34,7 +34,6 @@ Es gelten die Tagessätze zum Zeitpunkt der Buchung:
 
 | Extra | Preis |
 |---|---|
-| Kindersitz | kostenlos |
 | GPS-Gerät | 5 €/Tag |
 | Fahrradversicherung | 3 €/Tag |
 | Hotel-Lieferung (Sissi, Malia, Hersonissos, Elounda, Plaka, Neapoli) | 10 € einmalig |
