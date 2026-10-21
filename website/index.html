@@ -494,12 +494,25 @@ const CONTACT_EMAIL = "info@cretecycling.eu";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const eur = n => n.toLocaleString("de-DE", {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
+const getBookingForm = () => $("#bf");
+function setBookingType(t) {
+  const form = getBookingForm();
+  if (!form) return;
+  $$(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.type === t));
+  $$("[data-for]", form).forEach(p => p.hidden = p.dataset.for !== t);
+  form.dataset.type = t;
+}
 
 // Preislogik wie src/rental/pricing.py: ab 3 Tagen 10 %, ab 7 Tagen 20 %
 function rentalPrice(rate, days) {
   const disc = days >= 7 ? .8 : days >= 3 ? .9 : 1;
   return Math.round(rate * days * disc * 100) / 100;
 }
+
+// Preise der Extras (Platzhalter laut docs/landing-copy.md – vor Livegang bestätigen!)
+const ADDONS = {gps: {label: "GPS-Gerät", perDay: 5, once: 0}, ins: {label: "Versicherung", perDay: 3, once: 0}, hotel: {label: "Hotel-Lieferung", perDay: 0, once: 10}};
+const RATES = {e_bike: 35, gravel: 30, mtb: 30};
+const DEPOSIT = {e_bike: 200, gravel: 100, mtb: 150};
 
 const nav = $("#nav");
 const onScroll = () => nav.classList.toggle("solid", scrollY > 40);
@@ -514,25 +527,27 @@ function calc() {
 }
 $("#cModel").addEventListener("change", calc); $("#cDays").addEventListener("input", calc); calc();
 
-const f = $("#bf");
-// Preise der Extras (Platzhalter laut docs/landing-copy.md – vor Livegang bestätigen!)
-const ADDONS = {gps: {label: "GPS-Gerät", perDay: 5, once: 0}, ins: {label: "Versicherung", perDay: 3, once: 0}, hotel: {label: "Hotel-Lieferung", perDay: 0, once: 10}};
-const RATES = {e_bike: 35, gravel: 30, mtb: 30};
-const DEPOSIT = {e_bike: 200, gravel: 100, mtb: 150};
-const addonKeys = () => $$("[name=ad]:checked", f).map(c => c.value);
-function setType(t) {
-  $$(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.type === t));
-  $$("[data-for]", f).forEach(p => p.hidden = p.dataset.for !== t);
-  f.dataset.type = t;
-}
-f.dataset.type = "rental";
-$$(".tabs button").forEach(b => b.addEventListener("click", () => setType(b.dataset.type)));
-$$("[data-pick]").forEach(a => a.addEventListener("click", () => {
-  const [t, v] = a.dataset.pick.split(":"); setType(t); if (v) f.elements[t].value = v;
-}));
-
+const f = getBookingForm();
 const today = new Date().toISOString().slice(0, 10);
-["from", "to", "tday", "wday"].forEach(n => f.elements[n].min = today);
+const addonKeys = () => {
+  const form = getBookingForm();
+  return form ? $$("[name=ad]:checked", form).map(c => c.value) : [];
+};
+function setType(t) { setBookingType(t); }
+if (f) {
+  f.dataset.type = "rental";
+  ["from", "to", "tday", "wday"].forEach(n => f.elements[n].min = today);
+  $$("[name=ad]", f).forEach(c => c.addEventListener("change", estimate));
+  ["from", "to", "model", "qty"].forEach(n => f.elements[n].addEventListener("input", estimate));
+  f.elements.from.addEventListener("change", () => {
+    if (!f.elements.to.value || f.elements.to.value < f.elements.from.value) f.elements.to.value = f.elements.from.value;
+    f.elements.to.min = f.elements.from.value; estimate();
+  });
+  $$(".tabs button").forEach(b => b.addEventListener("click", () => setType(b.dataset.type)));
+  $$("[data-pick]").forEach(a => a.addEventListener("click", () => {
+    const [t, v] = a.dataset.pick.split(":"); setType(t); if (v) f.elements[t].value = v;
+  }));
+}
 
 function estimate() {
   const {from, to, model, qty} = f.elements;
@@ -545,12 +560,7 @@ function estimate() {
   $("#est").textContent = eur(total) + " · " + days + " Tag" + (days > 1 ? "e" : "");
   $("#dep").textContent = eur(DEPOSIT[model.value] * q);
 }
-["from", "to", "model", "qty"].forEach(n => f.elements[n].addEventListener("input", estimate));
-$$("[name=ad]", f).forEach(c => c.addEventListener("change", estimate));
-f.elements.from.addEventListener("change", () => {
-  if (!f.elements.to.value || f.elements.to.value < f.elements.from.value) f.elements.to.value = f.elements.from.value;
-  f.elements.to.min = f.elements.from.value; estimate();
-});
+
 
 f.addEventListener("submit", e => {
   e.preventDefault();
