@@ -44,9 +44,9 @@ Anschrift wie oben
 
 ---
 
-## Online-Streitbeilegung (EU)
+## Online-Streitbeilegung
 
-Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: [ec.europa.eu/consumers/odr](https://ec.europa.eu/consumers/odr). Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtestelle teilzunehmen.
+Hinweis: Die bis zum 20.07.2025 bestehende EU-Plattform zur Online-Streitbeilegung (ec.europa.eu/consumers/odr) wurde durch die Verordnung (EU) 2024/3228 vom 19.12.2024 eingestellt; die zugrunde liegende Hinweispflicht nach Art. 14 der Verordnung (EU) Nr. 524/2013 ist damit entfallen. Ein Link auf die ehemalige Plattform wird nicht mehr angegeben.
 
 ---
 
