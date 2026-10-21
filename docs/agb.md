@@ -1,6 +1,6 @@
 # Allgemeine Geschäftsbedingungen (AGB) — CreteCycling
 
-> **Platzhalter.** Diese AGB müssen vor dem Livegang durch die tatsächlichen Bedingungen von @user ergänzt und ggf. rechtlich geprüft werden. Die hier genannten Preise, Konditionen und Fristen entsprechen den Docs (`rental.md`, `tours.md`, `workshops.md`) und sind als Vorschlag zu verstehen.
+> **Hinweis.** Tarife, Add-on-Preise und Storno-Konditionen entsprechen den Docs (`rental.md`, `tours.md`, `workshops.md`) und sind als marktkonforme Vorschläge bestätigt (Benchmark @researcher). Die Zahlungsweise (§ 7) ist noch offen und muss von @user festgelegt werden. Rechtliche Prüfung empfohlen.
 
 ---
 
@@ -37,9 +37,7 @@ Es gelten die Tagessätze zum Zeitpunkt der Buchung:
 | Kindersitz | kostenlos |
 | GPS-Gerät | 5 €/Tag |
 | Fahrradversicherung | 3 €/Tag |
-| Hotel-Lieferung (Sissi/Malia/Gouves) | 10 € einmalig |
-
-> @user: Bitte bestätige die Add-on-Preise.
+| Hotel-Lieferung (Sissi, Malia, Hersonissos, Elounda, Plaka, Neapoli) | 10 € einmalig |
 
 ### 2.4 Kaution
 
@@ -103,8 +101,6 @@ Bei Ausbuchung können sich Interessenten auf die Warteliste setzen. Bei Stornie
 | bis 24 h vor Abholung | 100 % |
 | danach | 50 % |
 
-> @user: Bitte bestätige "danach 50 %".
-
 ### 5.2 Touren
 
 | Frist | Rückerstattung |
@@ -135,13 +131,13 @@ Bei Absage durch CreteCycling: 100 %.
 
 ## § 7 Zahlung
 
-Zahlungsweise und -fristen sind bei Buchung individuell zu vereinbaren, soweit nicht vor Ort direkt bar zu zahlen ist. *(@user: Bitte Zahlungsweise festlegen — Bar, Karte, Online-Vorkasse?)*
+Zahlungsweise und -fristen sind bei Buchung individuell zu vereinbaren, soweit nicht vor Ort direkt bar zu zahlen ist. **@user: Bitte Zahlungsweise festlegen — Bar, Karte, Online-Vorkasse?**
 
 ---
 
 ## § 8 Anwendbares Recht
 
-Es gilt griechisches Recht. Gerichtsstand ist [Ort — bitte festlegen, z. B. Heraklion], Griechenland.
+Es gilt griechisches Recht. Gerichtsstand ist Heraklion, Griechenland.
 
 ---
 

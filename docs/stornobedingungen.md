@@ -1,6 +1,6 @@
 # Stornierungsbedingungen — CreteCycling
 
-> **Platzhalter.** Die Bedingungen entsprechen den Docs und sind als Vorschlag zu verstehen. @user, bitte prüfe und bestätige.
+> **Hinweis.** Die Bedingungen entsprechen den Docs und den AGB. Die Storno-Prozentsätze sind marktkonform (Benchmark @researcher). @user, bitte endgültig bestätigen.
 
 ---
 

@@ -1,6 +1,6 @@
 # Datenschutz — CreteCycling
 
-> **Platzhalter.** Diese Datenschutzerklärung muss vor dem Livegang von @user auf die tatsächlichen Verhältnisse abgestimmt und ggf. rechtlich geprüft werden. Insbesondere sind die markierten Felder auszufüllen.
+> **Hinweis.** Die Angaben des Verantwortlichen wurden von cretecycling.eu übernommen (Stand Oktober 2026). Die Speicherdauer ist als Richtwert markiert und sollte vor dem Livegang rechtlich geprüft und festgelegt werden.
 
 ---
 
@@ -8,9 +8,10 @@
 
 Verantwortlich für die Datenverarbeitung auf dieser Website ist:
 
-**CreteCycling** — [vollständige Firmenbezeichnung]
-[Straße und Hausnummer, PLZ und Ort]
-Telefon: [+30 XXXXX XXXXX]
+**CreteCycling IKE**
+Spyrou Lamprou 11, 11141 Athen, Attika, Griechenland
+Besucheradresse: 72400 Sissi, Lassithi, Kreta
+Telefon: +30 694 8477632
 E-Mail: info@cretecycling.eu
 
 ---

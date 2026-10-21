@@ -1,29 +1,37 @@
 # Impressum — CreteCycling
 
-> **Platzhalter.** Die hier markierten Felder müssen vor dem Livegang durch die echten Angaben von @user ersetzt werden.
+> **Hinweis.** Die Firmenangaben wurden von cretecycling.eu übernommen (Stand Oktober 2026). Die rechtliche Einordnung (griechisches vs. deutsches Recht, § 5 DDG analog) sollte vor dem Livegang rechtlich geprüft werden.
 
 ---
 
-## Angaben nach § 5 TMG / [ Greek equivalent: Art. 8 N. 4053/2012 ]
+## Angaben nach § 5 DDG / Art. 8 N. 4053/2012 (griechisches Recht)
 
-**CreteCycling** — [vollständige Firmenbezeichnung, z. B. CreteCycling UG (haftungsbeschränkt) oder Einzelunternehmen]
+**CreteCycling IKE**
 
-**Inhaber:** [Name des Inhabers / Geschäftsführers]
+**Inhaber / vertretungsberechtigte Person:** Guenter Harsche
 
-**Anschrift:**
-[Straße und Hausnummer]
-[PLZ und Ort, z. B. 700 14 Sissi, Kreta, Griechenland]
+**Postanschrift:**
+Spyrou Lamprou 11, 11141 Athen, Attika, Griechenland
 
-**Telefon:** [+30 XXXXX XXXXX]
+**Besucheradresse:**
+72400 Sissi, Lassithi, Kreta, Griechenland
+
+**Telefon:** +30 694 8477632
+**WhatsApp:** +49 175 5635460
 **E-Mail:** info@cretecycling.eu
 
-**USt-IdNr. (AFM):** [griechische Umsatzsteuer-Identifikationsnummer]
+**USt-IdNr. (AFM):** EL 803341834
+
+**GEMI-Nummer:** 194951903000
+**Handelskammer-Registernummer:** 475471
+
+> Die Rechtsform **IKE** (Ιδιωτική Κεφαλαιαχική Εταιρεία) entspricht etwa einer deutschen GmbH (haftungsbeschränkte Privatgesellschaft).
 
 ---
 
 ## Verantwortlich für den Inhalt
 
-[Name des Inhabers]
+Guenter Harsche
 Anschrift wie oben
 
 ---
