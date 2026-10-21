@@ -8,7 +8,7 @@
 
 **Headline:** Rad fahren, wo Kreta am schönsten ist
 
-**Subhead:** E-Bikes, Trekkingräder und geführte Touren direkt am Sissi Hafen. Miet dein Rad, buch eine Tour oder lern bei einem Workshop, was dein Bike braucht — alles an einem Ort, von Leuten, die hier leben und hier fahren.
+**Subhead:** E-Bikes, Gravelbikes und geführte Touren direkt am Sissi Hafen. Miet dein Rad, buch eine Tour oder lern bei einem Workshop, was dein Bike braucht — alles an einem Ort, von Leuten, die hier leben und hier fahren.
 
 **CTA:** Jetzt buchen
 
@@ -26,7 +26,7 @@
 Elektrischer Rückenwind für Küste und Hügel. Reichweite bis 80 km, drei Unterstützungsstufen. Kaution: 200 €.
 *Kaufen: ab 3 Tagen 10 % Rabatt, ab 7 Tagen 20 % Rabatt.*
 
-### Trekking — 25 €/Tag
+### Gravel — 30 €/Tag
 Leicht, bequem, tourenbereit. Perfekt für Olivenhaine und Küstenstraßen. Kaution: 100 €.
 *Ab 3 Tagen 10 %, ab 7 Tagen 20 %.*
 

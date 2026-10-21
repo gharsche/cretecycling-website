@@ -2,7 +2,7 @@
 from dataclasses import dataclass, field
 from datetime import date
 
-DEPOSIT = {"e_bike": 200.0, "trekking": 100.0, "mtb": 150.0, "kid": 50.0}
+DEPOSIT = {"e_bike": 200.0, "gravel": 100.0, "mtb": 150.0, "kid": 50.0}
 
 @dataclass
 class Rental:

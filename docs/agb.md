@@ -19,7 +19,7 @@ Es gelten die Tagessätze zum Zeitpunkt der Buchung:
 | Modell | Tagessatz |
 |---|---|
 | E-Bike | 35 € |
-| Trekking | 25 € |
+| Gravel | 30 € |
 | MTB | 30 € |
 | Kind | 15 € |
 
@@ -46,7 +46,7 @@ Bei Übergabe ist eine Kaution je Modell zu hinterlegen:
 | Modell | Kaution |
 |---|---|
 | E-Bike | 200 € |
-| Trekking | 100 € |
+| Gravel | 100 € |
 | MTB | 150 € |
 | Kind | 50 € |
 

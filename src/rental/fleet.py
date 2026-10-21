@@ -9,7 +9,7 @@ MAINTENANCE = "maintenance"
 @dataclass
 class Bike:
     id: str
-    model: str          # e_bike | trekking | mtb | kid
+    model: str          # e_bike | gravel | mtb | kid
     status: str = AVAILABLE
     service_due: date | None = None
 

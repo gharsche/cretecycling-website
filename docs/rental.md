@@ -2,7 +2,7 @@
 
 ## Überblick
 
-Der Verleihbereich verwaltet den Fuhrpark (E-Bikes, Trekking, MTB, Kinder), berechnet Tarife mit Mehrtagesrabatten,-handhabt Kaution und Übergabeprotokoll.
+Der Verleihbereich verwaltet den Fuhrpark (E-Bikes, Gravel, MTB, Kinder), berechnet Tarife mit Mehrtagesrabatten,-handhabt Kaution und Übergabeprotokoll.
 
 **Module:** `src/rental/` — `fleet.py` · `pricing.py` · `checkout.py`
 **Tests:** `tests/test_rental.py`
@@ -16,7 +16,7 @@ Jedes Bike hat einen Status: `available` → `rented` → `maintenance` → `ava
 | Feld | Werte |
 |---|---|
 | `id` | Eindeutige Bike-ID (z. B. `EB-01`) |
-| `model` | `e_bike` · `trekking` · `mtb` · `kid` |
+| `model` | `e_bike` · `gravel` · `mtb` · `kid` |
 | `status` | `available` · `rented` · `maintenance` |
 | `service_due` | Optional, Datum der nächsten Wartung |
 
@@ -35,7 +35,7 @@ Tagessätze je Modell:
 | Modell | Tagessatz |
 |---|---|
 | E-Bike | 35 € |
-| Trekking | 25 € |
+| Gravel | 30 € |
 | MTB | 30 € |
 | Kind | 15 € |
 
@@ -62,7 +62,7 @@ Kaution je Modell, fällig bei Übergabe:
 | Modell | Kaution |
 |---|---|
 | E-Bike | 200 € |
-| Trekking | 100 € |
+| Gravel | 100 € |
 | MTB | 150 € |
 | Kind | 50 € |
 
