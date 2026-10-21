@@ -247,6 +247,10 @@ footer{position:relative;background:var(--umber-d);color:#ead9b3;padding-top:3.2
 footer::before{top:0;bottom:auto;opacity:.5;filter:invert(1) sepia(1) saturate(1.6) brightness(.95)}
 footer a{color:#f4c969}
 .sticky{background:rgba(246,236,214,.96);box-shadow:0 -4px 16px rgba(46,27,14,.18)}
+.lang-switch{display:flex;align-items:center;gap:.35rem;margin-left:1rem;flex-wrap:wrap}
+.lang-switch button{border:1px solid rgba(255,255,255,.65);background:transparent;color:inherit;border-radius:999px;padding:.35rem .7rem;font:inherit;font-weight:800;font-size:.78rem;cursor:pointer;line-height:1}
+.nav.solid .lang-switch button{border-color:rgba(74,46,26,.25);background:#fff}
+.lang-switch button[aria-pressed="true"]{background:var(--ochre);border-color:var(--ochre);color:#3a2616}
 :focus-visible{outline-color:var(--terra)}
 .hero :focus-visible,#kontakt :focus-visible,footer :focus-visible{outline-color:#f4c969}
 </style>
@@ -273,6 +277,11 @@ footer a{color:#f4c969}
       <li><a href="#kontakt">Kontakt</a></li>
     </ul></nav>
     <a class="btn btn-ochre" href="#kontakt">Jetzt buchen</a>
+    <div class="lang-switch" role="group" aria-label="Sprache">
+      <button type="button" data-lang="de" aria-pressed="true">DE</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="el" aria-pressed="false">EL</button>
+    </div>
   </div>
 </header>
 
@@ -495,8 +504,512 @@ const CONTACT_EMAIL = "info@cretecycling.eu";
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-const eur = n => n.toLocaleString("de-DE", {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
+const LOCALES = {de: "de-DE", en: "en-GB", el: "el-GR"};
+const I18N = {
+  de: {
+    meta: {
+      title: "CreteCycling — Verleih · Touren · Workshops | Sissi, Kreta",
+      description: "Fahrradverleih, geführte Touren und Workshops direkt am Meer in Sissi, Kreta. E-Bikes ab 35 €/Tag, kleine Gruppen, lokale Guides.",
+      ogTitle: "CreteCycling — Rad fahren auf Kreta",
+      ogDescription: "Verleih, geführte Touren und Workshops in Sissi. Kleine Gruppen, lokale Guides."
+    },
+    nav: {rental: "Verleih", tours: "Touren", workshops: "Workshops", contact: "Kontakt", book: "Jetzt buchen"},
+    hero: {
+      greet: "👋 Kalós orísete in Sissi, Kreta",
+      title: "Rad fahren, wo Kreta <em>am schönsten</em> ist.",
+      lead: "Fahrradverleih, geführte Touren und Workshops — direkt am Meer, mit lokalen Guides und kleinen Gruppen.",
+      cta1: "Jetzt buchen →",
+      cta2: "Touren entdecken"
+    },
+    facts: [
+      "Treffpunkt Sissi Hafen",
+      "Max. 4 Personen pro Tour",
+      "Wasser & Werkzeug inklusive, Helm im Verleih 3 € / Tag",
+      "E-Bikes ab 35 € / Tag"
+    ],
+    rental: {
+      eyebrow: "Fahrradverleih",
+      title: "Dein Rad für den Tag — oder die ganze Woche.",
+      lead: "Drei Modelle, klare Preise, Mehrtagesrabatte ab Tag drei. Wasser und Werkzeug sind inklusive; Helme kosten 3 € / Tag. Du bringst nur den Spaß mit.",
+      tag: "Beliebt",
+      cards: [
+        {title: "E-Bike", desc: "Kretas Hügel? Kein Problem. Perfekt für lange Küstenstrecken.", dep: "Kaution 200 € bei Übergabe"},
+        {title: "Gravel", desc: "Bequem, robust und ideal für Straße & Feldweg.", dep: "Kaution 100 € bei Übergabe"},
+        {title: "Mountainbike", desc: "Für Schotter, Trails und die wilden Ecken der Insel.", dep: "Kaution 100,00 € bei Übergabe"}
+      ],
+      discount: "<strong>10 % Rabatt</strong> ab 3 Tagen · <strong>20 % Rabatt</strong> ab 7 Tagen",
+      model: "Modell",
+      days: "Tage",
+      options: ["E-Bike", "Gravel", "MTB"],
+      quoteDays: "Tag",
+      quoteDaysPlural: "Tage"
+    },
+    tours: {
+      eyebrow: "Geführte Touren",
+      title: "Mit lokalen Guides auf Tour.",
+      lead: "Kleine Gruppen, max. 4 Personen, Treffpunkt Sissi Hafen. Und bei Regen? Wir verschieben oder erstatten — ohne Wenn und Aber.",
+      levels: ["Easy", "Moderate", "Hard"],
+      cards: [
+        {title: "Coastal Cruise", meta: "⏱ 3 Std. · 🌊 Küstenstraße", desc: "Entspannt am Meer entlang — mit Ausblick und Zeit zum Staunen."},
+        {title: "Olive Grove Loop", meta: "⏱ 5 Std. · 🫒 Olivenhaine", desc: "Durchs Hinterland, vorbei an Olivenhainen — Kreta abseits der Postkarte."},
+        {title: "Lasithi Challenge", meta: "⏱ 7 Std. · ⛰ Berge", desc: "Für alle, die’s wissen wollen: Anstiege, Weitblick und das gute Gefühl danach."}
+      ],
+      chips: [
+        "💧 Wasser & Werkzeug inklusive",
+        "🪖 Helm inklusive",
+        "👥 max. 4 Personen · 1 Guide pro Gruppe",
+        "↩ Storno bis 24 Std. vorher voll erstattet",
+        "🌧 Bei Starkregen volle Erstattung"
+      ]
+    },
+    workshops: {
+      eyebrow: "Workshops",
+      title: "Praxis im Fahrradkeller.",
+      lead: "Lern, was dein Rad braucht — von Kette bis Notfall-Kit. Begrenzte Plätze, Warteliste bei Ausbuchung. 24 Std. vorher bekommst du Ort, Zeit und Mitbring-Liste.",
+      cards: [
+        {title: "Bike-Grundwartung", desc: "Kette, Bremsen, Schaltung — Wartung für Jedermann. Danach weißt du, was dein Rad braucht."},
+        {title: "E-Bike-Sicherheit", desc: "Akku-Pflege, Reichweiten-Management und Sicherheitstipps für Touren mit Motor."},
+        {title: "Erste Hilfe unterwegs", desc: "Panne, Notfall-Kit und richtiges Verhalten bei Unfällen — damit du unterwegs sicher bist."}
+      ],
+      cap: "Begrenzte Plätze",
+      note: "Stornierung bis 48 Std. vorher voll erstattet, danach 50 %. Bei Absage durch CreteCycling: volle Rückerstattung."
+    },
+    booking: {
+      eyebrow: "Buchung & Anfrage",
+      title: "Buchung anfragen.",
+      lead: "Wähle Verleih, Tour oder Workshop. Wir melden uns innerhalb von 24 Stunden mit Bestätigung und Übergabe-Details.",
+      steps: [
+        {title: "Auswählen", body: "Verleih, Tour oder Workshop."},
+        {title: "Anfrage senden", body: "Datum, Personen, Wünsche — fertig."},
+        {title: "Bestätigung erhalten", body: "Bei Workshops mit Erinnerung 24 Std. vorher."}
+      ],
+      tabs: ["🚲 Verleih", "🌊 Tour", "🔧 Workshop"],
+      model: "Modell",
+      qty: "Anzahl Bikes",
+      from: "Von",
+      to: "Bis",
+      extras: "Extras",
+      est: "Geschätzter Preis",
+      deposit: "+ Kaution bei Übergabe (rückerstattbar)",
+      tour: "Tour",
+      date: "Datum",
+      guests: "Personen (max. 4)",
+      workshop: "Workshop",
+      wish: "Wunschtermin",
+      name: "Name",
+      email: "E-Mail",
+      message: "Nachricht (optional)",
+      placeholder: "Hotel, Körpergröße, Sonderwünsche …",
+      submit: "Anfrage senden →",
+      addons: [
+        ["GPS-Gerät mit Touren-Karten", "5 € / Tag"],
+        ["Helm", "3 € / Tag"],
+        ["Rahmentasche", "3 € / Tag"],
+        ["Versicherung (Diebstahl & Schaden)", "3 € / Tag"],
+        ["Lieferung ans Hotel (Sissi / Malia / Gouves)", "10 € einmalig"]
+      ],
+      trust: [
+        "Kostenlose Stornierung bis 24 Std. vorher",
+        "Kaution transparent bei Übergabe",
+        "Wasser & Werkzeug inklusive, Helm im Verleih 3 € / Tag",
+        "Lokales Team, Sissi Hafen"
+      ],
+      fine: "Mit dem Absenden öffnet sich dein E-Mail-Programm mit einer fertigen Anfrage. Unverbindlich – die Buchung gilt erst nach unserer Bestätigung.",
+      statusReady: "Dein E-Mail-Programm öffnet sich … Danke! 🙏",
+      statusName: "Bitte Name und gültige E-Mail angeben.",
+      statusPeriod: "Bitte Zeitraum wählen.",
+      statusDate: "Bitte Datum wählen.",
+      subjects: {rental: "Verleih-Anfrage", tour: "Tour-Anfrage", ws: "Workshop-Anmeldung"},
+      bodyLabels: {name: "Name", email: "E-Mail"},
+      mailPrefix: "CreteCycling – "
+    },
+    footer: {
+      slogan: "CreteCycling — zwei Räder, eine Insel, dein Tag.",
+      line: "Sissi, Kreta 🇬🇷 · Verleih · Touren · Workshops",
+      links: ["Verleih", "Touren", "Workshops", "Kontakt"],
+      legal: ["Impressum", "Datenschutz", "AGB", "Stornobedingungen"]
+    },
+    sticky: "Jetzt anfragen →"
+  },
+  en: {
+    meta: {
+      title: "CreteCycling — Rental · Tours · Workshops | Sissi, Crete",
+      description: "Bike rental, guided tours and workshops by the sea in Sissi, Crete. E-bikes from €35/day, small groups, local guides.",
+      ogTitle: "CreteCycling — Ride Crete",
+      ogDescription: "Rental, guided tours and workshops in Sissi. Small groups, local guides."
+    },
+    nav: {rental: "Rental", tours: "Tours", workshops: "Workshops", contact: "Contact", book: "Book now"},
+    hero: {
+      greet: "👋 Welcome to Sissi, Crete",
+      title: "Ride where Crete is <em>at its best</em>.",
+      lead: "Bike rental, guided tours and workshops — right by the sea, with local guides and small groups.",
+      cta1: "Book now →",
+      cta2: "Explore tours"
+    },
+    facts: [
+      "Meeting point: Sissi harbour",
+      "Max. 4 people per tour",
+      "Water & tools included, helmet in rental €3 / day",
+      "E-bikes from €35 / day"
+    ],
+    rental: {
+      eyebrow: "Bike rental",
+      title: "Your bike for the day — or the whole week.",
+      lead: "Three models, clear prices, multi-day discounts from day three. Water and tools are included; helmets cost €3 / day. You just bring the fun.",
+      tag: "Popular",
+      cards: [
+        {title: "E-bike", desc: "Tailwind for hills and coast. Up to 80 km range, three assist levels.", dep: "Deposit €200 on handover"},
+        {title: "Gravel", desc: "Comfortable, tough and ideal for road and gravel.", dep: "Deposit €100 on handover"},
+        {title: "Mountain bike", desc: "For gravel, trails and the wilder corners of the island.", dep: "Deposit €100 on handover"}
+      ],
+      discount: "<strong>10% off</strong> from 3 days · <strong>20% off</strong> from 7 days",
+      model: "Model",
+      days: "Days",
+      options: ["E-bike", "Gravel", "MTB"],
+      quoteDays: "day",
+      quoteDaysPlural: "days"
+    },
+    tours: {
+      eyebrow: "Guided tours",
+      title: "Hit the road with local guides.",
+      lead: "Small groups, max. 4 people, meeting point Sissi harbour. And if it rains? We reschedule or refund — no fuss.",
+      levels: ["Easy", "Moderate", "Hard"],
+      cards: [
+        {title: "Coastal Cruise", meta: "⏱ 3 hrs · 🌊 Coast road", desc: "Relaxed ride along the sea — with views and time to stop and stare."},
+        {title: "Olive Grove Loop", meta: "⏱ 5 hrs · 🫒 Olive groves", desc: "Into the hinterland, past olive groves — Crete beyond the postcard."},
+        {title: "Lasithi Challenge", meta: "⏱ 7 hrs · ⛰ Mountains", desc: "For riders who want a challenge: climbs, big views and that post-ride feeling."}
+      ],
+      chips: [
+        "💧 Water & tools included",
+        "🪖 Helmet included",
+        "👥 max. 4 people · 1 guide per group",
+        "↩ Full refund up to 24 hrs before",
+        "🌧 Full refund in heavy rain"
+      ]
+    },
+    workshops: {
+      eyebrow: "Workshops",
+      title: "Hands-on in the bike workshop.",
+      lead: "Learn what your bike needs — from chain care to emergency kits. Limited spots, waiting list when full. 24 hrs before, you get the place, time and packing list.",
+      cards: [
+        {title: "Basic bike maintenance", desc: "Chain, brakes, gears — maintenance for everyone. You’ll leave knowing what your bike needs."},
+        {title: "E-bike safety", desc: "Battery care, range management and safety tips for motor-assisted rides."},
+        {title: "First aid on the road", desc: "Dealing with flats, emergency kits and what to do after an accident — practical and essential."}
+      ],
+      cap: "Limited spots",
+      note: "Full refund up to 48 hrs before, then 50%. If CreteCycling cancels: full refund."
+    },
+    booking: {
+      eyebrow: "Booking & request",
+      title: "Send a booking request.",
+      lead: "Choose rental, tour or workshop. We’ll get back to you within 24 hours with confirmation and handover details.",
+      steps: [
+        {title: "Choose", body: "Rental, tour or workshop."},
+        {title: "Send request", body: "Date, people, wishes — done."},
+        {title: "Receive confirmation", body: "For workshops, with a reminder 24 hrs before."}
+      ],
+      tabs: ["🚲 Rental", "🌊 Tour", "🔧 Workshop"],
+      model: "Model",
+      qty: "Bike quantity",
+      from: "From",
+      to: "To",
+      extras: "Extras",
+      est: "Estimated price",
+      deposit: "+ deposit on handover (refundable)",
+      tour: "Tour",
+      date: "Date",
+      guests: "People (max. 4)",
+      workshop: "Workshop",
+      wish: "Preferred date",
+      name: "Name",
+      email: "Email",
+      message: "Message (optional)",
+      placeholder: "Hotel, height, special wishes …",
+      submit: "Send request →",
+      addons: [
+        ["GPS device with tour maps", "€5 / day"],
+        ["Helmet", "€3 / day"],
+        ["Frame bag", "€3 / day"],
+        ["Insurance (theft & damage)", "€3 / day"],
+        ["Hotel delivery (Sissi / Malia / Gouves)", "€10 once"]
+      ],
+      trust: [
+        "Free cancellation up to 24 hrs before",
+        "Transparent deposit on handover",
+        "Water & tools included, helmet in rental €3 / day",
+        "Local team, Sissi harbour"
+      ],
+      fine: "Submitting opens your email app with a ready-made request. Non-binding — the booking is only confirmed after our reply.",
+      statusReady: "Your email app will open … thanks! 🙏",
+      statusName: "Please enter your name and a valid email address.",
+      statusPeriod: "Please choose a time period.",
+      statusDate: "Please choose a date.",
+      subjects: {rental: "Rental request", tour: "Tour request", ws: "Workshop signup"},
+      bodyLabels: {name: "Name", email: "Email"},
+      mailPrefix: "CreteCycling — "
+    },
+    footer: {
+      slogan: "CreteCycling — two wheels, one island, your day.",
+      line: "Sissi, Crete 🇬🇷 · Rental · Tours · Workshops",
+      links: ["Rental", "Tours", "Workshops", "Contact"],
+      legal: ["Imprint", "Privacy", "Terms", "Cancellation"]
+    },
+    sticky: "Request now →"
+  },
+  el: {
+    meta: {
+      title: "CreteCycling — Ενοικίαση · Περιηγήσεις · Εργαστήρια | Σίσι, Κρήτη",
+      description: "Ενοικίαση ποδηλάτων, οργανωμένες περιηγήσεις και εργαστήρια δίπλα στη θάλασσα στη Σίσι, Κρήτη. E-bike από 35 €/ημέρα, μικρές ομάδες, τοπικοί οδηγοί.",
+      ogTitle: "CreteCycling — Ποδήλατο στην Κρήτη",
+      ogDescription: "Ενοικίαση, οργανωμένες περιηγήσεις και εργαστήρια στη Σίσι. Μικρές ομάδες, τοπικοί οδηγοί."
+    },
+    nav: {rental: "Ενοικίαση", tours: "Περιηγήσεις", workshops: "Εργαστήρια", contact: "Επικοινωνία", book: "Κράτηση τώρα"},
+    hero: {
+      greet: "👋 Καλώς ορίσατε στη Σίσι, Κρήτη",
+      title: "Ποδήλατο εκεί που η Κρήτη <em>είναι στα καλύτερά της</em>.",
+      lead: "Ενοικίαση ποδηλάτων, οργανωμένες περιηγήσεις και εργαστήρια — δίπλα στη θάλασσα, με τοπικούς οδηγούς και μικρές ομάδες.",
+      cta1: "Κράτηση τώρα →",
+      cta2: "Δείτε τις περιηγήσεις"
+    },
+    facts: [
+      "Σημείο συνάντησης: λιμάνι Σίσι",
+      "Έως 4 άτομα ανά περιήγηση",
+      "Νερό & εργαλεία περιλαμβάνονται, κράνος στην ενοικίαση 3 € / ημέρα",
+      "E-bike από 35 € / ημέρα"
+    ],
+    rental: {
+      eyebrow: "Ενοικίαση ποδηλάτων",
+      title: "Το ποδήλατό σου για μια μέρα — ή για ολόκληρη την εβδομάδα.",
+      lead: "Τρία μοντέλα, καθαρές τιμές, εκπτώσεις για περισσότερες ημέρες από την τρίτη μέρα. Νερό και εργαλεία περιλαμβάνονται· τα κράνη κοστίζουν 3 € / ημέρα. Εσύ φέρνεις μόνο τη διάθεση.",
+      tag: "Δημοφιλές",
+      cards: [
+        {title: "E-bike", desc: "Ούριος άνεμος για ανηφόρες και παραλία. Αυτονομία έως 80 χλμ., τρία επίπεδα υποβοήθησης.", dep: "Εγγύηση 200 € με την παράδοση"},
+        {title: "Gravel", desc: "Άνετο, ανθεκτικό και ιδανικό για δρόμο και χωματόδρομο.", dep: "Εγγύηση 100 € με την παράδοση"},
+        {title: "Mountain bike", desc: "Για χαλίκι, μονοπάτια και τις πιο άγριες γωνιές του νησιού.", dep: "Εγγύηση 100,00 € με την παράδοση"}
+      ],
+      discount: "<strong>10% έκπτωση</strong> από 3 ημέρες · <strong>20% έκπτωση</strong> από 7 ημέρες",
+      model: "Μοντέλο",
+      days: "Ημέρες",
+      options: ["E-bike", "Gravel", "MTB"],
+      quoteDays: "ημέρα",
+      quoteDaysPlural: "ημέρες"
+    },
+    tours: {
+      eyebrow: "Οργανωμένες περιηγήσεις",
+      title: "Στο δρόμο με τοπικούς οδηγούς.",
+      lead: "Μικρές ομάδες, έως 4 άτομα, σημείο συνάντησης το λιμάνι της Σίσι. Και αν βρέξει; Μεταφέρουμε ή επιστρέφουμε τα χρήματα — χωρίς ταλαιπωρία.",
+      levels: ["Εύκολη", "Μέτρια", "Δύσκολη"],
+      cards: [
+        {title: "Coastal Cruise", meta: "⏱ 3 ώρες · 🌊 παραλιακός δρόμος", desc: "Χαλαρή διαδρομή δίπλα στη θάλασσα — με θέα και χρόνο για στάση."},
+        {title: "Olive Grove Loop", meta: "⏱ 5 ώρες · 🫒 ελαιώνες", desc: "Στο εσωτερικό του νησιού, ανάμεσα σε ελαιώνες — Κρήτη πέρα από την καρτ ποστάλ."},
+        {title: "Lasithi Challenge", meta: "⏱ 7 ώρες · ⛰ βουνά", desc: "Για όσους θέλουν πρόκληση: ανηφόρες, θέα και η ωραία αίσθηση στο τέλος."}
+      ],
+      chips: [
+        "💧 Νερό & εργαλεία περιλαμβάνονται",
+        "🪖 Το κράνος περιλαμβάνεται",
+        "👥 έως 4 άτομα · 1 οδηγός ανά ομάδα",
+        "↩ Πλήρης επιστροφή έως 24 ώρες πριν",
+        "🌧 Πλήρης επιστροφή σε έντονη βροχή"
+      ]
+    },
+    workshops: {
+      eyebrow: "Εργαστήρια",
+      title: "Πρακτική στο ποδηλατικό εργαστήριο.",
+      lead: "Μάθε τι χρειάζεται το ποδήλατό σου — από αλυσίδα μέχρι κιτ ανάγκης. Περιορισμένες θέσεις, λίστα αναμονής όταν γεμίσει. 24 ώρες πριν θα πάρεις το μέρος, την ώρα και τη λίστα με τα απαραίτητα.",
+      cards: [
+        {title: "Βασική συντήρηση ποδηλάτου", desc: "Αλυσίδα, φρένα, ταχύτητες — συντήρηση για όλους. Θα φύγεις ξέροντας τι χρειάζεται το ποδήλατό σου."},
+        {title: "Ασφάλεια e-bike", desc: "Φροντίδα μπαταρίας, διαχείριση αυτονομίας και συμβουλές ασφάλειας για διαδρομές με μοτέρ."},
+        {title: "Πρώτες βοήθειες στο δρόμο", desc: "Τρύπα στη ρόδα, κιτ ανάγκης και σωστή αντίδραση σε ατυχήματα — πρακτικά και ουσιαστικά."}
+      ],
+      cap: "Περιορισμένες θέσεις",
+      note: "Πλήρης επιστροφή έως 48 ώρες πριν, μετά 50%. Αν ακυρώσει η CreteCycling: πλήρης επιστροφή."
+    },
+    booking: {
+      eyebrow: "Κράτηση & αίτημα",
+      title: "Στείλτε αίτημα κράτησης.",
+      lead: "Επιλέξτε ενοικίαση, περιήγηση ή εργαστήριο. Θα απαντήσουμε μέσα σε 24 ώρες με επιβεβαίωση και λεπτομέρειες παράδοσης.",
+      steps: [
+        {title: "Επιλέξτε", body: "Ενοικίαση, περιήγηση ή εργαστήριο."},
+        {title: "Στείλτε αίτημα", body: "Ημερομηνία, άτομα, επιθυμίες — έτοιμο."},
+        {title: "Λάβετε επιβεβαίωση", body: "Για τα εργαστήρια, υπενθύμιση 24 ώρες πριν."}
+      ],
+      tabs: ["🚲 Ενοικίαση", "🌊 Περιήγηση", "🔧 Εργαστήριο"],
+      model: "Μοντέλο",
+      qty: "Ποσότητα ποδηλάτων",
+      from: "Από",
+      to: "Έως",
+      extras: "Επιπλέον",
+      est: "Εκτιμώμενη τιμή",
+      deposit: "+ εγγύηση με την παράδοση (επιστρέφεται)",
+      tour: "Περιήγηση",
+      date: "Ημερομηνία",
+      guests: "Άτομα (έως 4)",
+      workshop: "Εργαστήριο",
+      wish: "Προτιμώμενη ημερομηνία",
+      name: "Όνομα",
+      email: "E-mail",
+      message: "Μήνυμα (προαιρετικό)",
+      placeholder: "Ξενοδοχείο, ύψος, ειδικές επιθυμίες …",
+      submit: "Στείλτε αίτημα →",
+      addons: [
+        ["Συσκευή GPS με χάρτες διαδρομών", "5 € / ημέρα"],
+        ["Κράνος", "3 € / ημέρα"],
+        ["Τσάντα πλαισίου", "3 € / ημέρα"],
+        ["Ασφάλιση (κλοπή & ζημιά)", "3 € / ημέρα"],
+        ["Παράδοση στο ξενοδοχείο (Σίσι / Μάλια / Γούβες)", "10 € μία φορά"]
+      ],
+      trust: [
+        "Δωρεάν ακύρωση έως 24 ώρες πριν",
+        "Διαφανής εγγύηση στην παράδοση",
+        "Νερό & εργαλεία περιλαμβάνονται, κράνος στην ενοικίαση 3 € / ημέρα",
+        "Τοπική ομάδα, λιμάνι Σίσι"
+      ],
+      fine: "Με την αποστολή ανοίγει η εφαρμογή e-mail με έτοιμο αίτημα. Μη δεσμευτικό — η κράτηση ισχύει μόνο μετά την επιβεβαίωσή μας.",
+      statusReady: "Η εφαρμογή e-mail θα ανοίξει … ευχαριστούμε! 🙏",
+      statusName: "Παρακαλώ συμπληρώστε όνομα και έγκυρο e-mail.",
+      statusPeriod: "Παρακαλώ επιλέξτε χρονικό διάστημα.",
+      statusDate: "Παρακαλώ επιλέξτε ημερομηνία.",
+      subjects: {rental: "Αίτημα ενοικίασης", tour: "Αίτημα περιήγησης", ws: "Εγγραφή σε εργαστήριο"},
+      bodyLabels: {name: "Όνομα", email: "E-mail"},
+      mailPrefix: "CreteCycling — "
+    },
+    footer: {
+      slogan: "CreteCycling — δύο ρόδες, ένα νησί, η μέρα σου.",
+      line: "Σίσι, Κρήτη 🇬🇷 · Ενοικίαση · Περιηγήσεις · Εργαστήρια",
+      links: ["Ενοικίαση", "Περιηγήσεις", "Εργαστήρια", "Επικοινωνία"],
+      legal: ["Νομικά", "Απόρρητο", "Όροι", "Ακύρωση"]
+    },
+    sticky: "Ζητήστε τώρα →"
+  }
+};
+let currentLang = (new URLSearchParams(location.search).get('lang') || localStorage.getItem('cc-lang') || (navigator.language || 'de')).slice(0, 2).toLowerCase();
+if (!I18N[currentLang]) currentLang = currentLang === 'el' ? 'el' : 'en';
+if (!I18N[currentLang]) currentLang = 'de';
 const getBookingForm = () => $("#bf");
+const eur = n => new Intl.NumberFormat(LOCALES[currentLang] || 'de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2}).format(n) + " €";
+const setText = (sel, value, r = document) => { const el = $(sel, r); if (el) el.textContent = value; };
+const setHTML = (sel, value, r = document) => { const el = $(sel, r); if (el) el.innerHTML = value; };
+const setAttr = (sel, name, value, r = document) => { const el = $(sel, r); if (el) el.setAttribute(name, value); };
+function setNodeText(el, value) { if (el && el.firstChild) el.firstChild.nodeValue = value; }
+function syncLangButtons(lang) {
+  $$('.lang-switch button').forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang)));
+}
+function applyLanguage(lang) {
+  const t = I18N[lang] || I18N.de;
+  currentLang = I18N[lang] ? lang : 'de';
+  localStorage.setItem('cc-lang', currentLang);
+  document.documentElement.lang = currentLang;
+  document.title = t.meta.title;
+  setAttr('meta[name="description"]', 'content', t.meta.description);
+  setAttr('meta[property="og:title"]', 'content', t.meta.ogTitle);
+  setAttr('meta[property="og:description"]', 'content', t.meta.ogDescription);
+  setAttr('.logo', 'aria-label', currentLang === 'de' ? 'CreteCycling Startseite' : currentLang === 'el' ? 'Αρχική σελίδα CreteCycling' : 'CreteCycling home page');
+  setAttr('.logo-mark', 'alt', currentLang === 'de' ? 'CreteCycling Logo' : currentLang === 'el' ? 'Λογότυπο CreteCycling' : 'CreteCycling logo');
+  setAttr('nav[aria-label="Hauptnavigation"]', 'aria-label', currentLang === 'de' ? 'Hauptnavigation' : currentLang === 'el' ? 'Κύρια πλοήγηση' : 'Main navigation');
+  setText('header .btn.btn-ochre', t.nav.book);
+  setText('.nav ul li:nth-child(1) a', t.nav.rental);
+  setText('.nav ul li:nth-child(2) a', t.nav.tours);
+  setText('.nav ul li:nth-child(3) a', t.nav.workshops);
+  setText('.nav ul li:nth-child(4) a', t.nav.contact);
+  setText('.hero .greet', t.hero.greet);
+  setHTML('.hero h1', t.hero.title);
+  setText('.hero p', t.hero.lead);
+  $$('.hero .cta a')[0].textContent = t.hero.cta1;
+  $$('.hero .cta a')[1].textContent = t.hero.cta2;
+  $$('.facts li').forEach((li, i) => { if (li && li.childNodes[1]) li.childNodes[1].nodeValue = t.facts[i]; });
+  setText('#verleih .eyebrow', t.rental.eyebrow);
+  setText('#verleih h2', t.rental.title);
+  setText('#verleih .lead', t.rental.lead);
+  const bikes = $$('#verleih .bike');
+  bikes.forEach((bike, i) => {
+    setText('h3', t.rental.cards[i].title, bike);
+    setText('p', t.rental.cards[i].desc, bike);
+    setText('.dep', t.rental.cards[i].dep, bike);
+    setText('.storno', currentLang === 'de' ? 'Gratis stornierbar bis 24 Std. vorher' : currentLang === 'el' ? 'Δωρεάν ακύρωση έως 24 ώρες πριν' : 'Free cancellation up to 24 hrs before', bike);
+  });
+  setText('#verleih .tag', t.rental.tag);
+  setHTML('#verleih .discount > div:first-child', t.rental.discount);
+  const calcLabels = $$('#verleih .calc label');
+  if (calcLabels[0] && calcLabels[0].childNodes[0]) calcLabels[0].childNodes[0].nodeValue = t.rental.model;
+  if (calcLabels[1] && calcLabels[1].childNodes[0]) calcLabels[1].childNodes[0].nodeValue = t.rental.days;
+  $$('#cModel option').forEach((opt, i) => opt.textContent = t.rental.options[i]);
+  setText('#touren .eyebrow', t.tours.eyebrow);
+  setText('#touren h2', t.tours.title);
+  setText('#touren .lead', t.tours.lead);
+  $$('#touren .tour').forEach((tour, i) => {
+    setHTML('.lvl', `<i class="on"></i>${i === 0 ? '<i></i><i></i>' : i === 1 ? '<i class="on"></i><i></i>' : '<i class="on"></i><i class="on"></i>'}&nbsp;${t.tours.levels[i]}`, tour);
+    setText('h3', t.tours.cards[i].title, tour);
+    setText('.meta', t.tours.cards[i].meta, tour);
+    setText('p', t.tours.cards[i].desc, tour);
+    setText('.storno', currentLang === 'de' ? 'Gratis stornierbar bis 24 Std. vorher' : currentLang === 'el' ? 'Δωρεάν ακύρωση έως 24 ώρες πριν' : 'Free cancellation up to 24 hrs before', tour);
+  });
+  $$('#touren .incl .chip').forEach((chip, i) => chip.textContent = t.tours.chips[i]);
+  setText('#workshops .eyebrow', t.workshops.eyebrow);
+  setText('#workshops h2', t.workshops.title);
+  setText('#workshops .lead', t.workshops.lead);
+  $$('#workshops .ws').forEach((ws, i) => { setText('h3', t.workshops.cards[i].title, ws); setText('p', t.workshops.cards[i].desc, ws); setText('.cap', t.workshops.cap, ws); });
+  setText('#workshops .fine', t.workshops.note);
+  setText('#kontakt .eyebrow', t.booking.eyebrow);
+  setText('#kontakt h2', t.booking.title);
+  setText('#kontakt .lead', t.booking.lead);
+  const stepTitles = $$('#kontakt .steps b');
+  const stepBodies = $$('#kontakt .steps li div');
+  t.booking.steps.forEach((s, i) => {
+    if (stepTitles[i]) stepTitles[i].textContent = s.title;
+    if (stepBodies[i]) stepBodies[i].innerHTML = `<b>${s.title}</b><br>${s.body}`;
+  });
+  $$('#kontakt .tabs button').forEach((b, i) => b.textContent = t.booking.tabs[i]);
+  const form = getBookingForm();
+  if (form) {
+    const rentalLabel = form.querySelector('div[data-for="rental"] label:nth-of-type(1)');
+    if (rentalLabel && rentalLabel.childNodes[0]) rentalLabel.childNodes[0].nodeValue = t.booking.model;
+    const qtyLabel = form.querySelector('div[data-for="rental"] label:nth-of-type(2)');
+    if (qtyLabel && qtyLabel.childNodes[0]) qtyLabel.childNodes[0].nodeValue = t.booking.qty;
+    const fromLabel = form.querySelector('div[data-for="rental"] .f2 label:nth-of-type(1)');
+    const toLabel = form.querySelector('div[data-for="rental"] .f2 label:nth-of-type(2)');
+    if (fromLabel && fromLabel.childNodes[0]) fromLabel.childNodes[0].nodeValue = t.booking.from;
+    if (toLabel && toLabel.childNodes[0]) toLabel.childNodes[0].nodeValue = t.booking.to;
+    setText('#kontakt .addons legend', t.booking.extras);
+    $$('#kontakt .addons label').forEach((label, i) => {
+      if (label.childNodes[1]) label.childNodes[1].nodeValue = ' ' + t.booking.addons[i][0] + ' ';
+      const price = label.querySelector('.ap');
+      if (price) price.textContent = t.booking.addons[i][1];
+    });
+    const estWrap = form.querySelector('.est'); if (estWrap) estWrap.firstChild.textContent = t.booking.est;
+    const depWrap = form.querySelector('.est-sub'); if (depWrap) depWrap.firstChild.textContent = t.booking.deposit;
+    const tourLabel = form.querySelector('div[data-for="tour"] label:nth-of-type(1)'); if (tourLabel && tourLabel.childNodes[0]) tourLabel.childNodes[0].nodeValue = t.booking.tour;
+    const dateLabels = form.querySelectorAll('div[data-for="tour"] .f2 label, div[data-for="ws"] .f2 label');
+    if (dateLabels[0] && dateLabels[0].childNodes[0]) dateLabels[0].childNodes[0].nodeValue = t.booking.date;
+    if (dateLabels[1] && dateLabels[1].childNodes[0]) dateLabels[1].childNodes[0].nodeValue = t.booking.wish;
+    const guestsLabel = form.querySelector('div[data-for="tour"] label:nth-of-type(2)'); if (guestsLabel && guestsLabel.childNodes[0]) guestsLabel.childNodes[0].nodeValue = t.booking.guests;
+    const wsLabel = form.querySelector('div[data-for="ws"] label:nth-of-type(1)'); if (wsLabel && wsLabel.childNodes[0]) wsLabel.childNodes[0].nodeValue = t.booking.workshop;
+    const nameLabel = form.querySelector('.f2 label:nth-of-type(1)');
+    const emailLabel = form.querySelector('.f2 label:nth-of-type(2)');
+    // Above selectors are ambiguous across tabs; update the bottom pair explicitly.
+    const bottomLabels = form.querySelectorAll(':scope > .f2 label');
+    if (bottomLabels[0] && bottomLabels[0].childNodes[0]) bottomLabels[0].childNodes[0].nodeValue = t.booking.name;
+    if (bottomLabels[1] && bottomLabels[1].childNodes[0]) bottomLabels[1].childNodes[0].nodeValue = t.booking.email;
+    const msg = form.querySelector('textarea[name="msg"]'); if (msg) msg.placeholder = t.booking.placeholder;
+    const submit = form.querySelector('button[type="submit"]'); if (submit) submit.textContent = t.booking.submit;
+    $$('#kontakt .trust li').forEach((li, i) => li.textContent = t.booking.trust[i]);
+    setText('#kontakt .fine', t.booking.fine);
+  }
+  setText('#nav ~ main + footer .slogan', t.footer.slogan);
+  const footerBits = $$('footer .wrap > div');
+  if (footerBits[0]) footerBits[0].innerHTML = `<b class="slogan">${t.footer.slogan}</b><br>${t.footer.line}`;
+  if (footerBits[1]) footerBits[1].innerHTML = `<a href="#verleih">${t.footer.links[0]}</a> · <a href="#touren">${t.footer.links[1]}</a> · <a href="#workshops">${t.footer.links[2]}</a> · <a href="#kontakt">${t.footer.links[3]}</a>`;
+  if (footerBits[2]) footerBits[2].innerHTML = `<a href="impressum-datenschutz.html#impressum">${t.footer.legal[0]}</a> · <a href="impressum-datenschutz.html#datenschutz">${t.footer.legal[1]}</a> · <a href="agb-storno.html#agb">${t.footer.legal[2]}</a> · <a href="agb-storno.html#stornobedingungen">${t.footer.legal[3]}</a>`;
+  setText('.sticky .btn', t.sticky);
+  syncLangButtons(currentLang);
+  calc();
+  estimate();
+}
+function setLanguage(lang) { applyLanguage(lang); }
+function initLanguage() {
+  $$('.lang-switch button').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+  applyLanguage(currentLang);
+}
+
 function setBookingType(t) {
   const form = getBookingForm();
   if (!form) return;
@@ -527,7 +1040,7 @@ function calc() {
   const d = Math.max(1, Math.min(60, +$("#cDays").value || 1));
   $("#cOut").textContent = eur(rentalPrice(RATES[$("#cModel").value], d));
 }
-$("#cModel").addEventListener("change", calc); $("#cDays").addEventListener("input", calc); calc();
+$("#cModel").addEventListener("change", calc); $("#cDays").addEventListener("input", calc);
 
 const f = getBookingForm();
 const today = new Date().toISOString().slice(0, 10);
@@ -535,6 +1048,7 @@ const addonKeys = () => {
   const form = getBookingForm();
   return form ? $$("[name=ad]:checked", form).map(c => c.value) : [];
 };
+initLanguage();
 function setType(t) { setBookingType(t); }
 if (f) {
   f.dataset.type = "rental";
@@ -569,22 +1083,24 @@ f.addEventListener("submit", e => {
   const el = f.elements, st = $("#status"), t = f.dataset.type;
   const err = m => { st.style.color = "#b3261e"; st.textContent = m; };
   if (el.website.value) return; // Honeypot
-  if (!el.name.value.trim() || !/^\S+@\S+\.\S+$/.test(el.email.value)) return err("Bitte Name und gültige E-Mail angeben.");
+  if (!el.name.value.trim() || !/^\S+@\S+\.\S+$/.test(el.email.value)) return err(I18N[currentLang].booking.statusName);
   const opt = n => el[n].selectedOptions[0].textContent;
   let subject, lines;
   if (t === "rental") {
-    if (!el.from.value || !el.to.value) return err("Bitte Zeitraum wählen.");
-    subject = "Verleih-Anfrage"; lines = [`Modell: ${opt("model")}`, `Anzahl: ${el.qty.value}`, `Zeitraum: ${el.from.value} bis ${el.to.value}`, `Extras: ${addonKeys().map(k => ADDONS[k].label).join(", ") || "keine"}`, `Schätzpreis: ${$("#est").textContent}`, `Kaution bei Übergabe: ${$("#dep").textContent}`];
+    if (!el.from.value || !el.to.value) return err(I18N[currentLang].booking.statusPeriod);
+    subject = I18N[currentLang].booking.subjects.rental; lines = [`${I18N[currentLang].booking.model}: ${opt("model")}`, `${I18N[currentLang].booking.qty}: ${el.qty.value}`, `${I18N[currentLang].booking.from}: ${el.from.value} ${I18N[currentLang].booking.to}: ${el.to.value}`, `Extras: ${addonKeys().map(k => ADDONS[k].label).join(", ") || (currentLang === 'de' ? 'keine' : currentLang === 'el' ? 'κανένα' : 'none')}`, `${I18N[currentLang].booking.est}: ${$("#est").textContent}`, `${I18N[currentLang].booking.deposit}: ${$("#dep").textContent}`];
   } else if (t === "tour") {
-    if (!el.tday.value) return err("Bitte Datum wählen.");
-    subject = "Tour-Anfrage"; lines = [`Tour: ${opt("tour")}`, `Datum: ${el.tday.value}`, `Personen: ${el.guests.value}`];
+    if (!el.tday.value) return err(I18N[currentLang].booking.statusDate);
+    subject = I18N[currentLang].booking.subjects.tour; lines = [`${I18N[currentLang].booking.tour}: ${opt("tour")}`, `${I18N[currentLang].booking.date}: ${el.tday.value}`, `${I18N[currentLang].booking.guests}: ${el.guests.value}`];
   } else {
-    subject = "Workshop-Anmeldung"; lines = [`Workshop: ${el.ws.value}`, `Wunschtermin: ${el.wday.value || "offen"}`];
+    subject = I18N[currentLang].booking.subjects.ws; lines = [`${I18N[currentLang].booking.workshop}: ${el.ws.value}`, `${I18N[currentLang].booking.wish}: ${el.wday.value || (currentLang === 'de' ? 'offen' : currentLang === 'el' ? 'ανοιχτό' : 'open')}`];
   }
   const body = [...lines, "", `Name: ${el.name.value}`, `E-Mail: ${el.email.value}`, "", el.msg.value].join("\n");
-  st.style.color = ""; st.textContent = "Dein E-Mail-Programm öffnet sich … Danke! 🙏";
-  location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("CreteCycling – " + subject)}&body=${encodeURIComponent(body)}`;
+  st.style.color = ""; st.textContent = I18N[currentLang].booking.statusReady;
+  location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(I18N[currentLang].booking.mailPrefix + subject)}&body=${encodeURIComponent(body)}`;
 });
+
+calc();
 </script>
 </body>
 </html>

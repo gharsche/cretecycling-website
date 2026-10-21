@@ -35,6 +35,7 @@ Es gelten die Tagessätze zum Zeitpunkt der Buchung:
 | Extra | Preis |
 |---|---|
 | GPS-Gerät | 5 €/Tag |
+| Helm | 3 €/Tag |
 | Fahrradversicherung | 3 €/Tag |
 | Rahmentasche | 3 €/Tag |
 | Hotel-Lieferung (Sissi, Malia, Hersonissos, Elounda, Plaka, Neapoli) | 10 € einmalig |
@@ -47,7 +48,7 @@ Bei Übergabe ist eine Kaution je Modell zu hinterlegen:
 |---|---|
 | E-Bike | 200 € |
 | Gravel | 100 € |
-| MTB | 150 € |
+| MTB | 100 € |
 | Kind | 50 € |
 
 Die Kaution wird bei unbeschädigter Rückgabe voll erstattet.
@@ -72,7 +73,7 @@ Die Kaution wird bei unbeschädigter Rückgabe voll erstattet.
 
 ### 3.2 Gruppengröße
 
-Maximal 8 Personen pro Tour. 1 Guide pro Gruppe.
+Maximal 4 Personen pro Tour. 1 Guide pro Gruppe.
 
 ### 3.3 Inklusivleistungen
 

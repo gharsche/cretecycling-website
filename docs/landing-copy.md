@@ -18,7 +18,7 @@
 
 **Titel:** Dein Rad für den Tag — oder die ganze Woche
 
-**Lead:** Vier Modelle, klare Preise, Mehrtagesrabatte ab Tag drei. Helm und Werkzeug-Kit sind immer dabei. Du bringst nur den Spaß mit.
+**Lead:** Vier Modelle, klare Preise, Mehrtagesrabatte ab Tag drei. Wasser und Werkzeug sind inklusive; Helme kosten 3 €/Tag. Du bringst nur den Spaß mit.
 
 **Cards (je Modell):**
 
@@ -30,8 +30,8 @@ Elektrischer Rückenwind für Küste und Hügel. Reichweite bis 80 km, drei Unte
 Leicht, bequem, tourenbereit. Perfekt für Olivenhaine und Küstenstraßen. Kaution: 100 €.
 *Ab 3 Tagen 10 %, ab 7 Tagen 20 %.*
 
-### Mountainbike (MTB) — 30 €/Tag
-Fürs Gelände jenseits der Asphaltstraße. Federung, griffige Reifen, Kreta-tauglich. Kaution: 150 €.
+### Mountainbike (MTB) — 25 €/Tag
+Fürs Gelände jenseits der Asphaltstraße. Federung, griffige Reifen, Kreta-tauglich. Kaution: 100 €.
 *Ab 3 Tagen 10 %, ab 7 Tagen 20 %.*
 
 ### Kind — 15 €/Tag
@@ -54,7 +54,7 @@ Fürs Gelände jenseits der Asphaltstraße. Federung, griffige Reifen, Kreta-tau
 
 **Titel:** Mit lokalen Guides auf Tour
 
-**Lead:** Kleine Gruppen, max. 8 Personen. Helm, Werkzeug und Wasser inklusive. Treffpunkt: Sissi Hafen. Und bei Regen? Wir verschieben oder erstatten — ohne Wenn und Aber.
+**Lead:** Kleine Gruppen, max. 4 Personen. Helm, Werkzeug und Wasser inklusive. Treffpunkt: Sissi Hafen. Und bei Regen? Wir verschieben oder erstatten — ohne Wenn und Aber.
 
 **Cards:**
 
@@ -73,7 +73,7 @@ Schwer · 7 Std. · max. 8
 Das Lasithi-Plateau rauf und run — Höhenmeter für Fortgeschrittene. GPX-Route zum Download.
 *Stornierung: bis 24 h vorher.*
 
-**Tour-Hinweise:** Helm · Werkzeug-Kit · Wasser inkl. · 1 Guide pro Gruppe · Auslastung live im Buchungsformular.
+**Tour-Hinweise:** Helm inklusive · Werkzeug-Kit · Wasser inkl. · 1 Guide pro Gruppe · Auslastung live im Buchungsformular.
 
 **CTA:** Tour buchen
 
