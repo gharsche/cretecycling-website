@@ -90,15 +90,15 @@ def main():
     favicon = re.search(r'<link rel="icon"[^>]+>', index).group(0)
     logo_svg = re.search(r'<a class="logo"[^>]*>\s*(<svg.*?</svg>|<img[^>]*>)', index, re.S).group(1)
     extra = """
-header.nav{background:rgba(250,246,239,.96);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.07)}
-header.nav .logo{color:var(--ocean-d)} header.nav .logo b{color:var(--olive-d)}
+header.nav{background:rgba(246,236,214,.96);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(74,46,26,.14)}
+header.nav .logo{color:var(--umber)} header.nav .logo b{color:var(--terra)}
 .doc{padding:7rem 0 4rem}
 .doc .wrap{width:min(820px,92%)}
 .doc .doclinks{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0 2.5rem}
-.doc .doclinks a{padding:.5rem 1.1rem;border-radius:999px;background:#fff;border:1.5px solid #d9d1bf;text-decoration:none;font-weight:700;font-size:.92rem;color:var(--ocean-d)}
-.doc .doclinks a:hover{border-color:var(--ocean)}
+.doc .doclinks a{padding:.5rem 1.1rem;border-radius:999px;background:#fff;border:1.5px solid #d8c49a;text-decoration:none;font-weight:700;font-size:.92rem;color:var(--terra-d)}
+.doc .doclinks a:hover{border-color:var(--terra)}
 .doc section{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(1.4rem,4vw,2.6rem);margin-bottom:2rem;scroll-margin-top:90px}
-.doc h2{font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--ocean-d);margin-bottom:1rem}
+.doc h2{font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--terra-d);margin-bottom:1rem}
 .doc h3{font-size:1.2rem;margin:1.8rem 0 .5rem;color:var(--olive-d)}
 .doc h4{font-size:1.02rem;margin:1.2rem 0 .4rem}
 .doc p,.doc ul,.doc ol{margin:.6rem 0}
@@ -108,16 +108,16 @@ header.nav .logo{color:var(--ocean-d)} header.nav .logo b{color:var(--olive-d)}
 .doc table{border-collapse:collapse;width:100%;font-size:.95rem}
 .doc th,.doc td{text-align:left;padding:.55rem .8rem;border-bottom:1px solid var(--sand-d)}
 .doc th{background:var(--sand);font-size:.82rem;text-transform:uppercase;letter-spacing:.05em;color:var(--mute)}
-.doc a{color:var(--ocean-d)}
+.doc a{color:var(--terra-d)}
 .doc code{background:var(--sand);padding:.1em .35em;border-radius:6px}
-mark.ph{background:#ffe9a8;color:#5a3d00;padding:0 .25em;border-radius:5px}
-aside.draft{background:#fff6dc;border-left:5px solid var(--sun);padding:.7rem 1rem;border-radius:10px;margin:1rem 0;font-size:.9rem}
+mark.ph{background:#f6dc9a;color:#4a2e1a;padding:0 .25em;border-radius:5px}
+aside.draft{background:#f6e7bd;border-left:5px solid var(--ochre);padding:.7rem 1rem;border-radius:10px;margin:1rem 0;font-size:.9rem}
 """
     if not DRAFT:
         extra += "aside.draft{display:none}"
     nav = ('<header class="nav"><div class="wrap">'
            f'<a class="logo" href="index.html" aria-label="CreteCycling Startseite">{logo_svg}<span>Crete<b>Cycling</b></span></a>'
-           '<a class="btn btn-sun" href="index.html#kontakt">Jetzt buchen</a></div></header>')
+           '<a class="btn btn-ochre" href="index.html#kontakt">Jetzt buchen</a></div></header>')
     open_ph = []
     for p in PAGES:
         secs, tabs = [], []
@@ -140,7 +140,7 @@ aside.draft{background:#fff6dc;border-left:5px solid var(--sun);padding:.7rem 1r
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{p['title']} — CreteCycling</title>
 <meta name="robots" content="noindex" >
-<meta name="theme-color" content="#1a7a8c">
+<meta name="theme-color" content="#4a2e1a">
 {favicon}
 <style>{css}{extra}</style>
 </head>
