@@ -1,0 +1,7 @@
+[project]
+name = "cretecycling"
+version = "0.1.0"
+description = "CreteCycling IKE: rental, tours, workshops"
+requires-python = ">=3.10"
+
+[tool.unittest]
