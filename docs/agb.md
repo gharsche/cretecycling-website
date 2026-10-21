@@ -1,6 +1,6 @@
 # Allgemeine Geschäftsbedingungen (AGB) — CreteCycling
 
-> **Hinweis.** Tarife, Add-on-Preise und Storno-Konditionen entsprechen den Docs (`rental.md`, `tours.md`, `workshops.md`) und sind als marktkonforme Vorschläge bestätigt (Benchmark @researcher). Die Zahlungsweise (§ 7) ist noch offen und muss von @user festgelegt werden. Rechtliche Prüfung empfohlen.
+> **Hinweis.** Tarife, Add-on-Preise, Storno-Konditionen und Zahlungsweise entsprechen den Docs (`rental.md`, `tours.md`, `workshops.md`) und sind marktkonform (Benchmark @researcher). Die Zahlungsarten richten sich nach dem eingesetzten Buchungssystem (SimplyBook.it/Stripe). Rechtliche Prüfung vor Livegang empfohlen.
 
 ---
 
@@ -131,7 +131,25 @@ Bei Absage durch CreteCycling: 100 %.
 
 ## § 7 Zahlung
 
-Zahlungsweise und -fristen sind bei Buchung individuell zu vereinbaren, soweit nicht vor Ort direkt bar zu zahlen ist. **@user: Bitte Zahlungsweise festlegen — Bar, Karte, Online-Vorkasse?**
+### 7.1 Zahlungsarten
+
+| Zahlungsart | Verfügbarkeit |
+|---|---|
+| Online-Vorkasse (Kreditkarte, 3D-Secure) | Bei Online-Buchung über das Buchungsformular |
+| SEPA-Lastschrift | Bei Online-Buchung (für Kunden mit deutsischem/europäischem Konto) |
+| Barzahlung | Vor Ort bei Abholung |
+| Kartenzahlung (vor Ort) | Vor Ort bei Abholung |
+| Rechnung | Nur auf Anfrage für Geschäftskunden |
+
+### 7.2 Fälligkeit
+
+Bei Online-Buchung ist die Anzahlung bzw. die volle Buchungssumme vor der verbindlichen Bestätigung fällig. Die Zahlung erfolgt über den Zahlungsdienstleister unseres Buchungssystems (SimplyBook.it, abgewickelt über Stripe/PayPal). Die Buchung ist erst nach erfolgreichem Zahlungseingang verbindlich bestätigt.
+
+Bei Barzahlung vor Ort ist die volle Buchungssumme bei Abholung fällig.
+
+### 7.3 Gutscheine und Erstattungen
+
+Erstattungen bei Stornierung erfolhen nach den Bedingungen in § 5 auf das ursprüngliche Zahlungsmittel.
 
 ---
 
