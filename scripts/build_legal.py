@@ -88,7 +88,7 @@ def main():
     index = (WEB / "index.html").read_text(encoding="utf-8")
     css = re.search(r"<style>(.*?)</style>", index, re.S).group(1)
     favicon = re.search(r'<link rel="icon"[^>]+>', index).group(0)
-    logo_svg = re.search(r'<a class="logo".*?(<svg.*?</svg>)', index, re.S).group(1)
+    logo_svg = re.search(r'<a class="logo"[^>]*>\s*(<svg.*?</svg>|<img[^>]*>)', index, re.S).group(1)
     extra = """
 header.nav{background:rgba(250,246,239,.96);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.07)}
 header.nav .logo{color:var(--ocean-d)} header.nav .logo b{color:var(--olive-d)}
