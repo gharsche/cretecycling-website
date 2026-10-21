@@ -41,7 +41,11 @@ Diese Website wird über GitHub Pages (GitHub Inc., USA) gehostet. Beim Aufruf d
 
 ## Speicherdauer
 
-Buchungsdaten werden nach Abschluss des Miet-/Tour-/Workshop-Verhältnisses und Abwicklung etwaiger Rückfragen für einen weiteren Zeitraum von [6 Monaten / 3 Jahren — bitte festlegen] gespeichert, soweit keine gesetzlichen Aufbewahrungspflichten (z. B. Steuerrecht) eine längere Speicherung erfordern.
+**Anfragen ohne Buchung:** Daten von Buchungsanfragen, die nicht zu einem Vertragsabschluss führen, werden 6 Monate nach der letzten Kontaktaufnahme gespeichert und anschließend gelöscht.
+
+**Vertrags- und Rechnungsdaten:** Bei zustande gekommenen Buchungen werden Vertrags- und Rechnungsdaten 5 Jahre gespeichert (steuerliche Aufbewahrungspflicht nach griechischem Steuerrecht). Nach Ablauf der Aufbewahrungspflicht werden die Daten gelöscht.
+
+**Server-Logs (GitHub Pages):** Technische Logdaten werden von GitHub im Rahmen der jeweiligen Nutzungsbedingungen verarbeitet; siehe [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies).
 
 ---
 
