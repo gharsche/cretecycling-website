@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Impressum & Datenschutz — CreteCycling</title>
+<meta name="robots" content="noindex" >
+<meta name="theme-color" content="#1a7a8c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a7a8c'/%3E%3Ccircle cx='18' cy='42' r='9' fill='none' stroke='%23faf6ef' stroke-width='4'/%3E%3Ccircle cx='46' cy='42' r='9' fill='none' stroke='%23faf6ef' stroke-width='4'/%3E%3Cpath d='M18 42l10-18h14l4 18M28 24l8 18' fill='none' stroke='%23f0b429' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ocean:#1a7a8c; --ocean-d:#115866; --olive:#7a9b5e; --olive-d:#587443;
+  --sun:#f0b429; --sand:#faf6ef; --sand-d:#f1e9d9; --ink:#2c2c2c; --mute:#64605a;
+  --r:18px; --shadow:0 10px 30px -12px rgba(17,88,102,.35);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--sand);line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(1120px,92%);margin-inline:auto}
+h1,h2,h3{line-height:1.12;letter-spacing:-.02em}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:.5rem}
+.eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ocean)}
+.lead{font-size:1.15rem;color:var(--mute);max-width:56ch}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.5rem;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;font-size:1rem;transition:transform .15s,box-shadow .15s,background .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-sun{background:var(--sun);color:#2c2c2c;box-shadow:0 8px 20px -8px rgba(240,180,41,.9)}
+.btn-sun:hover{background:#f5c04a}
+.btn-ghost{border-color:rgba(255,255,255,.7);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.14)}
+.btn-ocean{background:var(--ocean);color:#fff}
+.btn-ocean:hover{background:var(--ocean-d)}
+
+/* Nav */
+header.nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .25s,box-shadow .25s}
+header.nav.solid{background:rgba(250,246,239,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.07)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:.55rem;font-weight:800;font-size:1.25rem;text-decoration:none;color:#fff;letter-spacing:-.02em}
+.logo b{color:var(--sun)}
+.nav.solid .logo{color:var(--ocean-d)} .nav.solid .logo b{color:var(--olive-d)}
+.nav ul{display:flex;gap:1.6rem;list-style:none;padding:0}
+.nav ul a{text-decoration:none;font-weight:600;font-size:.95rem;color:#fff;opacity:.92}
+.nav.solid ul a{color:var(--ink)}
+.nav ul a:hover{opacity:1;text-decoration:underline;text-decoration-color:var(--sun);text-underline-offset:6px;text-decoration-thickness:3px}
+.nav .btn{padding:.55rem 1.1rem;font-size:.9rem}
+@media(max-width:760px){.nav ul{display:none}}
+
+/* Hero */
+.hero{position:relative;min-height:100svh;display:grid;align-items:center;color:#fff;overflow:hidden;
+  background:linear-gradient(180deg,#0f4f5c 0%,#1a7a8c 45%,#3a98a2 70%,#8cc3bd 100%)}
+.hero .sun{position:absolute;right:12%;top:16%;width:clamp(110px,16vw,210px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 40% 40%,#ffd466,#f0b429 60%,#e89b14);box-shadow:0 0 120px 40px rgba(240,180,41,.35);animation:glow 6s ease-in-out infinite alternate}
+@keyframes glow{to{box-shadow:0 0 150px 60px rgba(240,180,41,.45);transform:scale(1.04)}}
+.hero .hills{position:absolute;inset:auto 0 0 0;width:100%;height:46%}
+.hero .waves{position:absolute;left:0;bottom:0;width:200%;height:90px;animation:drift 22s linear infinite}
+@keyframes drift{to{transform:translateX(-50%)}}
+.hero-inner{position:relative;z-index:2;padding:110px 0 170px;max-width:720px}
+.hero-inner.wrap{margin-inline:max(4%,calc((100% - 1120px)/2))}
+.greet{display:inline-flex;gap:.5rem;align-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:.35rem .9rem;border-radius:999px;font-size:.9rem;margin-bottom:1.4rem;backdrop-filter:blur(6px)}
+.hero h1{font-size:clamp(2.4rem,min(7.5vw,10.5vh),5.2rem);font-weight:900;margin-bottom:1.1rem}
+.hero h1 em{font-style:normal;color:var(--sun)}
+.hero p{font-size:clamp(1.05rem,2vw,1.3rem);max-width:46ch;opacity:.96;margin-bottom:2rem}
+.hero .cta{display:flex;gap:.9rem;flex-wrap:wrap}
+.cyclist{position:absolute;z-index:2;right:6%;bottom:17%;width:clamp(150px,22vw,300px);animation:ride 9s ease-in-out infinite alternate}
+@keyframes ride{from{transform:translateX(-30px)}to{transform:translateX(20px)}}
+.wheel{transform-origin:center;transform-box:fill-box;animation:spin 1.6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:700px){.cyclist{opacity:.5;right:-4%;bottom:15%}}
+
+/* Facts strip */
+.facts{background:var(--sand-d);border-bottom:1px solid rgba(0,0,0,.06)}
+.facts ul{list-style:none;padding:1.3rem 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem 2rem}
+.facts li{display:flex;gap:.7rem;align-items:center;font-weight:600;font-size:.95rem}
+.facts li span.i{flex:none;width:38px;height:38px;border-radius:12px;background:#fff;display:grid;place-items:center;font-size:1.2rem;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+
+section{padding:clamp(4rem,9vw,7rem) 0}
+.sec-head{margin-bottom:2.6rem}
+.sec-head .olive{width:84px;margin-bottom:.8rem}
+
+/* Rental */
+.rental-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem}
+.bike{background:#fff;border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .2s}
+.bike:hover{transform:translateY(-5px)}
+.bike svg{width:110px;height:64px;margin-bottom:.8rem;color:var(--ocean)}
+.bike h3{font-size:1.25rem}
+.bike .price{font-size:2rem;font-weight:900;color:var(--ocean-d);margin:.3rem 0}
+.bike .price small{font-size:.9rem;font-weight:600;color:var(--mute)}
+.bike p{color:var(--mute);font-size:.92rem}
+.bike .dep{margin-top:.6rem;font-size:.82rem;color:var(--mute);border-top:1px dashed #ddd;padding-top:.6rem}
+.tag{position:absolute;top:14px;right:14px;background:var(--sun);font-size:.72rem;font-weight:800;padding:.2rem .6rem;border-radius:999px}
+.discount{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-top:1.6rem;background:var(--ocean);color:#fff;border-radius:var(--r);padding:1.2rem 1.5rem}
+.discount strong{color:var(--sun)}
+.calc{display:flex;gap:.8rem;align-items:flex-end;flex-wrap:wrap;margin-left:auto}
+.calc label{color:#fff;font-weight:600}
+.calc select,.calc input{padding:.6rem .8rem;border-radius:10px;border:0;font:inherit;background:#fff;color:var(--ink)}
+.calc input{width:80px}
+.calc output{font-size:1.5rem;font-weight:900;color:var(--sun);min-width:7ch;padding-bottom:.35rem}
+
+.storno{display:inline-flex;align-items:center;gap:.35rem;margin-top:.5rem;font-size:.78rem;font-weight:700;color:var(--olive-d);background:#edf3e5;padding:.2rem .6rem;border-radius:999px}
+.storno::before{content:"✓"}
+.rental-cta{margin-top:1.6rem;text-align:center}
+.addons{border:1.5px solid #d9d1bf;border-radius:12px;padding:.7rem .9rem;background:#fff}
+.addons legend{font-size:.85rem;font-weight:700;padding:0 .3rem}
+.card .addons label{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:.9rem;padding:.25rem 0;cursor:pointer}
+.card .addons input{width:auto;padding:0;accent-color:var(--ocean)}
+.addons .ap{margin-left:auto;color:var(--mute);font-weight:700;font-size:.82rem}
+.est-sub{display:flex;justify-content:space-between;font-size:.82rem;color:var(--mute);margin-top:.35rem;padding:0 .3rem}
+.trust{list-style:none;padding:0;margin-top:.4rem;display:grid;grid-template-columns:1fr 1fr;gap:.35rem .9rem;font-size:.8rem;font-weight:600;color:var(--olive-d)}
+.trust li::before{content:"✓ "}
+@media(max-width:520px){.trust{grid-template-columns:1fr}}
+.slogan{color:#fff;font-weight:700}
+
+/* Tours */
+#touren{background:linear-gradient(180deg,var(--sand),#eef2e6)}
+#touren .eyebrow{color:var(--olive-d)}
+.tour-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.4rem}
+.tour{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 10px 30px -14px rgba(88,116,67,.5);display:flex;flex-direction:column}
+.tour .art{height:150px}
+.tour .body{padding:1.3rem 1.5rem 1.6rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.lvl{display:inline-flex;align-items:center;gap:.3rem;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.lvl i{width:9px;height:9px;border-radius:50%;background:#d6d6d6;display:inline-block}
+.lvl i.on{background:var(--olive-d)}
+.meta{display:flex;gap:1rem;color:var(--mute);font-size:.9rem;flex-wrap:wrap}
+.tour p{color:var(--mute)}
+.tour .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:.8rem}
+.tour .p{font-size:1.6rem;font-weight:900;color:var(--olive-d)}
+.tour .p small{font-size:.8rem;color:var(--mute);font-weight:600}
+.btn-olive{background:var(--olive-d);color:#fff;padding:.6rem 1.1rem;font-size:.9rem}
+.btn-olive:hover{background:#465d34}
+.incl{margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.6rem}
+.chip{background:#fff;border:1px solid rgba(88,116,67,.3);padding:.4rem .9rem;border-radius:999px;font-size:.88rem;font-weight:600}
+
+/* Workshops */
+.ws-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.ws{border-radius:var(--r);padding:1.7rem;background:#fff;border:2px solid var(--sand-d);transition:border-color .2s,transform .2s}
+.ws:hover{border-color:var(--sun);transform:translateY(-4px)}
+.ws .ic{width:56px;height:56px;border-radius:16px;background:var(--sun);display:grid;place-items:center;font-size:1.7rem;margin-bottom:1rem;transform:rotate(-4deg)}
+.ws h3{font-size:1.3rem;margin-bottom:.4rem}
+.ws p{color:var(--mute);font-size:.95rem}
+.ws .cap{display:inline-block;margin-top:.9rem;font-size:.82rem;font-weight:700;color:var(--ocean-d);background:#e3f1f3;padding:.25rem .7rem;border-radius:999px}
+
+/* Booking */
+#kontakt{background:linear-gradient(160deg,var(--ocean-d),var(--ocean));color:#fff}
+#kontakt .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;align-items:start}
+@media(max-width:860px){#kontakt .grid{grid-template-columns:1fr}}
+#kontakt .eyebrow{color:var(--sun)}
+#kontakt .lead{color:rgba(255,255,255,.88)}
+.steps{list-style:none;padding:0;margin-top:1.8rem;display:grid;gap:1rem;counter-reset:s}
+.steps li{counter-increment:s;display:flex;gap:.9rem;align-items:flex-start}
+.steps li::before{content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;background:var(--sun);color:#2c2c2c;font-weight:900;display:grid;place-items:center}
+.card{background:var(--sand);color:var(--ink);border-radius:24px;padding:clamp(1.3rem,3vw,2rem);box-shadow:0 30px 60px -25px rgba(0,0,0,.5)}
+.tabs{display:flex;gap:.4rem;background:var(--sand-d);padding:.3rem;border-radius:999px;margin-bottom:1.2rem}
+.tabs button{flex:1;border:0;background:transparent;padding:.6rem .4rem;border-radius:999px;font:inherit;font-weight:700;font-size:.9rem;cursor:pointer;color:var(--mute)}
+.tabs button[aria-selected=true]{background:var(--ocean);color:#fff}
+form{display:grid;gap:.9rem}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+@media(max-width:520px){.f2{grid-template-columns:1fr}}
+.card label{display:grid;gap:.3rem;font-size:.85rem;font-weight:700}
+.card input,.card select,.card textarea{font:inherit;padding:.7rem .85rem;border:1.5px solid #d9d1bf;border-radius:12px;background:#fff;color:var(--ink);width:100%}
+.card input:focus,.card select:focus,.card textarea:focus{outline:3px solid rgba(26,122,140,.35);border-color:var(--ocean)}
+.hp{position:absolute;left:-9999px}
+.est{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1.5px dashed var(--ocean);border-radius:12px;padding:.7rem 1rem;font-weight:700}
+.est strong{color:var(--ocean-d);font-size:1.2rem}
+.fine{font-size:.78rem;color:var(--mute)}
+.status{font-weight:700;color:var(--olive-d);min-height:1.2em}
+[hidden]{display:none!important}
+
+footer{background:#102f36;color:#cfe3e6;padding:2.5rem 0;font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;align-items:center}
+footer a{color:var(--sun)}
+footer .legal{flex-basis:100%;font-size:.85rem;opacity:.85;border-top:1px solid rgba(255,255,255,.12);padding-top:1rem}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:.7rem 1rem;background:rgba(250,246,239,.96);backdrop-filter:blur(8px);box-shadow:0 -4px 16px rgba(0,0,0,.12);display:none}
+.sticky .btn{width:100%;justify-content:center}
+@media(max-width:700px){.sticky{display:block}footer{padding-bottom:5rem}}
+
+header.nav{background:rgba(250,246,239,.96);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.07)}
+header.nav .logo{color:var(--ocean-d)} header.nav .logo b{color:var(--olive-d)}
+.doc{padding:7rem 0 4rem}
+.doc .wrap{width:min(820px,92%)}
+.doc .doclinks{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0 2.5rem}
+.doc .doclinks a{padding:.5rem 1.1rem;border-radius:999px;background:#fff;border:1.5px solid #d9d1bf;text-decoration:none;font-weight:700;font-size:.92rem;color:var(--ocean-d)}
+.doc .doclinks a:hover{border-color:var(--ocean)}
+.doc section{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(1.4rem,4vw,2.6rem);margin-bottom:2rem;scroll-margin-top:90px}
+.doc h2{font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--ocean-d);margin-bottom:1rem}
+.doc h3{font-size:1.2rem;margin:1.8rem 0 .5rem;color:var(--olive-d)}
+.doc h4{font-size:1.02rem;margin:1.2rem 0 .4rem}
+.doc p,.doc ul,.doc ol{margin:.6rem 0}
+.doc ul,.doc ol{padding-left:1.4rem}
+.doc li{margin:.25rem 0}
+.doc .tbl{overflow-x:auto;margin:1rem 0}
+.doc table{border-collapse:collapse;width:100%;font-size:.95rem}
+.doc th,.doc td{text-align:left;padding:.55rem .8rem;border-bottom:1px solid var(--sand-d)}
+.doc th{background:var(--sand);font-size:.82rem;text-transform:uppercase;letter-spacing:.05em;color:var(--mute)}
+.doc a{color:var(--ocean-d)}
+.doc code{background:var(--sand);padding:.1em .35em;border-radius:6px}
+mark.ph{background:#ffe9a8;color:#5a3d00;padding:0 .25em;border-radius:5px}
+aside.draft{background:#fff6dc;border-left:5px solid var(--sun);padding:.7rem 1rem;border-radius:10px;margin:1rem 0;font-size:.9rem}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap"><a class="logo" href="index.html" aria-label="CreteCycling Startseite"><svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><circle cx="18" cy="42" r="9" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="46" cy="42" r="9" fill="none" stroke="currentColor" stroke-width="4"/><path d="M18 42l10-18h14l4 18M28 24l8 18" fill="none" stroke="#f0b429" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Crete<b>Cycling</b></span></a><a class="btn btn-sun" href="index.html#kontakt">Jetzt buchen</a></div></header>
+<main class="doc"><div class="wrap">
+<p class="eyebrow">Rechtliches</p>
+<h1 style="font-size:clamp(2rem,5vw,3rem)">Impressum &amp; Datenschutz</h1>
+<nav class="doclinks" aria-label="Rechtstexte"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></nav>
+<section aria-labelledby="impressum">
+<h2 id="impressum">Impressum — CreteCycling</h2>
+<aside class="draft"><b>Entwurf:</b> <strong>Platzhalter.</strong> Die hier markierten Felder müssen vor dem Livegang durch die echten Angaben von @user ersetzt werden.</aside>
+<h3 id="impressum-angaben-nach-5-tmg-greek-equivalent-art-8-n-405320">Angaben nach § 5 TMG / <mark class="ph">[ Greek equivalent: Art. 8 N. 4053/2012 ]</mark></h3>
+<p><strong>CreteCycling</strong> — <mark class="ph">[vollständige Firmenbezeichnung, z. B. CreteCycling UG (haftungsbeschränkt) oder Einzelunternehmen]</mark></p>
+<p><strong>Inhaber:</strong> <mark class="ph">[Name des Inhabers / Geschäftsführers]</mark></p>
+<p><strong>Anschrift:</strong><br><mark class="ph">[Straße und Hausnummer]</mark><br><mark class="ph">[PLZ und Ort, z. B. 700 14 Sissi, Kreta, Griechenland]</mark></p>
+<p><strong>Telefon:</strong> <mark class="ph">[+30 XXXXX XXXXX]</mark><br><strong>E-Mail:</strong> <a href="mailto:info@cretecycling.eu">info@cretecycling.eu</a></p>
+<p><strong>USt-IdNr. (AFM):</strong> <mark class="ph">[griechische Umsatzsteuer-Identifikationsnummer]</mark></p>
+<h3 id="impressum-verantwortlich-für-den-inhalt">Verantwortlich für den Inhalt</h3>
+<p><mark class="ph">[Name des Inhabers]</mark><br>Anschrift wie oben</p>
+<h3 id="impressum-haftungsausschluss">Haftungsausschluss</h3>
+<p><strong>Inhalte:</strong> Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.</p>
+<p><strong>Links:</strong> Bei externen Links auf andere Internetseiten kann nicht garantiert werden, dass die verlinkten Inhalte frei von rechtlichen Mängeln sind. Eine Haftung für illegale, fehlerhafte oder unvollständige Inhalte sowie für Schäden, die durch Nutzung oder Nichtnutzung derartiger Angebote entstehen, ist ausgeschlossen.</p>
+<h3 id="impressum-online-streitbeilegung-eu">Online-Streitbeilegung (EU)</h3>
+<p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" rel="noopener" target="_blank">ec.europa.eu/consumers/odr</a>. Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtestelle teilzunehmen.</p>
+<p><em>Stand: Oktober 2026</em></p>
+</section>
+<section aria-labelledby="datenschutz">
+<h2 id="datenschutz">Datenschutz — CreteCycling</h2>
+<aside class="draft"><b>Entwurf:</b> <strong>Platzhalter.</strong> Diese Datenschutzerklärung muss vor dem Livegang von @user auf die tatsächlichen Verhältnisse abgestimmt und ggf. rechtlich geprüft werden. Insbesondere sind die markierten Felder auszufüllen.</aside>
+<h3 id="datenschutz-verantwortlicher">Verantwortlicher</h3>
+<p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
+<p><strong>CreteCycling</strong> — <mark class="ph">[vollständige Firmenbezeichnung]</mark><br><mark class="ph">[Straße und Hausnummer, PLZ und Ort]</mark><br>Telefon: <mark class="ph">[+30 XXXXX XXXXX]</mark><br>E-Mail: <a href="mailto:info@cretecycling.eu">info@cretecycling.eu</a></p>
+<h3 id="datenschutz-welche-daten-wir-erheben">Welche Daten wir erheben</h3>
+<h4 id="datenschutz-bei-buchungsanfragen-verleih-touren-workshops">Bei Buchungsanfragen (Verleih, Touren, Workshops)</h4>
+<p>Wenn du über das Buchungsformular eine Anfrage sendest, erheben wir folgende Daten:</p>
+<div class="tbl"><table><thead><tr><th>Feld</th><th>Zweck</th></tr></thead><tbody><tr><td>Name</td><td>Zuordnung der Buchung</td></tr><tr><td>E-Mail</td><td>Bestätigung und Kommunikation</td></tr><tr><td>Modell / Tour / Workshop</td><td>Bearbeitung der Anfrage</td></tr><tr><td>Datum / Dauer / Personen</td><td>Verfügbarkeitsprüfung</td></tr><tr><td>Hinweis (Hotel, Sonderwünsche)</td><td>Service-Erbringung</td></tr><tr><td>IP-Adresse</td><td>Technische Verarbeitung (Log)</td></tr></tbody></table></div>
+<p>Die Daten werden ausschließlich zur Bearbeitung deiner Buchungsanfrage verwendet und nicht an Dritte weitergegeben, soweit keine gesetzliche Verpflichtung besteht.</p>
+<h4 id="datenschutz-hosting-github-pages">Hosting (GitHub Pages)</h4>
+<p>Diese Website wird über GitHub Pages (GitHub Inc., USA) gehostet. Beim Aufruf der Seite kann GitHub IP-Adressen und weitere technische Daten in Server-Logs verarbeiten. Einzelheiten siehe <a href="https://docs.github.com/en/site-policy/privacy-policies" rel="noopener" target="_blank">GitHub Privacy Statement</a>.</p>
+<h3 id="datenschutz-speicherdauer">Speicherdauer</h3>
+<p>Buchungsdaten werden nach Abschluss des Miet-/Tour-/Workshop-Verhältnisses und Abwicklung etwaiger Rückfragen für einen weiteren Zeitraum von <mark class="ph">[6 Monaten / 3 Jahren — bitte festlegen]</mark> gespeichert, soweit keine gesetzlichen Aufbewahrungspflichten (z. B. Steuerrecht) eine längere Speicherung erfordern.</p>
+<h3 id="datenschutz-deine-rechte">Deine Rechte</h3>
+<p>Du hast folgende Rechte:</p>
+<ul><li><strong>Auskunft:</strong> Du kannst jederzeit Auskunft über die zu deiner Person gespeicherten Daten verlangen.</li><li><strong>Berichtigung:</strong> Bei falschen Daten kannst du die Korrektur verlangen.</li><li><strong>Löschung:</strong> Du kannst die Löschung deiner Daten verlangen, soweit keine gesetzlichen Aufbewahrungsfristen entgegenstehen.</li><li><strong>Widerspruch:</strong> Du kannst der Verarbeitung deiner Daten widersprechen.</li><li><strong>Datenübertragbarkeit:</strong> Du kannst die Herausgabe deiner Daten in einem maschinenlesbaren Format verlangen.</li></ul>
+<p>Wende dich dafür einfach per E-Mail an die oben genannte Adresse.</p>
+<h3 id="datenschutz-kontakt-mit-uns">Kontakt mit uns</h3>
+<p>Wenn du Fragen zum Datenschutz hast oder deine Rechte geltend machen möchtest, schreib uns an:<br><strong>info@cretecycling.eu</strong></p>
+<p><em>Stand: Oktober 2026</em></p>
+</section>
+</div></main>
+<footer><div class="wrap"><div><b>CreteCycling</b> — Sissi, Kreta 🇬🇷</div><div><a href="index.html">Startseite</a> · <a href="impressum-datenschutz.html#impressum">Impressum</a> · <a href="impressum-datenschutz.html#datenschutz">Datenschutz</a> · <a href="agb-storno.html#agb">AGB</a> · <a href="agb-storno.html#stornobedingungen">Storno</a></div></div></footer>
+</body>
+</html>
