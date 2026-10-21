@@ -443,6 +443,7 @@ footer a{color:#f4c969}
             <legend>Extras</legend>
             <label><input type="checkbox" name="ad" value="gps"> GPS-Gerät mit Touren-Karten <span class="ap">5 € / Tag</span></label>
             <label><input type="checkbox" name="ad" value="helm"> Helm <span class="ap">3 € / Tag</span></label>
+            <label><input type="checkbox" name="ad" value="frame_bag"> Rahmentasche <span class="ap">3 € / Tag</span></label>
             <label><input type="checkbox" name="ad" value="ins"> Versicherung (Diebstahl &amp; Schaden) <span class="ap">3 € / Tag</span></label>
             <label><input type="checkbox" name="ad" value="hotel"> Lieferung ans Hotel (Sissi / Malia / Gouves) <span class="ap">10 € einmalig</span></label>
           </fieldset>
@@ -511,7 +512,7 @@ function rentalPrice(rate, days) {
 }
 
 // Preise der Extras (Platzhalter laut docs/landing-copy.md – vor Livegang bestätigen!)
-const ADDONS = {gps: {label: "GPS-Gerät", perDay: 5, once: 0}, helm: {label: "Helm", perDay: 3, once: 0}, ins: {label: "Versicherung", perDay: 3, once: 0}, hotel: {label: "Hotel-Lieferung", perDay: 0, once: 10}};
+const ADDONS = {gps: {label: "GPS-Gerät", perDay: 5, once: 0}, helm: {label: "Helm", perDay: 3, once: 0}, frame_bag: {label: "Rahmentasche", perDay: 3, once: 0}, ins: {label: "Versicherung", perDay: 3, once: 0}, hotel: {label: "Hotel-Lieferung", perDay: 0, once: 10}};
 const RATES = {e_bike: 35, gravel: 30, mtb: 25};
 const DEPOSIT = {e_bike: 200, gravel: 100, mtb: 100};
 

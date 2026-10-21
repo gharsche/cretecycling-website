@@ -41,6 +41,7 @@ Fürs Gelände jenseits der Asphaltstraße. Federung, griffige Reifen, Kreta-tau
 **Add-ons (im Formular ankreuzbar):**
 - GPS-Gerät mit Touren-Karten — 5 €/Tag
 - Fahrradversicherung (Diebstahl & Schaden) — 3 €/Tag
+- Rahmentasche — 3 €/Tag
 - Lieferung ans Hotel (Sissi/Malia/Gouves) — 10 € einmalig
 
 **Stornierung:** Kostenlos bis 24 h vor Abholung. Danach 50 %.
@@ -141,7 +142,7 @@ Pannenservice, Notfall-Kit, Verhalten bei Unfällen. Kompakt, praktisch, wichtig
 
 1. **Stornierungs-Badge** neben jedem Preis: "Kostenlos stornierbar bis 24 h vorher"
 2. **Kaution sichtbar** direkt in der Preisübersicht der Verleih-Karten
-3. **Add-ons als Checkboxen** im Verleih-Tab: GPS, Versicherung, Hotel-Lieferung
+3. **Add-ons als Checkboxen** im Verleih-Tab: GPS, Versicherung, Rahmentasche, Hotel-Lieferung
 4. **GPX-Download** als Button bei Tour-Karten
 5. **Live-Auslastung** als Badge auf Tour-Karten ("3 von 8 Plätzen frei")
 6. **Bewertungs-Sterne** (v2): noch nicht mit echten Daten vorhanden — Platzhalter vorbereitet
