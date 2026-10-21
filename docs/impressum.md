@@ -1,10 +1,10 @@
 # Impressum — CreteCycling
 
-> **Hinweis.** Die Firmenangaben wurden von cretecycling.eu übernommen (Stand Oktober 2026). Die rechtliche Einordnung (griechisches vs. deutsches Recht, § 5 DDG analog) sollte vor dem Livegang rechtlich geprüft werden.
+> **Hinweis.** Die Firmenangaben wurden von cretecycling.eu übernommen (Stand Oktober 2026). Die Rechtsgrundlage ist griechisches Recht (Art. 8 N. 4053/2012, Umsetzung der E-Commerce-Richtlinie 2000/31/EG), da CreteCycling IKE in Griechenland niedergelassen ist. Die Texte sollten vor dem Livegang rechtlich geprüft werden.
 
 ---
 
-## Angaben nach § 5 DDG / Art. 8 N. 4053/2012 (griechisches Recht)
+## Anbieterkennzeichnung nach Art. 8 N. 4053/2012 (griechisches Recht)
 
 **CreteCycling IKE**
 
