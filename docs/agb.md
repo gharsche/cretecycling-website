@@ -150,7 +150,7 @@ Bei Barzahlung vor Ort ist die volle Buchungssumme bei Abholung fällig.
 
 ### 7.3 Gutscheine und Erstattungen
 
-Erstattungen bei Stornierung erfolhen nach den Bedingungen in § 5 auf das ursprüngliche Zahlungsmittel.
+Erstattungen bei Stornierung erfolgen nach den Bedingungen in § 5 auf das ursprüngliche Zahlungsmittel.
 
 ---
 
