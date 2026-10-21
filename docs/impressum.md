@@ -15,7 +15,7 @@
 [PLZ und Ort, z. B. 700 14 Sissi, Kreta, Griechenland]
 
 **Telefon:** [+30 XXXXX XXXXX]
-**E-Mail:** info@cretecycling.eu *(Platzhalter — echte Adresse eintragen)*
+**E-Mail:** info@cretecycling.eu
 
 **USt-IdNr. (AFM):** [griechische Umsatzsteuer-Identifikationsnummer]
 

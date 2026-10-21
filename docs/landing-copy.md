@@ -130,7 +130,7 @@ Pannenservice, Notfall-Kit, Verhalten bei Unfällen. Kompakt, praktisch, wichtig
 
 **Slogan:** CreteCycling — zwei Räder, eine Insel, dein Tag.
 
-**Kontakt:** `info@cretecycling.eu` (echte Adresse folgt)
+**Kontakt:** `info@cretecycling.eu`
 
 **Links:** Impressum · Datenschutz · Stornierungsbedingungen · AGB
 
