@@ -11,7 +11,7 @@ Verantwortlich für die Datenverarbeitung auf dieser Website ist:
 **CreteCycling** — [vollständige Firmenbezeichnung]
 [Straße und Hausnummer, PLZ und Ort]
 Telefon: [+30 XXXXX XXXXX]
-E-Mail: info@cretecycling.example *(Platzhalter)*
+E-Mail: info@cretecycling.eu *(Platzhalter)*
 
 ---
 
@@ -61,7 +61,7 @@ Wende dich dafür einfach per E-Mail an die oben genannte Adresse.
 ## Kontakt mit uns
 
 Wenn du Fragen zum Datenschutz hast oder deine Rechte geltend machen möchtest, schreib uns an:
-**info@cretecycling.example** *(Platzhalter — echte Adresse eintragen)*
+**info@cretecycling.eu** *(Platzhalter — echte Adresse eintragen)*
 
 ---
 

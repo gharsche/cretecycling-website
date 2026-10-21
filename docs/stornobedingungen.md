@@ -36,7 +36,7 @@
 
 ## Wie storniere ich?
 
-Schreibe eine E-Mail an **info@cretecycling.example** *(Platzhalter)* mit folgenden Angaben:
+Schreibe eine E-Mail an **info@cretecycling.eu** *(Platzhalter)* mit folgenden Angaben:
 
 1. Buchungsnummer (falls vorhanden)
 2. Name
