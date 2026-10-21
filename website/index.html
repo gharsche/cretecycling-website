@@ -326,7 +326,7 @@ footer a{color:#f4c969}
     <div class="rental-grid reveal">
       <article class="bike"><span class="tag">Beliebt</span><svg aria-hidden="true"><use href="#bike"/></svg><h3>E-Bike</h3><div class="price">35 €<small> / Tag</small></div><p>Kretas Hügel? Kein Problem. Perfekt für lange Küstenstrecken.</p><div class="dep">Kaution 200 € bei Übergabe</div><span class="storno">Gratis stornierbar bis 24 Std. vorher</span></article>
       <article class="bike"><svg aria-hidden="true"><use href="#bike"/></svg><h3>Gravel</h3><div class="price">30 €<small> / Tag</small></div><p>Bequem, robust und ideal für Straße &amp; Feldweg.</p><div class="dep">Kaution 100 € bei Übergabe</div><span class="storno">Gratis stornierbar bis 24 Std. vorher</span></article>
-      <article class="bike"><svg aria-hidden="true"><use href="#bike"/></svg><h3>Mountainbike</h3><div class="price">30 €<small> / Tag</small></div><p>Für Schotter, Trails und die wilden Ecken der Insel.</p><div class="dep">Kaution 150 € bei Übergabe</div><span class="storno">Gratis stornierbar bis 24 Std. vorher</span></article>
+      <article class="bike"><svg aria-hidden="true"><use href="#bike"/></svg><h3>Mountainbike</h3><div class="price">25,00 €<small> / Tag</small></div><p>Für Schotter, Trails und die wilden Ecken der Insel.</p><div class="dep">Kaution 100,00 € bei Übergabe</div><span class="storno">Gratis stornierbar bis 24 Std. vorher</span></article>
     </div>
     <div class="rental-cta reveal"><a class="btn btn-terra" href="#kontakt" data-pick="rental:">Rad reservieren →</a></div>
     <div class="discount reveal">
@@ -432,7 +432,7 @@ footer a{color:#f4c969}
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div data-for="rental">
           <div class="f2">
-            <label>Modell<select name="model"><option value="e_bike">E-Bike (35 €/Tag)</option><option value="gravel">Gravel (30 €/Tag)</option><option value="mtb">Mountainbike (30 €/Tag)</option></select></label>
+            <label>Modell<select name="model"><option value="e_bike">E-Bike (35 €/Tag)</option><option value="gravel">Gravel (30 €/Tag)</option><option value="mtb">Mountainbike (25,00 €/Tag)</option></select></label>
             <label>Anzahl Bikes<input type="number" name="qty" min="1" max="20" value="1"></label>
           </div>
           <div class="f2" style="margin-top:.9rem">
@@ -511,8 +511,8 @@ function rentalPrice(rate, days) {
 
 // Preise der Extras (Platzhalter laut docs/landing-copy.md – vor Livegang bestätigen!)
 const ADDONS = {gps: {label: "GPS-Gerät", perDay: 5, once: 0}, ins: {label: "Versicherung", perDay: 3, once: 0}, hotel: {label: "Hotel-Lieferung", perDay: 0, once: 10}};
-const RATES = {e_bike: 35, gravel: 30, mtb: 30};
-const DEPOSIT = {e_bike: 200, gravel: 100, mtb: 150};
+const RATES = {e_bike: 35, gravel: 30, mtb: 25};
+const DEPOSIT = {e_bike: 200, gravel: 100, mtb: 100};
 
 const nav = $("#nav");
 const onScroll = () => nav.classList.toggle("solid", scrollY > 40);
