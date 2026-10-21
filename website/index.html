@@ -103,6 +103,20 @@ section{padding:clamp(4rem,9vw,7rem) 0}
 .calc input{width:80px}
 .calc output{font-size:1.5rem;font-weight:900;color:var(--sun);min-width:7ch;padding-bottom:.35rem}
 
+.storno{display:inline-flex;align-items:center;gap:.35rem;margin-top:.5rem;font-size:.78rem;font-weight:700;color:var(--olive-d);background:#edf3e5;padding:.2rem .6rem;border-radius:999px}
+.storno::before{content:"✓"}
+.rental-cta{margin-top:1.6rem;text-align:center}
+.addons{border:1.5px solid #d9d1bf;border-radius:12px;padding:.7rem .9rem;background:#fff}
+.addons legend{font-size:.85rem;font-weight:700;padding:0 .3rem}
+.card .addons label{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:.9rem;padding:.25rem 0;cursor:pointer}
+.card .addons input{width:auto;padding:0;accent-color:var(--ocean)}
+.addons .ap{margin-left:auto;color:var(--mute);font-weight:700;font-size:.82rem}
+.est-sub{display:flex;justify-content:space-between;font-size:.82rem;color:var(--mute);margin-top:.35rem;padding:0 .3rem}
+.trust{list-style:none;padding:0;margin-top:.4rem;display:grid;grid-template-columns:1fr 1fr;gap:.35rem .9rem;font-size:.8rem;font-weight:600;color:var(--olive-d)}
+.trust li::before{content:"✓ "}
+@media(max-width:520px){.trust{grid-template-columns:1fr}}
+.slogan{color:#fff;font-weight:700}
+
 /* Tours */
 #touren{background:linear-gradient(180deg,var(--sand),#eef2e6)}
 #touren .eyebrow{color:var(--olive-d)}
@@ -221,7 +235,7 @@ footer a{color:var(--sun)}
     <h1>Rad fahren, wo Kreta <em>am schönsten</em> ist.</h1>
     <p>Fahrradverleih, geführte Touren und Workshops — direkt am Meer, mit lokalen Guides und kleinen Gruppen.</p>
     <div class="cta">
-      <a class="btn btn-sun" href="#kontakt">Jetzt anfragen →</a>
+      <a class="btn btn-sun" href="#kontakt">Jetzt buchen →</a>
       <a class="btn btn-ghost" href="#touren">Touren entdecken</a>
     </div>
   </div>
@@ -240,15 +254,16 @@ footer a{color:var(--sun)}
     <div class="sec-head reveal">
       <svg class="olive" width="84" height="28" aria-hidden="true"><use href="#olive"/></svg>
       <div class="eyebrow">Fahrradverleih</div>
-      <h2>Das passende Bike für jeden Tag.</h2>
-      <p class="lead">Vier Modelle, faire Tagessätze — und je länger du bleibst, desto günstiger wird’s.</p>
+      <h2>Dein Rad für den Tag — oder die ganze Woche.</h2>
+      <p class="lead">Vier Modelle, klare Preise, Mehrtagesrabatte ab Tag drei. Helm und Werkzeug-Kit sind immer dabei. Du bringst nur den Spaß mit.</p>
     </div>
     <div class="rental-grid reveal">
-      <article class="bike"><span class="tag">Beliebt</span><svg aria-hidden="true"><use href="#bike"/></svg><h3>E-Bike</h3><div class="price">35 €<small> / Tag</small></div><p>Kretas Hügel? Kein Problem. Perfekt für lange Küstenstrecken.</p><div class="dep">Kaution 200 €</div></article>
-      <article class="bike"><svg aria-hidden="true"><use href="#bike"/></svg><h3>Trekking</h3><div class="price">25 €<small> / Tag</small></div><p>Bequem, robust und ideal für Straße &amp; Feldweg.</p><div class="dep">Kaution 100 €</div></article>
-      <article class="bike"><svg aria-hidden="true"><use href="#bike"/></svg><h3>Mountainbike</h3><div class="price">30 €<small> / Tag</small></div><p>Für Schotter, Trails und die wilden Ecken der Insel.</p><div class="dep">Kaution 150 €</div></article>
-      <article class="bike"><svg aria-hidden="true"><use href="#bike"/></svg><h3>Kinderrad</h3><div class="price">15 €<small> / Tag</small></div><p>Kleine Räder für kleine Entdecker.</p><div class="dep">Kaution 50 €</div></article>
+      <article class="bike"><span class="tag">Beliebt</span><svg aria-hidden="true"><use href="#bike"/></svg><h3>E-Bike</h3><div class="price">35 €<small> / Tag</small></div><p>Kretas Hügel? Kein Problem. Perfekt für lange Küstenstrecken.</p><div class="dep">Kaution 200 € bei Übergabe</div><span class="storno">Gratis stornierbar bis 24 Std. vorher</span></article>
+      <article class="bike"><svg aria-hidden="true"><use href="#bike"/></svg><h3>Trekking</h3><div class="price">25 €<small> / Tag</small></div><p>Bequem, robust und ideal für Straße &amp; Feldweg.</p><div class="dep">Kaution 100 € bei Übergabe</div><span class="storno">Gratis stornierbar bis 24 Std. vorher</span></article>
+      <article class="bike"><svg aria-hidden="true"><use href="#bike"/></svg><h3>Mountainbike</h3><div class="price">30 €<small> / Tag</small></div><p>Für Schotter, Trails und die wilden Ecken der Insel.</p><div class="dep">Kaution 150 € bei Übergabe</div><span class="storno">Gratis stornierbar bis 24 Std. vorher</span></article>
+      <article class="bike"><svg aria-hidden="true"><use href="#bike"/></svg><h3>Kinderrad</h3><div class="price">15 €<small> / Tag</small></div><p>Kleine Räder für kleine Entdecker.</p><div class="dep">Kaution 50 € bei Übergabe</div><span class="storno">Gratis stornierbar bis 24 Std. vorher</span></article>
     </div>
+    <div class="rental-cta reveal"><a class="btn btn-ocean" href="#kontakt" data-pick="rental:">Rad reservieren →</a></div>
     <div class="discount reveal">
       <div><strong>10 % Rabatt</strong> ab 3 Tagen · <strong>20 % Rabatt</strong> ab 7 Tagen</div>
       <div class="calc">
@@ -268,8 +283,8 @@ footer a{color:var(--sun)}
     <div class="sec-head reveal">
       <svg class="olive" width="84" height="28" aria-hidden="true"><use href="#olive"/></svg>
       <div class="eyebrow">Geführte Touren</div>
-      <h2>Von easy bis episch.</h2>
-      <p class="lead">Lokale Guides, maximal 8 Personen, Treffpunkt Sissi Hafen. Du fährst — wir kennen den Weg.</p>
+      <h2>Mit lokalen Guides auf Tour.</h2>
+      <p class="lead">Kleine Gruppen, max. 8 Personen, Treffpunkt Sissi Hafen. Und bei Regen? Wir verschieben oder erstatten — ohne Wenn und Aber.</p>
     </div>
     <div class="tour-grid reveal">
       <article class="tour">
@@ -279,7 +294,8 @@ footer a{color:var(--sun)}
           <h3>Coastal Cruise</h3>
           <div class="meta"><span>⏱ 3 Std.</span><span>🌊 Küstenstraße</span></div>
           <p>Entspannt am Meer entlang — mit Ausblick und Zeit zum Staunen.</p>
-          <div class="row"><div class="p">45 €<small> / Person</small></div><a class="btn btn-olive" href="#kontakt" data-pick="tour:coastal-easy">Buchen</a></div>
+          <span class="storno">Gratis stornierbar bis 24 Std. vorher</span>
+          <div class="row"><div class="p">45 €<small> / Person</small></div><a class="btn btn-olive" href="#kontakt" data-pick="tour:coastal-easy">Tour buchen</a></div>
         </div>
       </article>
       <article class="tour">
@@ -289,7 +305,8 @@ footer a{color:var(--sun)}
           <h3>Olive Grove Loop</h3>
           <div class="meta"><span>⏱ 5 Std.</span><span>🫒 Olivenhaine</span></div>
           <p>Durchs Hinterland, vorbei an Olivenhainen — Kreta abseits der Postkarte.</p>
-          <div class="row"><div class="p">65 €<small> / Person</small></div><a class="btn btn-olive" href="#kontakt" data-pick="tour:hills-moderate">Buchen</a></div>
+          <span class="storno">Gratis stornierbar bis 24 Std. vorher</span>
+          <div class="row"><div class="p">65 €<small> / Person</small></div><a class="btn btn-olive" href="#kontakt" data-pick="tour:hills-moderate">Tour buchen</a></div>
         </div>
       </article>
       <article class="tour">
@@ -299,11 +316,12 @@ footer a{color:var(--sun)}
           <h3>Lasithi Challenge</h3>
           <div class="meta"><span>⏱ 7 Std.</span><span>⛰ Berge</span></div>
           <p>Für alle, die’s wissen wollen: Anstiege, Weitblick und das gute Gefühl danach.</p>
-          <div class="row"><div class="p">90 €<small> / Person</small></div><a class="btn btn-olive" href="#kontakt" data-pick="tour:mountains-hard">Buchen</a></div>
+          <span class="storno">Gratis stornierbar bis 24 Std. vorher</span>
+          <div class="row"><div class="p">90 €<small> / Person</small></div><a class="btn btn-olive" href="#kontakt" data-pick="tour:mountains-hard">Tour buchen</a></div>
         </div>
       </article>
     </div>
-    <div class="incl reveal"><span class="chip">🪖 Helm</span><span class="chip">🔧 Werkzeug-Kit</span><span class="chip">💧 Wasser</span><span class="chip">👥 max. 8 Personen</span><span class="chip">↩ Storno bis 24 Std. vorher voll erstattet</span><span class="chip">🌧 Bei Starkregen volle Erstattung</span></div>
+    <div class="incl reveal"><span class="chip">🪖 Helm</span><span class="chip">🔧 Werkzeug-Kit</span><span class="chip">💧 Wasser</span><span class="chip">👥 max. 8 Personen · 1 Guide pro Gruppe</span><span class="chip">↩ Storno bis 24 Std. vorher voll erstattet</span><span class="chip">🌧 Bei Starkregen volle Erstattung</span></div>
   </div>
 </section>
 
@@ -313,15 +331,16 @@ footer a{color:var(--sun)}
     <div class="sec-head reveal">
       <svg class="olive" width="84" height="28" aria-hidden="true"><use href="#olive"/></svg>
       <div class="eyebrow">Workshops</div>
-      <h2>Verstehen, was unter dir rollt.</h2>
-      <p class="lead">Praktisch, klein, ohne Fachchinesisch. Ausgebucht? Dann kommst du auf die Warteliste und rückst automatisch nach.</p>
+      <h2>Praxis im Fahrradkeller.</h2>
+      <p class="lead">Lern, was dein Rad braucht — von Kette bis Notfall-Kit. Begrenzte Plätze, Warteliste bei Ausbuchung. 24 Std. vorher bekommst du Ort, Zeit und Mitbring-Liste.</p>
     </div>
     <div class="ws-grid reveal">
       <article class="ws"><div class="ic">🔧</div><h3>Bike-Grundwartung</h3><p>Kette, Bremsen, Schaltung — Wartung für Jedermann. Danach weißt du, was dein Rad braucht.</p><span class="cap">Begrenzte Plätze</span></article>
       <article class="ws"><div class="ic">🔋</div><h3>E-Bike-Sicherheit</h3><p>Akku-Pflege, Reichweiten-Management und Sicherheitstipps für Touren mit Motor.</p><span class="cap">Begrenzte Plätze</span></article>
       <article class="ws"><div class="ic">⛑️</div><h3>Erste Hilfe unterwegs</h3><p>Panne, Notfall-Kit und richtiges Verhalten bei Unfällen — damit du unterwegs sicher bist.</p><span class="cap">Begrenzte Plätze</span></article>
     </div>
-    <p class="fine reveal" style="margin-top:1.2rem">Absage durch Teilnehmer: bis 48 Std. vorher volle Erstattung, danach 50 %. Sagen wir ab, erstatten wir alles.</p>
+    <p class="fine reveal" style="margin-top:1.2rem">Stornierung bis 48 Std. vorher voll erstattet, danach 50 %. Bei Absage durch CreteCycling: volle Rückerstattung.</p>
+    <div class="rental-cta reveal" style="text-align:left"><a class="btn btn-ocean" href="#kontakt" data-pick="ws:">Platz sichern →</a></div>
   </div>
 </section>
 
@@ -330,8 +349,8 @@ footer a{color:var(--sun)}
   <div class="wrap grid">
     <div class="reveal">
       <div class="eyebrow">Buchung &amp; Anfrage</div>
-      <h2>Bereit? Wir halten dein Rad bereit.</h2>
-      <p class="lead">Schick uns deine Wunschdaten — wir bestätigen persönlich und schnell.</p>
+      <h2>Buchung anfragen.</h2>
+      <p class="lead">Wähle Verleih, Tour oder Workshop. Wir melden uns innerhalb von 24 Stunden mit Bestätigung und Übergabe-Details.</p>
       <ol class="steps">
         <li><div><b>Auswählen</b><br>Verleih, Tour oder Workshop.</div></li>
         <li><div><b>Anfrage senden</b><br>Datum, Personen, Wünsche — fertig.</div></li>
@@ -355,7 +374,15 @@ footer a{color:var(--sun)}
             <label>Von<input type="date" name="from"></label>
             <label>Bis<input type="date" name="to"></label>
           </div>
+          <fieldset class="addons" style="margin-top:.9rem">
+            <legend>Extras</legend>
+            <label><input type="checkbox" name="ad" value="seat"> Kindersitz <span class="ap">kostenlos</span></label>
+            <label><input type="checkbox" name="ad" value="gps"> GPS-Gerät mit Touren-Karten <span class="ap">5 € / Tag</span></label>
+            <label><input type="checkbox" name="ad" value="ins"> Versicherung (Diebstahl &amp; Schaden) <span class="ap">3 € / Tag</span></label>
+            <label><input type="checkbox" name="ad" value="hotel"> Lieferung ans Hotel (Sissi / Malia / Gouves) <span class="ap">10 € einmalig</span></label>
+          </fieldset>
           <div class="est" style="margin-top:.9rem"><span>Geschätzter Preis</span><strong id="est">–</strong></div>
+          <div class="est-sub"><span>+ Kaution bei Übergabe (rückerstattbar)</span><span id="dep">–</span></div>
         </div>
         <div data-for="tour" hidden>
           <div class="f2">
@@ -374,9 +401,10 @@ footer a{color:var(--sun)}
           <label>Name<input name="name" required autocomplete="name"></label>
           <label>E-Mail<input type="email" name="email" required autocomplete="email"></label>
         </div>
-        <label>Nachricht (optional)<textarea name="msg" rows="3" placeholder="Körpergröße, Wünsche, Fragen …"></textarea></label>
+        <label>Nachricht (optional)<textarea name="msg" rows="3" placeholder="Hotel, Körpergröße, Sonderwünsche …"></textarea></label>
         <button class="btn btn-ocean" type="submit" style="justify-content:center">Anfrage senden →</button>
         <div class="status" id="status" role="status" aria-live="polite"></div>
+        <ul class="trust"><li>Kostenlose Stornierung bis 24 Std. vorher</li><li>Kaution transparent bei Übergabe</li><li>Helm &amp; Werkzeug immer inklusive</li><li>Lokales Team, Sissi Hafen</li></ul>
         <p class="fine">Mit dem Absenden öffnet sich dein E-Mail-Programm mit einer fertigen Anfrage. Unverbindlich – die Buchung gilt erst nach unserer Bestätigung.</p>
       </form>
     </div>
@@ -386,7 +414,7 @@ footer a{color:var(--sun)}
 
 <footer>
   <div class="wrap">
-    <div><b style="color:#fff">CreteCycling</b> · Sissi, Kreta 🇬🇷<br>Verleih · Touren · Workshops</div>
+    <div><b class="slogan">CreteCycling — zwei Räder, eine Insel, dein Tag.</b><br>Sissi, Kreta 🇬🇷 · Verleih · Touren · Workshops</div>
     <div><a href="#verleih">Verleih</a> · <a href="#touren">Touren</a> · <a href="#workshops">Workshops</a> · <a href="#kontakt">Kontakt</a></div>
   </div>
 </footer>
@@ -422,6 +450,10 @@ function calc() {
 $("#cModel").addEventListener("change", calc); $("#cDays").addEventListener("input", calc); calc();
 
 const f = $("#bf");
+// Preise der Extras (Platzhalter laut docs/landing-copy.md – vor Livegang bestätigen!)
+const ADDONS = {seat: {label: "Kindersitz", perDay: 0, once: 0}, gps: {label: "GPS-Gerät", perDay: 5, once: 0}, ins: {label: "Versicherung", perDay: 3, once: 0}, hotel: {label: "Hotel-Lieferung", perDay: 0, once: 10}};
+const DEPOSIT = {35: 200, 25: 100, 30: 150, 15: 50};
+const addonKeys = () => $$("[name=ad]:checked", f).map(c => c.value);
 function setType(t) {
   $$(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.type === t));
   $$("[data-for]", f).forEach(p => p.hidden = p.dataset.for !== t);
@@ -430,7 +462,7 @@ function setType(t) {
 f.dataset.type = "rental";
 $$(".tabs button").forEach(b => b.addEventListener("click", () => setType(b.dataset.type)));
 $$("[data-pick]").forEach(a => a.addEventListener("click", () => {
-  const [t, v] = a.dataset.pick.split(":"); setType(t); f.elements[t].value = v;
+  const [t, v] = a.dataset.pick.split(":"); setType(t); if (v) f.elements[t].value = v;
 }));
 
 const today = new Date().toISOString().slice(0, 10);
@@ -438,12 +470,17 @@ const today = new Date().toISOString().slice(0, 10);
 
 function estimate() {
   const {from, to, model, qty} = f.elements;
-  if (!from.value || !to.value) return $("#est").textContent = "–";
+  if (!from.value || !to.value) { $("#dep").textContent = "–"; return $("#est").textContent = "–"; }
   const days = Math.round((new Date(to.value) - new Date(from.value)) / 864e5) + 1;
   if (days < 1) return $("#est").textContent = "Datum prüfen";
-  $("#est").textContent = eur(rentalPrice(+model.value, days) * Math.max(1, +qty.value || 1)) + " · " + days + " Tag" + (days > 1 ? "e" : "");
+  const q = Math.max(1, +qty.value || 1);
+  let total = rentalPrice(+model.value, days) * q;
+  addonKeys().forEach(k => { const a = ADDONS[k]; total += a.perDay * days * q + a.once; });
+  $("#est").textContent = eur(total) + " · " + days + " Tag" + (days > 1 ? "e" : "");
+  $("#dep").textContent = eur(DEPOSIT[model.value] * q);
 }
 ["from", "to", "model", "qty"].forEach(n => f.elements[n].addEventListener("input", estimate));
+$$("[name=ad]", f).forEach(c => c.addEventListener("change", estimate));
 f.elements.from.addEventListener("change", () => {
   if (!f.elements.to.value || f.elements.to.value < f.elements.from.value) f.elements.to.value = f.elements.from.value;
   f.elements.to.min = f.elements.from.value; estimate();
@@ -459,7 +496,7 @@ f.addEventListener("submit", e => {
   let subject, lines;
   if (t === "rental") {
     if (!el.from.value || !el.to.value) return err("Bitte Zeitraum wählen.");
-    subject = "Verleih-Anfrage"; lines = [`Modell: ${opt("model")}`, `Anzahl: ${el.qty.value}`, `Zeitraum: ${el.from.value} bis ${el.to.value}`, `Schätzpreis: ${$("#est").textContent}`];
+    subject = "Verleih-Anfrage"; lines = [`Modell: ${opt("model")}`, `Anzahl: ${el.qty.value}`, `Zeitraum: ${el.from.value} bis ${el.to.value}`, `Extras: ${addonKeys().map(k => ADDONS[k].label).join(", ") || "keine"}`, `Schätzpreis: ${$("#est").textContent}`, `Kaution bei Übergabe: ${$("#dep").textContent}`];
   } else if (t === "tour") {
     if (!el.tday.value) return err("Bitte Datum wählen.");
     subject = "Tour-Anfrage"; lines = [`Tour: ${opt("tour")}`, `Datum: ${el.tday.value}`, `Personen: ${el.guests.value}`];
