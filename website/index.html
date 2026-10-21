@@ -542,11 +542,15 @@ const I18N = {
       days: "Tage",
       options: ["E-Bike", "Gravel", "MTB"],
       quoteDays: "Tag",
-      quoteDaysPlural: "Tage"
+      quoteDaysPlural: "Tage",
+      perDay: " / Tag",
+      cta: "Rad reservieren →"
     },
     tours: {
       eyebrow: "Geführte Touren",
       title: "Mit lokalen Guides auf Tour.",
+      book: "Tour buchen",
+      perPerson: " / Person",
       lead: "Kleine Gruppen, max. 4 Personen, Treffpunkt Sissi Hafen. Und bei Regen? Wir verschieben oder erstatten — ohne Wenn und Aber.",
       levels: ["Easy", "Moderate", "Hard"],
       cards: [
@@ -572,6 +576,7 @@ const I18N = {
         {title: "Erste Hilfe unterwegs", desc: "Panne, Notfall-Kit und richtiges Verhalten bei Unfällen — damit du unterwegs sicher bist."}
       ],
       cap: "Begrenzte Plätze",
+      cta: "Platz sichern →",
       note: "Stornierung bis 48 Std. vorher voll erstattet, danach 50 %. Bei Absage durch CreteCycling: volle Rückerstattung."
     },
     booking: {
@@ -586,6 +591,7 @@ const I18N = {
       tabs: ["🚲 Verleih", "🌊 Tour", "🔧 Workshop"],
       model: "Modell",
       qty: "Anzahl Bikes",
+      modelOptions: ["E-Bike (35 €/Tag)", "Gravel (30 €/Tag)", "Mountainbike (25,00 €/Tag)"],
       from: "Von",
       to: "Bis",
       extras: "Extras",
@@ -667,11 +673,15 @@ const I18N = {
       days: "Days",
       options: ["E-bike", "Gravel", "MTB"],
       quoteDays: "day",
-      quoteDaysPlural: "days"
+      quoteDaysPlural: "days",
+      perDay: " / day",
+      cta: "Book your bike →"
     },
     tours: {
       eyebrow: "Guided tours",
       title: "Hit the road with local guides.",
+      book: "Book a tour",
+      perPerson: " / person",
       lead: "Small groups, max. 4 people, meeting point Sissi harbour. And if it rains? We reschedule or refund — no fuss.",
       levels: ["Easy", "Moderate", "Hard"],
       cards: [
@@ -697,6 +707,7 @@ const I18N = {
         {title: "First aid on the road", desc: "Dealing with flats, emergency kits and what to do after an accident — practical and essential."}
       ],
       cap: "Limited spots",
+      cta: "Secure your spot →",
       note: "Full refund up to 48 hrs before, then 50%. If CreteCycling cancels: full refund."
     },
     booking: {
@@ -711,6 +722,7 @@ const I18N = {
       tabs: ["🚲 Rental", "🌊 Tour", "🔧 Workshop"],
       model: "Model",
       qty: "Bike quantity",
+      modelOptions: ["E-bike (€35/day)", "Gravel (€30/day)", "Mountain bike (€25.00/day)"],
       from: "From",
       to: "To",
       extras: "Extras",
@@ -792,11 +804,15 @@ const I18N = {
       days: "Ημέρες",
       options: ["E-bike", "Gravel", "MTB"],
       quoteDays: "ημέρα",
-      quoteDaysPlural: "ημέρες"
+      quoteDaysPlural: "ημέρες",
+      perDay: " / ημέρα",
+      cta: "Κλείσε ποδήλατο →"
     },
     tours: {
       eyebrow: "Οργανωμένες περιηγήσεις",
       title: "Στο δρόμο με τοπικούς οδηγούς.",
+      book: "Κλείσει περιήγηση",
+      perPerson: " / άτομο",
       lead: "Μικρές ομάδες, έως 4 άτομα, σημείο συνάντησης το λιμάνι της Σίσι. Και αν βρέξει; Μεταφέρουμε ή επιστρέφουμε τα χρήματα — χωρίς ταλαιπωρία.",
       levels: ["Εύκολη", "Μέτρια", "Δύσκολη"],
       cards: [
@@ -822,6 +838,7 @@ const I18N = {
         {title: "Πρώτες βοήθειες στο δρόμο", desc: "Τρύπα στη ρόδα, κιτ ανάγκης και σωστή αντίδραση σε ατυχήματα — πρακτικά και ουσιαστικά."}
       ],
       cap: "Περιορισμένες θέσεις",
+      cta: "Εξασφάλισε τη θέση σου →",
       note: "Πλήρης επιστροφή έως 48 ώρες πριν, μετά 50%. Αν ακυρώσει η CreteCycling: πλήρης επιστροφή."
     },
     booking: {
@@ -836,6 +853,7 @@ const I18N = {
       tabs: ["🚲 Ενοικίαση", "🌊 Περιήγηση", "🔧 Εργαστήριο"],
       model: "Μοντέλο",
       qty: "Ποσότητα ποδηλάτων",
+      modelOptions: ["E-bike (35 €/ημέρα)", "Gravel (30 €/ημέρα)", "Mountain bike (25,00 €/ημέρα)"],
       from: "Από",
       to: "Έως",
       extras: "Επιπλέον",
@@ -928,6 +946,8 @@ function applyLanguage(lang) {
     setText('.storno', currentLang === 'de' ? 'Gratis stornierbar bis 24 Std. vorher' : currentLang === 'el' ? 'Δωρεάν ακύρωση έως 24 ώρες πριν' : 'Free cancellation up to 24 hrs before', bike);
   });
   setText('#verleih .tag', t.rental.tag);
+  $$('#verleih .bike .price small').forEach(s => s.textContent = t.rental.perDay);
+  setText('#verleih .rental-cta a', t.rental.cta);
   setHTML('#verleih .discount > div:first-child', t.rental.discount);
   const calcLabels = $$('#verleih .calc label');
   if (calcLabels[0] && calcLabels[0].childNodes[0]) calcLabels[0].childNodes[0].nodeValue = t.rental.model;
@@ -944,10 +964,15 @@ function applyLanguage(lang) {
     setText('.storno', currentLang === 'de' ? 'Gratis stornierbar bis 24 Std. vorher' : currentLang === 'el' ? 'Δωρεάν ακύρωση έως 24 ώρες πριν' : 'Free cancellation up to 24 hrs before', tour);
   });
   $$('#touren .incl .chip').forEach((chip, i) => chip.textContent = t.tours.chips[i]);
+  $$('#touren .tour').forEach(tour => {
+    const bookBtn = tour.querySelector('.row a.btn'); if (bookBtn) bookBtn.textContent = t.tours.book;
+    const perP = tour.querySelector('.p small'); if (perP) perP.textContent = t.tours.perPerson;
+  });
   setText('#workshops .eyebrow', t.workshops.eyebrow);
   setText('#workshops h2', t.workshops.title);
   setText('#workshops .lead', t.workshops.lead);
   $$('#workshops .ws').forEach((ws, i) => { setText('h3', t.workshops.cards[i].title, ws); setText('p', t.workshops.cards[i].desc, ws); setText('.cap', t.workshops.cap, ws); });
+  setText('#workshops .rental-cta a', t.workshops.cta);
   setText('#workshops .fine', t.workshops.note);
   setText('#kontakt .eyebrow', t.booking.eyebrow);
   setText('#kontakt h2', t.booking.title);
@@ -970,6 +995,7 @@ function applyLanguage(lang) {
     if (fromLabel && fromLabel.childNodes[0]) fromLabel.childNodes[0].nodeValue = t.booking.from;
     if (toLabel && toLabel.childNodes[0]) toLabel.childNodes[0].nodeValue = t.booking.to;
     setText('#kontakt .addons legend', t.booking.extras);
+  $$('select[name="model"] option').forEach((o, i) => { if (t.booking.modelOptions && t.booking.modelOptions[i]) o.textContent = t.booking.modelOptions[i]; });
     $$('#kontakt .addons label').forEach((label, i) => {
       if (label.childNodes[1]) label.childNodes[1].nodeValue = ' ' + t.booking.addons[i][0] + ' ';
       const price = label.querySelector('.ap');
