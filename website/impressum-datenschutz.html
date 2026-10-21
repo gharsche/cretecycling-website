@@ -271,8 +271,9 @@ aside.draft{background:#f6e7bd;border-left:5px solid var(--ochre);padding:.7rem 
 aside.draft{display:none}</style>
 </head>
 <body>
-<header class="nav"><div class="wrap"><a class="logo" href="index.html" aria-label="CreteCycling Startseite"><img class="logo-mark" src="assets/logo-cretecycling.jpg" width="40" height="40" alt="CreteCycling Logo"><span>Crete<b>Cycling</b></span></a><a class="btn btn-ochre" href="index.html#kontakt">Jetzt buchen</a></div></header>
+<header class="nav"><div class="wrap"><a class="logo" href="index.html" aria-label="CreteCycling Startseite"><img class="logo-mark" src="assets/logo-cretecycling.jpg" width="40" height="40" alt="CreteCycling Logo"><span>Crete<b>Cycling</b></span></a><div class="lang-switch" role="group" aria-label="Sprache"><button type="button" data-lang="de" aria-pressed="true">DE</button><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="el" aria-pressed="false">EL</button></div><a class="btn btn-ochre" id="bookCta" href="index.html#kontakt">Jetzt buchen</a></div></header>
 <main class="doc"><div class="wrap">
+<div class="lang-doc" data-lang="de">
 <p class="eyebrow">Rechtliches</p>
 <h1 style="font-size:clamp(2rem,5vw,3rem)">Impressum &amp; Datenschutz</h1>
 <nav class="doclinks" aria-label="Rechtstexte"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></nav>
@@ -319,7 +320,40 @@ aside.draft{display:none}</style>
 <p>Wenn du Fragen zum Datenschutz hast oder deine Rechte geltend machen möchtest, schreib uns an:<br><strong>info@cretecycling.eu</strong></p>
 <p><em>Stand: Oktober 2026</em></p>
 </section>
+</div>
+<div class="lang-doc" data-lang="en" hidden><!-- @writer: EN-Fassung hier einsetzen --></div>
+<div class="lang-doc" data-lang="el" hidden><!-- @writer: EL-Fassung hier einsetzen --></div>
 </div></main>
 <footer><div class="wrap"><div><b>CreteCycling</b> — Sissi, Kreta 🇬🇷</div><div><a href="index.html">Startseite</a> · <a href="impressum-datenschutz.html#impressum">Impressum</a> · <a href="impressum-datenschutz.html#datenschutz">Datenschutz</a> · <a href="agb-storno.html#agb">AGB</a> · <a href="agb-storno.html#stornobedingungen">Storno</a></div></div></footer>
+<script>
+(function(){
+  var TITLES = {"de":"🐴 Impressum & Datenschutz — CreteCycling","en":"🐴 Imprint & Privacy Policy — CreteCycling","el":"🐴 Στοιχεία Εταιρείας & Πολιτική Απορρήτου — CreteCycling"};
+  var BOOK = {de:"Jetzt buchen", en:"Book now", el:"Κλείστε τώρα"};
+  var LABEL = {de:"Sprache", en:"Language", el:"Γλώσσα"};
+  function norm(x){ x=(x||"de").slice(0,2).toLowerCase(); return (x==="en"||x==="el")?x:"de"; }
+  function pick(){
+    var q = norm(new URLSearchParams(location.search).get("lang"));
+    if (q) return q;
+    return norm(localStorage.getItem("cc-lang") || navigator.language);
+  }
+  function apply(lang){
+    var blocks = document.querySelectorAll(".lang-doc");
+    var target = document.querySelector('.lang-doc[data-lang="'+lang+'"]');
+    if (target && target.textContent.trim().length < 50) lang = "de"; // placeholder not filled yet
+    blocks.forEach(function(b){ b.hidden = b.getAttribute("data-lang") !== lang; });
+    document.documentElement.lang = lang === "el" ? "el" : lang;
+    document.title = TITLES[lang];
+    var book = document.getElementById("bookCta"); if (book) book.textContent = BOOK[lang];
+    var grp = document.querySelector(".lang-switch"); if (grp) grp.setAttribute("aria-label", LABEL[lang]);
+    document.querySelectorAll(".lang-switch button").forEach(function(b){
+      b.setAttribute("aria-pressed", String(b.dataset.lang === lang)); });
+    localStorage.setItem("cc-lang", lang);
+    history.replaceState(null, "", location.pathname + (lang === "de" ? "" : "?lang=" + lang) + location.hash);
+  }
+  document.querySelectorAll(".lang-switch button").forEach(function(b){
+    b.addEventListener("click", function(){ apply(b.dataset.lang); }); });
+  apply(pick());
+})();
+</script>
 </body>
 </html>
