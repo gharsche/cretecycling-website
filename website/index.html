@@ -310,7 +310,7 @@ footer a{color:#f4c969}
 <div class="facts"><div class="wrap"><ul>
   <li><span class="i">📍</span>Treffpunkt Sissi Hafen</li>
   <li><span class="i">👥</span>Max. 8 Personen pro Tour</li>
-  <li><span class="i">🪖</span>Helm, Werkzeug &amp; Wasser inklusive</li>
+  <li><span class="i">🪖</span>Wasser &amp; Werkzeug inklusive, Helm 3 € / Tag</li>
   <li><span class="i">🔋</span>E-Bikes ab 35 € / Tag</li>
 </ul></div></div>
 
@@ -321,7 +321,7 @@ footer a{color:#f4c969}
       <svg class="olive" width="84" height="28" aria-hidden="true"><use href="#olive"/></svg>
       <div class="eyebrow">Fahrradverleih</div>
       <h2>Dein Rad für den Tag — oder die ganze Woche.</h2>
-      <p class="lead">Vier Modelle, klare Preise, Mehrtagesrabatte ab Tag drei. Helm und Werkzeug-Kit sind immer dabei. Du bringst nur den Spaß mit.</p>
+      <p class="lead">Vier Modelle, klare Preise, Mehrtagesrabatte ab Tag drei. Wasser und Werkzeug sind inklusive; Helme kosten 3 € / Tag. Du bringst nur den Spaß mit.</p>
     </div>
     <div class="rental-grid reveal">
       <article class="bike"><span class="tag">Beliebt</span><svg aria-hidden="true"><use href="#bike"/></svg><h3>E-Bike</h3><div class="price">35 €<small> / Tag</small></div><p>Kretas Hügel? Kein Problem. Perfekt für lange Küstenstrecken.</p><div class="dep">Kaution 200 € bei Übergabe</div><span class="storno">Gratis stornierbar bis 24 Std. vorher</span></article>
@@ -386,7 +386,7 @@ footer a{color:#f4c969}
         </div>
       </article>
     </div>
-    <div class="incl reveal"><span class="chip">🪖 Helm</span><span class="chip">🔧 Werkzeug-Kit</span><span class="chip">💧 Wasser</span><span class="chip">👥 max. 8 Personen · 1 Guide pro Gruppe</span><span class="chip">↩ Storno bis 24 Std. vorher voll erstattet</span><span class="chip">🌧 Bei Starkregen volle Erstattung</span></div>
+    <div class="incl reveal"><span class="chip">💧 Wasser &amp; 🔧 Werkzeug inklusive</span><span class="chip">🪖 Helm 3 € / Tag</span><span class="chip">👥 max. 8 Personen · 1 Guide pro Gruppe</span><span class="chip">↩ Storno bis 24 Std. vorher voll erstattet</span><span class="chip">🌧 Bei Starkregen volle Erstattung</span></div>
   </div>
 </section>
 
@@ -442,6 +442,7 @@ footer a{color:#f4c969}
           <fieldset class="addons" style="margin-top:.9rem">
             <legend>Extras</legend>
             <label><input type="checkbox" name="ad" value="gps"> GPS-Gerät mit Touren-Karten <span class="ap">5 € / Tag</span></label>
+            <label><input type="checkbox" name="ad" value="helm"> Helm <span class="ap">3 € / Tag</span></label>
             <label><input type="checkbox" name="ad" value="ins"> Versicherung (Diebstahl &amp; Schaden) <span class="ap">3 € / Tag</span></label>
             <label><input type="checkbox" name="ad" value="hotel"> Lieferung ans Hotel (Sissi / Malia / Gouves) <span class="ap">10 € einmalig</span></label>
           </fieldset>
@@ -468,7 +469,7 @@ footer a{color:#f4c969}
         <label>Nachricht (optional)<textarea name="msg" rows="3" placeholder="Hotel, Körpergröße, Sonderwünsche …"></textarea></label>
         <button class="btn btn-terra" type="submit" style="justify-content:center">Anfrage senden →</button>
         <div class="status" id="status" role="status" aria-live="polite"></div>
-        <ul class="trust"><li>Kostenlose Stornierung bis 24 Std. vorher</li><li>Kaution transparent bei Übergabe</li><li>Helm &amp; Werkzeug immer inklusive</li><li>Lokales Team, Sissi Hafen</li></ul>
+        <ul class="trust"><li>Kostenlose Stornierung bis 24 Std. vorher</li><li>Kaution transparent bei Übergabe</li><li>Wasser &amp; Werkzeug inklusive, Helm 3 € / Tag</li><li>Lokales Team, Sissi Hafen</li></ul>
         <p class="fine">Mit dem Absenden öffnet sich dein E-Mail-Programm mit einer fertigen Anfrage. Unverbindlich – die Buchung gilt erst nach unserer Bestätigung.</p>
       </form>
     </div>
@@ -510,7 +511,7 @@ function rentalPrice(rate, days) {
 }
 
 // Preise der Extras (Platzhalter laut docs/landing-copy.md – vor Livegang bestätigen!)
-const ADDONS = {gps: {label: "GPS-Gerät", perDay: 5, once: 0}, ins: {label: "Versicherung", perDay: 3, once: 0}, hotel: {label: "Hotel-Lieferung", perDay: 0, once: 10}};
+const ADDONS = {gps: {label: "GPS-Gerät", perDay: 5, once: 0}, helm: {label: "Helm", perDay: 3, once: 0}, ins: {label: "Versicherung", perDay: 3, once: 0}, hotel: {label: "Hotel-Lieferung", perDay: 0, once: 10}};
 const RATES = {e_bike: 35, gravel: 30, mtb: 25};
 const DEPOSIT = {e_bike: 200, gravel: 100, mtb: 100};
 
