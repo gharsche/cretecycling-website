@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS, WEB = ROOT / "docs", ROOT / "website"
-DRAFT = True
+DRAFT = False
 
 PAGES = [
     dict(file="impressum-datenschutz.html", title="Impressum & Datenschutz",
