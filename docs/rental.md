@@ -2,7 +2,7 @@
 
 ## Überblick
 
-Der Verleihbereich verwaltet den Fuhrpark (E-Bikes, Gravel, MTB, Kinder), berechnet Tarife mit Mehrtagesrabatten,-handhabt Kaution und Übergabeprotokoll.
+Der Verleihbereich verwaltet den Fuhrpark (E-Bikes, Gravel, MTB), berechnet Tarife mit Mehrtagesrabatten,-handhabt Kaution und Übergabeprotokoll.
 
 **Module:** `src/rental/` — `fleet.py` · `pricing.py` · `checkout.py`
 **Tests:** `tests/test_rental.py`
