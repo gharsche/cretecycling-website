@@ -187,25 +187,36 @@ aside.draft{background:#f6e7bd;border-left:5px solid var(--ochre);padding:.7rem 
 
 def main():
     index = (WEB / "index.html").read_text(encoding="utf-8")
-    # Preiskonsistenz-Guard: alle RATES/DEPOSIT-Werte aus index.html müssen in
-    # jeder AGB-Sprachquelle in einem €-Kontext vorkommen — fängt Rebuilds, die
-    # veraltete Markdown-Zahlen zurückbringen (MTB 30->25-Drift, Okt 2026).
-    m_r = re.search(r"const RATES = \{([^}]+)\}", index)
-    m_d = re.search(r"const DEPOSIT = \{([^}]+)\}", index)
-    if m_r and m_d:
-        import decimal
-        vals = set()
-        for m in re.finditer(r":\s*(\d+(?:\.\d+)?)", m_r.group(1) + "," + m_d.group(1)):
-            vals.add(decimal.Decimal(m.group(1)))
-        eur = re.compile(r"(?:€\s*(\d+(?:[.,]\d+)?)|(\d+(?:[.,]\d+)?)\s*€)")
-        for lang in LANGS:
-            src = (DOCS if lang == "de" else DOCS / lang) / "agb.md"
-            if not src.exists():
-                continue
-            nums = {decimal.Decimal((a or b).replace(",", ".")) for a, b in eur.findall(src.read_text(encoding="utf-8"))}
-            missing = sorted(v for v in vals if v not in nums)
+    # Preiskonsistenz-Guard: alle Preiswerte aus index.html (RATES/DEPOSIT/
+    # ADDONS/Tour-Optionen) müssen in jeder AGB-Sprachquelle in einem €-Kontext
+    # vorkommen — fängt Rebuilds zurück, die veraltete Markdown-Zahlen bringen
+    # (MTB 30->25-Drift, Okt 2026; Tour-/Add-on-Abdeckung nach @writer-Test).
+    import decimal
+    vals = {}
+    for key, pat in [("RATES", r"const RATES = \{([^}]+)\}"),
+                     ("DEPOSIT", r"const DEPOSIT = \{([^}]+)\}"),
+                     ("ADDONS", None)]:
+        if key == "ADDONS":
+            m = re.search(r"const ADDONS = \{(.*)\};", index)
+            nums = re.findall(r"(?:perDay|once):\s*(\d+(?:\.\d+)?)", m.group(1)) if m else []
+            nums = [n for n in nums if float(n) > 0]  # 0 = "nicht im Preisplan"
+        else:
+            m = re.search(pat, index)
+            nums = re.findall(r":\s*(\d+(?:\.\d+)?)", m.group(1)) if m else []
+        vals[key] = {decimal.Decimal(n) for n in nums}
+    m = re.search(r'<select name="tour">(.*?)</select>', index, re.S)
+    vals["TOURS"] = {decimal.Decimal(x.replace(",", "."))
+                     for x in re.findall(r"·\s*(\d+(?:[.,]\d+)?)\s*€", m.group(1))} if m else set()
+    eur = re.compile(r"(?:€\s*(\d+(?:[.,]\d+)?)|(\d+(?:[.,]\d+)?)\s*€)")
+    for lang in LANGS:
+        src = (DOCS if lang == "de" else DOCS / lang) / "agb.md"
+        if not src.exists():
+            continue
+        nums = {decimal.Decimal((a or b).replace(",", ".")) for a, b in eur.findall(src.read_text(encoding="utf-8"))}
+        for grp, want in vals.items():
+            missing = sorted(want - nums)
             if missing:
-                sys.exit(f"Abbruch: AGB {lang}/agb.md fehlen Preise {missing} — Markdownquelle nicht synchron zu index.html RATES/DEPOSIT")
+                sys.exit(f"Abbruch: AGB {lang}/agb.md fehlen {grp}-Preise {missing} — Markdownquelle nicht synchron zu index.html")
     css = re.search(r"<style>(.*?)</style>", index, re.S).group(1)
     favicon = re.search(r'<link rel="icon"[^>]+>', index).group(0)
     logo_svg = re.search(r'<a class="logo"[^>]*>\s*(<svg.*?</svg>|<img[^>]*>)', index, re.S).group(1)
