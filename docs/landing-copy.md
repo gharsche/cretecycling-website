@@ -35,7 +35,7 @@ Fürs Gelände jenseits der Asphaltstraße. Federung, griffige Reifen, Kreta-tau
 *Ab 3 Tagen 10 %, ab 7 Tagen 20 %.*
 
 ### Kind — 15 €/Tag
-24"- und 26"-Räder für die kleinen Radler. Helm inklusive. Kaution: 50 €.
+24"- und 26"-Räder für die kleinen Radler. Helm im Verleih 3 €/Tag. Kaution: 50 €.
 *Ab 3 Tagen 10 %, ab 7 Tagen 20 %.*
 
 **Add-ons (im Formular ankreuzbar):**
@@ -59,17 +59,17 @@ Fürs Gelände jenseits der Asphaltstraße. Federung, griffige Reifen, Kreta-tau
 **Cards:**
 
 ### Coastal Cruise — 45 €/Person
-Leicht · 3 Std. · max. 8
+Leicht · 3 Std. · max. 4
 Entspannte Küstenrunde mit Badepause. Ideal für Familien und Einsteiger. GPX-Route zum Download erhältlich.
 *Stornierung: bis 24 h vorher, volle Rückerstattung.*
 
 ### Olive Grove Loop — 65 €/Person
-Mittel · 5 Std. · max. 8
+Mittel · 5 Std. · max. 4
 Olivenhaine, Dörfer, ein alter Olivenbaum, der älter ist als dein Land. GPX-Route zum Download.
 *Stornierung: bis 24 h vorher.*
 
 ### Lasithi Challenge — 90 €/Person
-Schwer · 7 Std. · max. 8
+Schwer · 7 Std. · max. 4
 Das Lasithi-Plateau rauf und run — Höhenmeter für Fortgeschrittene. GPX-Route zum Download.
 *Stornierung: bis 24 h vorher.*
 
@@ -121,7 +121,7 @@ Pannenservice, Notfall-Kit, Verhalten bei Unfällen. Kompakt, praktisch, wichtig
 **Trust-Badges unter dem Formular:**
 - Kostenlose Stornierung bis 24 h vorher
 - Kaution transparent bei Übergabe
-- Helm & Werkzeug immer inklusive
+- Werkzeug & Wasser immer inklusive · Helm im Verleih 3 €/Tag, bei Touren inklusive
 - Lokales Team, Sissi Hafen
 
 ---

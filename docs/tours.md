@@ -2,7 +2,7 @@
 
 ## Überblick
 
-Geführte Touren mit lokalen Guides — vom entspannten Coastal Ride bis zur anspruchsvollen Berg-Route. Kleine Gruppen, max. 8 Personen.
+Geführte Touren mit lokalen Guides — vom entspannten Coastal Ride bis zur anspruchsvollen Berg-Route. Kleine Gruppen, max. 4 Personen (AGB § 3.2, Buchungsformular: `guests max="4"`).
 
 **Module:** `src/tours/` — `catalog.py` · `booking.py` · `guides.py`
 **Tests:** `tests/test_tours.py`
@@ -20,7 +20,7 @@ Jede Tour ist ein `Tour`-Objekt:
 | `level` | `easy` · `moderate` · `hard` |
 | `duration_hours` | Dauer in Stunden |
 | `price` | Preis pro Person |
-| `max_group` | Max. Teilnehmer (Standard: 8) |
+| `max_group` | Max. Teilnehmer — aktuell 4 (kleine Gruppen, 1 Guide pro Gruppe) |
 
 Treffpunkt: Sissi Hafen.
 Standard-Ausrüstung inklusive: Helm, Werkzeug-Kit, Wasser.
@@ -39,8 +39,8 @@ Standard-Ausrüstung inklusive: Helm, Werkzeug-Kit, Wasser.
 
 Beispiel:
 ```python
-booking.book("coastal-easy", "2026-06-15", 3, max_group=8)   # 5 Plätze frei
-booking.free_spots("coastal-easy", "2026-06-15", max_group=8) # → 5
+booking.book("coastal-easy", "2026-06-15", 3, max_group=4)   # 1 Platz frei
+booking.free_spots("coastal-easy", "2026-06-15", max_group=4) # → 1
 ```
 
 ---
