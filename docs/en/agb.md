@@ -37,7 +37,7 @@ The daily rates in force at the time of booking apply:
 | Helmet | €3 / day |
 | Bicycle insurance | €3 / day |
 | Frame bag | €3 / day |
-| Delivery (Sissi, Milatos, Malia and all other locations) | €10 one-off |
+| Delivery | Included in Sissi, Milatos, Malia; €10 one-off for all other locations |
 
 ### 2.4 Deposit
 

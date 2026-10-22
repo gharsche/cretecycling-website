@@ -454,7 +454,8 @@ footer a{color:#f4c969}
             <label><input type="checkbox" name="ad" value="helm"> Helm <span class="ap">3 € / Tag</span></label>
             <label><input type="checkbox" name="ad" value="frame_bag"> Rahmentasche <span class="ap">3 € / Tag</span></label>
             <label><input type="checkbox" name="ad" value="ins"> Versicherung (Diebstahl &amp; Schaden) <span class="ap">3 € / Tag</span></label>
-            <label><input type="checkbox" name="ad" value="hotel"> Auslieferung (Sissi, Milatos, Malia und alle weiteren Orte) <span class="ap">10 € einmalig</span></label>
+            <label><input type="checkbox" name="ad" value="hotel"> Auslieferung (Sissi, Milatos, Malia) <span class="ap">inklusive</span></label>
+            <label><input type="checkbox" name="ad" value="hotel_other"> Auslieferung an anderen Ort <span class="ap">10 € einmalig</span></label>
           </fieldset>
           <div class="est" style="margin-top:.9rem"><span>Geschätzter Preis</span><strong id="est">–</strong></div>
           <div class="est-sub"><span>+ Kaution bei Übergabe (rückerstattbar)</span><span id="dep">–</span></div>
@@ -613,7 +614,8 @@ const I18N = {
         ["Helm", "3 € / Tag"],
         ["Rahmentasche", "3 € / Tag"],
         ["Versicherung (Diebstahl & Schaden)", "3 € / Tag"],
-        ["Auslieferung (Sissi, Milatos, Malia und alle weiteren Orte)", "10 € einmalig"]
+        ["Auslieferung (Sissi, Milatos, Malia)", "inklusive"],
+        ["Auslieferung an anderen Ort", "10 € einmalig"]
       ],
       trust: [
         "Kostenlose Stornierung bis 24 Std. vorher",
@@ -744,7 +746,8 @@ const I18N = {
         ["Helmet", "€3 / day"],
         ["Frame bag", "€3 / day"],
         ["Insurance (theft & damage)", "€3 / day"],
-        ["Delivery (Sissi, Milatos, Malia and all other locations)", "€10 once"]
+        ["Delivery (Sissi, Milatos, Malia)", "included"],
+        ["Delivery to other location", "€10 once"]
       ],
       trust: [
         "Free cancellation up to 24 hrs before",
@@ -875,7 +878,8 @@ const I18N = {
         ["Κράνος", "3 € / ημέρα"],
         ["Τσάντα πλαισίου", "3 € / ημέρα"],
         ["Ασφάλιση (κλοπή & ζημιά)", "3 € / ημέρα"],
-        ["Παράδοση (Σίσι, Μήλατος, Μάλια και όλοι οι υπόλοιποι προορισμοί)", "10 € μία φορά"]
+        ["Παράδοση (Σίσι, Μήλατος, Μάλια)", "δωρεάν"],
+        ["Παράδοση σε άλλη τοποθεσία", "10 € μία φορά"]
       ],
       trust: [
         "Δωρεάν ακύρωση έως 24 ώρες πριν",
@@ -1055,7 +1059,7 @@ function rentalPrice(rate, days) {
 }
 
 // Preise der Extras (Platzhalter laut docs/landing-copy.md – vor Livegang bestätigen!)
-const ADDONS = {gps: {label: "Fahrradcomputer", perDay: 5, once: 0}, helm: {label: "Helm", perDay: 3, once: 0}, frame_bag: {label: "Rahmentasche", perDay: 3, once: 0}, ins: {label: "Versicherung", perDay: 3, once: 0}, hotel: {label: "Auslieferung", perDay: 0, once: 10}};
+const ADDONS = {gps: {label: "Fahrradcomputer", perDay: 5, once: 0}, helm: {label: "Helm", perDay: 3, once: 0}, frame_bag: {label: "Rahmentasche", perDay: 3, once: 0}, ins: {label: "Versicherung", perDay: 3, once: 0}, hotel: {label: "Auslieferung (Sissi, Milatos, Malia)", perDay: 0, once: 0}, hotel_other: {label: "Auslieferung an anderen Ort", perDay: 0, once: 10}};
 const RATES = {e_bike: 35, gravel: 30, mtb: 25};
 const DEPOSIT = {e_bike: 200, gravel: 100, mtb: 100};
 

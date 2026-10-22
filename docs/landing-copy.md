@@ -38,7 +38,7 @@ Fürs Gelände jenseits der Asphaltstraße. Federung, griffige Reifen, Kreta-tau
 - Fahrradcomputer mit Touren-Karten — 5 €/Tag
 - Fahrradversicherung (Diebstahl & Schaden) — 3 €/Tag
 - Rahmentasche — 3 €/Tag
-- Auslieferung (Sissi, Milatos, Malia und alle weiteren Orte) — 10 € einmalig
+- Auslieferung: Sissi, Milatos, Malia inklusive; alle anderen Orte 10 € einmalig
 
 **Stornierung:** Kostenlos bis 24 h vor Abholung. Danach 50 %.
 

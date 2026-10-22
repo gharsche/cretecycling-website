@@ -37,7 +37,7 @@ Es gelten die Tagessätze zum Zeitpunkt der Buchung:
 | Helm | 3 €/Tag |
 | Fahrradversicherung | 3 €/Tag |
 | Rahmentasche | 3 €/Tag |
-| Auslieferung (Sissi, Milatos, Malia und alle weiteren Orte) | 10 € einmalig |
+| Auslieferung | Sissi, Milatos, Malia inklusive; alle anderen Orte 10 € einmalig |
 
 ### 2.4 Kaution
 
