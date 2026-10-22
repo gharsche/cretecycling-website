@@ -21,7 +21,6 @@ The daily rates in force at the time of booking apply:
 | E-bike | €35 |
 | Gravel | €30 |
 | Mountain bike (MTB) | €25 |
-| Children's bike | €15 |
 
 ### 2.2 Multi-day discounts
 
@@ -49,7 +48,6 @@ A deposit per model type is due at handover:
 | E-bike | €200 |
 | Gravel | €100 |
 | Mountain bike (MTB) | €100 |
-| Children's bike | €50 |
 
 The deposit is refunded in full when the bicycle is returned undamaged.
 

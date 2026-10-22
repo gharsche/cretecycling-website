@@ -18,7 +18,7 @@
 
 **Titel:** Dein Rad für den Tag — oder die ganze Woche
 
-**Lead:** Vier Modelle, klare Preise, Mehrtagesrabatte ab Tag drei. Wasser und Werkzeug sind inklusive; Helme kosten 3 €/Tag. Du bringst nur den Spaß mit.
+**Lead:** Drei Modelle, klare Preise, Mehrtagesrabatte ab Tag drei. Wasser und Werkzeug sind inklusive; Helme kosten 3 €/Tag. Du bringst nur den Spaß mit.
 
 **Cards (je Modell):**
 
@@ -32,10 +32,6 @@ Leicht, bequem, tourenbereit. Perfekt für Olivenhaine und Küstenstraßen. Kaut
 
 ### Mountainbike (MTB) — 25 €/Tag
 Fürs Gelände jenseits der Asphaltstraße. Federung, griffige Reifen, Kreta-tauglich. Kaution: 100 €.
-*Ab 3 Tagen 10 %, ab 7 Tagen 20 %.*
-
-### Kind — 15 €/Tag
-24"- und 26"-Räder für die kleinen Radler. Helm im Verleih 3 €/Tag. Kaution: 50 €.
 *Ab 3 Tagen 10 %, ab 7 Tagen 20 %.*
 
 **Add-ons (im Formular ankreuzbar):**

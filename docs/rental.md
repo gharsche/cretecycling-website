@@ -37,7 +37,6 @@ Tagessätze je Modell:
 | E-Bike | 35 € |
 | Gravel | 30 € |
 | MTB | 25 € |
-| Kind | 15 € |
 
 Mehrtagesrabatte:
 
@@ -64,7 +63,6 @@ Kaution je Modell, fällig bei Übergabe:
 | E-Bike | 200 € |
 | Gravel | 100 € |
 | MTB | 100 € |
-| Kind | 50 € |
 
 **Ablauf:**
 
