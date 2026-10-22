@@ -1,27 +1,60 @@
 #!/usr/bin/env python3
-"""Baut die Rechtstexte-Unterseiten aus docs/*.md nach website/*.html.
+"""Baut die Rechtstexte-Unterseiten aus docs/{,en,el}/*.md nach website/*.html.
 
     python3 scripts/build_legal.py
 
-Quelle der Wahrheit bleiben die Markdown-Dateien in docs/. Die Seiten nutzen
-das Design (CSS) der Startseite: der <style>-Block wird aus website/index.html
-übernommen, plus ein paar Zusatzregeln für Fließtext und Tabellen.
+Quelle der Wahrheit sind die Markdown-Dateien: docs/*.md (DE), docs/en/*.md (EN),
+docs/el/*.md (EL). Jede Seite enthält drei .lang-doc-Blöcke plus den
+Sprach-Umschalter (Chips + Inline-JS inkl. Hash-Mapping #agb -> #agb-en/-el).
+Der Umschalter ist Teil dieses Skripts, ein erneuter Lauf ist verlustfrei
+(idempotent) — HTML-Handarbeit an den Blöcken geht sonst verloren, Änderung
+immer in den .md-Quellen machen.
+Das CSS stammt aus website/index.html (<style>-Block), plus Zusatzregeln für
+Fließtext, Tabellen und die feste Chip-Optik auf hellem Grund.
 Bei DRAFT=True werden Platzhalter-Hinweise sichtbar angezeigt; vor dem
 Livegang auf False setzen (dann bricht das Skript bei offenen [Platzhaltern] ab).
 """
-import html, re, sys
+import html, re, sys, unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS, WEB = ROOT / "docs", ROOT / "website"
 DRAFT = False
+LANGS = ["de", "en", "el"]
+
+CHROME = {
+    "de": {"docAria": "Rechtstexte"},
+    "en": {"docAria": "Legal documents"},
+    "el": {"docAria": "Νομικά έγγραφα"},
+}
 
 PAGES = [
     dict(file="impressum-datenschutz.html", title="Impressum & Datenschutz",
-         sources=["impressum", "datenschutz"]),
+         sources=["impressum", "datenschutz"],
+         eyebrow={"de": "Rechtliches", "en": "Legal", "el": "Νομικά"},
+         h1={"de": "Impressum & Datenschutz", "en": "Imprint & Privacy Policy",
+             "el": "Στοιχεία Εταιρείας & Πολιτική Απορρήτου"},
+         titles={"de": "\U0001F434 Impressum & Datenschutz — CreteCycling",
+                 "en": "\U0001F434 Imprint & Privacy Policy — CreteCycling",
+                 "el": "\U0001F434 Στοιχεία Εταιρείας & Πολιτική Απορρήτου — CreteCycling"},
+         labels={"de": {"impressum": "Impressum", "datenschutz": "Datenschutz"},
+                 "en": {"impressum": "Legal notice", "datenschutz": "Privacy policy"},
+                 "el": {"impressum": "Στοιχεία εταιρείας", "datenschutz": "Πολιτική απορρήτου"}}),
     dict(file="agb-storno.html", title="AGB & Stornobedingungen",
-         sources=["agb", "stornobedingungen"]),
+         sources=["agb", "stornobedingungen"],
+         eyebrow={"de": "Rechtliches", "en": "Legal", "el": "Νομικά"},
+         h1={"de": "AGB & Stornobedingungen", "en": "Terms & Cancellation Policy",
+             "el": "Όροι Χρήσης & Πολιτική Ακύρωσης"},
+         titles={"de": "\U0001F434 AGB & Stornobedingungen — CreteCycling",
+                 "en": "\U0001F434 Terms & Cancellation Policy — CreteCycling",
+                 "el": "\U0001F434 Όροι Χρήσης & Πολιτική Ακύρωσης — CreteCycling"},
+         labels={"de": {"agb": "AGB", "stornobedingungen": "Stornobedingungen"},
+                 "en": {"agb": "Terms and conditions", "stornobedingungen": "Cancellation policy"},
+                 "el": {"agb": "Γενικοί Όροι", "stornobedingungen": "Όροι Ακύρωσης"}}),
 ]
+
+def md_path(src, lang):
+    return (DOCS if lang == "de" else DOCS / lang) / f"{src}.md"
 
 def inline(t):
     t = html.escape(t, quote=False)
@@ -32,12 +65,20 @@ def inline(t):
     t = re.sub(r"`([^`]+)`", r"<code>\1</code>", t)
     t = re.sub(r"(?<![\w>@/])([\w.+-]+@[\w-]+\.[\w.]+)",
                r'<a href="mailto:\1">\1</a>', t)
-    # offene Felder: [Text] (ohne Link) hervorheben
     t = re.sub(r"\[([^\]\n]+)\](?!\()", r'<mark class="ph">[\1]</mark>', t)
     return t
 
 def slug(s):
-    s = re.sub(r"[^\w\s-]", "", s.lower()).strip()
+    # Konvention der ausgelieferten Seiten: griechische Akzente werden
+    # entfernt (πεδίο->πεδιο), deutsche Umlaute bleiben (übergabe).
+    s = s.lower()
+    out = []
+    for ch in s:
+        if 0x370 <= ord(ch) <= 0x3FF:
+            d = unicodedata.normalize("NFD", ch)
+            ch = "".join(c for c in d if not unicodedata.combining(c))
+        out.append(ch)
+    s = re.sub(r"[^\w\s-]", "", "".join(out)).strip()
     return re.sub(r"\s+", "-", s)
 
 def render(md, prefix):
@@ -84,12 +125,40 @@ def render(md, prefix):
         out.append("<p>" + "<br>".join(inline(p) for p in para) + "</p>")
     return "\n".join(out)
 
-def main():
-    index = (WEB / "index.html").read_text(encoding="utf-8")
-    css = re.search(r"<style>(.*?)</style>", index, re.S).group(1)
-    favicon = re.search(r'<link rel="icon"[^>]+>', index).group(0)
-    logo_svg = re.search(r'<a class="logo"[^>]*>\s*(<svg.*?</svg>|<img[^>]*>)', index, re.S).group(1)
-    extra = """
+I18N_JS = """<script>
+(function(){
+  var TITLES = __TITLES__;
+  var BOOK = {de:"Jetzt buchen", en:"Book now", el:"Κλείστε τώρα"};
+  var LABEL = {de:"Sprache", en:"Language", el:"Γλώσσα"};
+  function norm(x){ x=(x||"de").slice(0,2).toLowerCase(); return (x==="en"||x==="el")?x:"de"; }
+  function pick(){
+    var q = norm(new URLSearchParams(location.search).get("lang"));
+    if (q) return q;
+    return norm(localStorage.getItem("cc-lang") || navigator.language);
+  }
+  function apply(lang){
+    var blocks = document.querySelectorAll(".lang-doc");
+    var target = document.querySelector('.lang-doc[data-lang="'+lang+'"]');
+    if (target && target.textContent.trim().length < 50) lang = "de"; // placeholder not filled yet
+    blocks.forEach(function(b){ b.hidden = b.getAttribute("data-lang") !== lang; });
+    document.documentElement.lang = lang === "el" ? "el" : lang;
+    document.title = TITLES[lang];
+    var book = document.getElementById("bookCta"); if (book) book.textContent = BOOK[lang];
+    var grp = document.querySelector(".lang-switch"); if (grp) grp.setAttribute("aria-label", LABEL[lang]);
+    document.querySelectorAll(".lang-switch button").forEach(function(b){
+      b.setAttribute("aria-pressed", String(b.dataset.lang === lang)); });
+    localStorage.setItem("cc-lang", lang);
+    var h = location.hash.slice(1);
+    if (h) { var base = h.replace(/-(de|en|el)$/, ""); var want = lang === "de" ? base : base + "-" + lang; if (h !== want && document.getElementById(want)) history.replaceState(null, "", "#" + want); }
+    history.replaceState(null, "", location.pathname + (lang === "de" ? "" : "?lang=" + lang) + location.hash);
+  }
+  document.querySelectorAll(".lang-switch button").forEach(function(b){
+    b.addEventListener("click", function(){ apply(b.dataset.lang); }); });
+  apply(pick());
+})();
+</script>"""
+
+EXTRA_CSS = """
 header.nav{background:rgba(246,236,214,.96);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(74,46,26,.14)}
 header.nav .logo{color:var(--umber)} header.nav .logo b{color:var(--terra)}
 .doc{padding:7rem 0 4rem}
@@ -112,27 +181,51 @@ header.nav .logo{color:var(--umber)} header.nav .logo b{color:var(--terra)}
 .doc code{background:var(--sand);padding:.1em .35em;border-radius:6px}
 mark.ph{background:#f6dc9a;color:#4a2e1a;padding:0 .25em;border-radius:5px}
 aside.draft{background:#f6e7bd;border-left:5px solid var(--ochre);padding:.7rem 1rem;border-radius:10px;margin:1rem 0;font-size:.9rem}
+.lang-switch button{border:1px solid rgba(74,46,26,.25);background:#fff;color:var(--umber);border-radius:999px;padding:.5rem .95rem;min-height:2.4rem;font:inherit;font-weight:800;font-size:.92rem;letter-spacing:.02em;cursor:pointer;line-height:1}
+.lang-switch button[aria-pressed="true"]{background:var(--ochre);border-color:var(--ochre);color:#3a2616}
 """
-    if not DRAFT:
-        extra += "aside.draft{display:none}"
+
+def main():
+    index = (WEB / "index.html").read_text(encoding="utf-8")
+    css = re.search(r"<style>(.*?)</style>", index, re.S).group(1)
+    favicon = re.search(r'<link rel="icon"[^>]+>', index).group(0)
+    logo_svg = re.search(r'<a class="logo"[^>]*>\s*(<svg.*?</svg>|<img[^>]*>)', index, re.S).group(1)
+    extra = EXTRA_CSS + ("" if DRAFT else "aside.draft{display:none}")
+    chips = ('<div class="lang-switch" role="group" aria-label="Sprache">'
+             '<button type="button" data-lang="de" aria-pressed="true">DE</button>'
+             '<button type="button" data-lang="en" aria-pressed="false">EN</button>'
+             '<button type="button" data-lang="el" aria-pressed="false">EL</button></div>')
     nav = ('<header class="nav"><div class="wrap">'
            f'<a class="logo" href="index.html" aria-label="CreteCycling Startseite">{logo_svg}<span>Crete<b>Cycling</b></span></a>'
-           '<a class="btn btn-ochre" href="index.html#kontakt">Jetzt buchen</a></div></header>')
+           f'{chips}<a class="btn btn-ochre" id="bookCta" href="index.html#kontakt">Jetzt buchen</a></div></header>')
     open_ph = []
     for p in PAGES:
-        secs, tabs = [], []
-        for s in p["sources"]:
-            md = (DOCS / f"{s}.md").read_text(encoding="utf-8")
-            open_ph += [(s, m) for m in re.findall(r"(?<!\])\[([^\]\n]+)\](?!\()", md)]
-            body = render(md, s)
-            h = re.search(r"<h2[^>]*>(.*?)</h2>", body).group(1)
-            label = {"agb": "AGB", "stornobedingungen": "Stornobedingungen"}.get(s, re.sub(" — .*", "", re.sub("<[^>]+>", "", h)))
-            tabs.append(f'<a href="#{s}">{label}</a>')
-            secs.append(f'<section aria-labelledby="{s}">\n{body}\n</section>')
-        footer = ('<footer><div class="wrap"><div><b>CreteCycling</b> — Sissi, Kreta 🇬🇷</div>'
+        blocks = []
+        for lang in LANGS:
+            secs, tabs = [], []
+            for s in p["sources"]:
+                md = md_path(s, lang).read_text(encoding="utf-8")
+                open_ph += [(lang, s, m) for m in re.findall(r"(?<!\])\[([^\]\n]+)\](?!\()", md)]
+                prefix = s if lang == "de" else f"{s}-{lang}"
+                body = render(md, prefix)
+                h = re.search(r"<h2[^>]*>(.*?)</h2>", body)
+                label = p["labels"][lang].get(s) or re.sub(" — .*", "", re.sub("<[^>]+>", "", h.group(1)))
+                tabs.append(f'<a href="#{prefix}">{label}</a>')
+                secs.append(f'<section aria-labelledby="{prefix}">\n{body}\n</section>')
+            inner = (f'<p class="eyebrow">{p["eyebrow"][lang]}</p>\n'
+                     f'<h1 style="font-size:clamp(2rem,5vw,3rem)">{html.escape(p["h1"][lang])}</h1>\n'
+                     f'<nav class="doclinks" aria-label="{CHROME[lang]["docAria"]}">{"".join(tabs)}</nav>\n'
+                     + "\n".join(secs))
+            src_list = " + ".join(f"docs/{lang}/{s}.md" for s in p["sources"])
+            comment = "" if lang == "de" else f"<!-- Quelle: {src_list} (nicht manuell bearbeiten) -->"
+            hidden = "" if lang == "de" else " hidden"
+            blocks.append(f'<div class="lang-doc" data-lang="{lang}"{hidden}>{comment}\n{inner}\n</div>')
+        footer = ('<footer><div class="wrap"><div><b>CreteCycling</b> — Sissi, Kreta \U0001F1EC\U0001F1F7</div>'
                   '<div><a href="index.html">Startseite</a> · <a href="impressum-datenschutz.html#impressum">Impressum</a> · '
                   '<a href="impressum-datenschutz.html#datenschutz">Datenschutz</a> · '
                   '<a href="agb-storno.html#agb">AGB</a> · <a href="agb-storno.html#stornobedingungen">Storno</a></div></div></footer>')
+        titles_js = "{" + ",".join(f'"{l}":"{t}"' for l, t in p["titles"].items()) + "}"
+        js = I18N_JS.replace("__TITLES__", titles_js)
         page = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -147,12 +240,10 @@ aside.draft{background:#f6e7bd;border-left:5px solid var(--ochre);padding:.7rem 
 <body>
 {nav}
 <main class="doc"><div class="wrap">
-<p class="eyebrow">Rechtliches</p>
-<h1 style="font-size:clamp(2rem,5vw,3rem)">{html.escape(p['title'])}</h1>
-<nav class="doclinks" aria-label="Rechtstexte">{''.join(tabs)}</nav>
-{chr(10).join(secs)}
+{chr(10).join(blocks)}
 </div></main>
 {footer}
+{js}
 </body>
 </html>
 """
@@ -162,7 +253,7 @@ aside.draft{background:#f6e7bd;border-left:5px solid var(--ochre);padding:.7rem 
         print("geschrieben:", WEB / p["file"])
     if open_ph:
         print(f"\n{len(open_ph)} offene [Platzhalter]:")
-        for s, m in open_ph: print(f"  {s}: [{m}]")
+        for lang, s, m in open_ph: print(f"  {lang}/{s}: [{m}]")
         if not DRAFT: sys.exit("Abbruch: Platzhalter offen (DRAFT=False)")
 
 if __name__ == "__main__":
