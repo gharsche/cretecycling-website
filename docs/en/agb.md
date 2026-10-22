@@ -33,11 +33,11 @@ The daily rates in force at the time of booking apply:
 
 | Extra | Price |
 |---|---|
-| GPS device | €5 / day |
+| Bike computer | €5 / day |
 | Helmet | €3 / day |
 | Bicycle insurance | €3 / day |
 | Frame bag | €3 / day |
-| Delivery to hotel (Sissi, Malia, Hersonissos, Elounda, Plaka, Neapoli) | €10 one-off |
+| Delivery (Sissi, Milatos, Malia and all other locations) | €10 one-off |
 
 ### 2.4 Deposit
 

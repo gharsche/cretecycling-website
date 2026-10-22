@@ -450,11 +450,11 @@ footer a{color:#f4c969}
           </div>
           <fieldset class="addons" style="margin-top:.9rem">
             <legend>Extras</legend>
-            <label><input type="checkbox" name="ad" value="gps"> GPS-Gerät mit Touren-Karten <span class="ap">5 € / Tag</span></label>
+            <label><input type="checkbox" name="ad" value="gps"> Fahrradcomputer mit Touren-Karten <span class="ap">5 € / Tag</span></label>
             <label><input type="checkbox" name="ad" value="helm"> Helm <span class="ap">3 € / Tag</span></label>
             <label><input type="checkbox" name="ad" value="frame_bag"> Rahmentasche <span class="ap">3 € / Tag</span></label>
             <label><input type="checkbox" name="ad" value="ins"> Versicherung (Diebstahl &amp; Schaden) <span class="ap">3 € / Tag</span></label>
-            <label><input type="checkbox" name="ad" value="hotel"> Lieferung ans Hotel (Sissi / Malia / Gouves) <span class="ap">10 € einmalig</span></label>
+            <label><input type="checkbox" name="ad" value="hotel"> Auslieferung (Sissi, Milatos, Malia und alle weiteren Orte) <span class="ap">10 € einmalig</span></label>
           </fieldset>
           <div class="est" style="margin-top:.9rem"><span>Geschätzter Preis</span><strong id="est">–</strong></div>
           <div class="est-sub"><span>+ Kaution bei Übergabe (rückerstattbar)</span><span id="dep">–</span></div>
@@ -609,11 +609,11 @@ const I18N = {
       placeholder: "Hotel, Körpergröße, Sonderwünsche …",
       submit: "Anfrage senden →",
       addons: [
-        ["GPS-Gerät mit Touren-Karten", "5 € / Tag"],
+        ["Fahrradcomputer mit Touren-Karten", "5 € / Tag"],
         ["Helm", "3 € / Tag"],
         ["Rahmentasche", "3 € / Tag"],
         ["Versicherung (Diebstahl & Schaden)", "3 € / Tag"],
-        ["Lieferung ans Hotel (Sissi / Malia / Gouves)", "10 € einmalig"]
+        ["Auslieferung (Sissi, Milatos, Malia und alle weiteren Orte)", "10 € einmalig"]
       ],
       trust: [
         "Kostenlose Stornierung bis 24 Std. vorher",
@@ -740,11 +740,11 @@ const I18N = {
       placeholder: "Hotel, height, special wishes …",
       submit: "Send request →",
       addons: [
-        ["GPS device with tour maps", "€5 / day"],
+        ["Bike computer with tour maps", "€5 / day"],
         ["Helmet", "€3 / day"],
         ["Frame bag", "€3 / day"],
         ["Insurance (theft & damage)", "€3 / day"],
-        ["Hotel delivery (Sissi / Malia / Gouves)", "€10 once"]
+        ["Delivery (Sissi, Milatos, Malia and all other locations)", "€10 once"]
       ],
       trust: [
         "Free cancellation up to 24 hrs before",
@@ -871,11 +871,11 @@ const I18N = {
       placeholder: "Ξενοδοχείο, ύψος, ειδικές επιθυμίες …",
       submit: "Στείλτε αίτημα →",
       addons: [
-        ["Συσκευή GPS με χάρτες διαδρομών", "5 € / ημέρα"],
+        ["Υπολογιστής ποδηλάτου με χάρτες διαδρομών", "5 € / ημέρα"],
         ["Κράνος", "3 € / ημέρα"],
         ["Τσάντα πλαισίου", "3 € / ημέρα"],
         ["Ασφάλιση (κλοπή & ζημιά)", "3 € / ημέρα"],
-        ["Παράδοση στο ξενοδοχείο (Σίσι / Μάλια / Γούβες)", "10 € μία φορά"]
+        ["Παράδοση (Σίσι, Μήλατος, Μάλια και όλοι οι υπόλοιποι προορισμοί)", "10 € μία φορά"]
       ],
       trust: [
         "Δωρεάν ακύρωση έως 24 ώρες πριν",
@@ -1055,7 +1055,7 @@ function rentalPrice(rate, days) {
 }
 
 // Preise der Extras (Platzhalter laut docs/landing-copy.md – vor Livegang bestätigen!)
-const ADDONS = {gps: {label: "GPS-Gerät", perDay: 5, once: 0}, helm: {label: "Helm", perDay: 3, once: 0}, frame_bag: {label: "Rahmentasche", perDay: 3, once: 0}, ins: {label: "Versicherung", perDay: 3, once: 0}, hotel: {label: "Hotel-Lieferung", perDay: 0, once: 10}};
+const ADDONS = {gps: {label: "Fahrradcomputer", perDay: 5, once: 0}, helm: {label: "Helm", perDay: 3, once: 0}, frame_bag: {label: "Rahmentasche", perDay: 3, once: 0}, ins: {label: "Versicherung", perDay: 3, once: 0}, hotel: {label: "Auslieferung", perDay: 0, once: 10}};
 const RATES = {e_bike: 35, gravel: 30, mtb: 25};
 const DEPOSIT = {e_bike: 200, gravel: 100, mtb: 100};
 
