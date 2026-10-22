@@ -1,6 +1,6 @@
 # General Terms and Conditions — CreteCycling
 
-> **Note.** Rates, add-on prices, cancellation conditions and payment methods follow the project docs (`rental.md`, `tours.md`, `workshops.md`). Payment methods depend on the booking system in use (SimplyBook.it/Stripe). Legal review before publication is recommended. English translation of `docs/agb.md`; the German text is authoritative.
+> **Note.** Rates, add-on prices, cancellation conditions and payment methods follow the project docs (`rental.md`, `tours.md`, `workshops.md`). Payment methods depend on the booking system in use (SimplyBook.it/Stripe). Legal review is complete and the texts are approved (22 Oct 2026). English translation of `docs/agb.md`; the German text is authoritative.
 
 ---
 

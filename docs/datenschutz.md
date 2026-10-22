@@ -1,6 +1,6 @@
 # Datenschutz — CreteCycling
 
-> **Hinweis.** Die Angaben des Verantwortlichen wurden von cretecycling.eu übernommen (Stand Oktober 2026). Die Speicherdauer ist als Richtwert markiert und sollte vor dem Livegang rechtlich geprüft und festgelegt werden.
+> **Hinweis.** Die Angaben des Verantwortlichen wurden von cretecycling.eu übernommen (Stand Oktober 2026). Die Speicherdauer (6 Monate / 5 Jahre) ist festgelegt; die rechtliche Prüfung ist abgeschlossen und freigegeben (22.10.2026).
 
 ---
 

@@ -1,6 +1,6 @@
 # Allgemeine Geschäftsbedingungen (AGB) — CreteCycling
 
-> **Hinweis.** Tarife, Add-on-Preise, Storno-Konditionen und Zahlungsweise entsprechen den Docs (`rental.md`, `tours.md`, `workshops.md`) und sind marktkonform (Benchmark @researcher). Die Zahlungsarten richten sich nach dem eingesetzten Buchungssystem (SimplyBook.it/Stripe). Rechtliche Prüfung vor Livegang empfohlen.
+> **Hinweis.** Tarife, Add-on-Preise, Storno-Konditionen und Zahlungsweise entsprechen den Docs (`rental.md`, `tours.md`, `workshops.md`) und sind marktkonform (Benchmark @researcher). Die Zahlungsarten richten sich nach dem eingesetzten Buchungssystem (SimplyBook.it/Stripe). Rechtliche Prüfung ist abgeschlossen und freigegeben (22.10.2026).
 
 ---
 

@@ -1,6 +1,6 @@
 # Impressum — CreteCycling
 
-> **Hinweis.** Die Firmenangaben wurden von cretecycling.eu übernommen (Stand Oktober 2026). Die Rechtsgrundlage ist griechisches Recht (Art. 8 N. 4053/2012, Umsetzung der E-Commerce-Richtlinie 2000/31/EG), da CreteCycling IKE in Griechenland niedergelassen ist. Die Texte sollten vor dem Livegang rechtlich geprüft werden.
+> **Hinweis.** Die Firmenangaben wurden von cretecycling.eu übernommen (Stand Oktober 2026). Die Rechtsgrundlage ist griechisches Recht (Art. 8 N. 4053/2012, Umsetzung der E-Commerce-Richtlinie 2000/31/EG), da CreteCycling IKE in Griechenland niedergelassen ist. Die Texte sind rechtlich geprüft und freigegeben (22.10.2026).
 
 ---
 

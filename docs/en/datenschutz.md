@@ -1,6 +1,6 @@
 # Privacy Policy — CreteCycling
 
-> **Note.** The controller details were taken from cretecycling.eu (as of October 2026). Retention periods are indicative and should be legally reviewed and fixed before publication. Translation of `docs/datenschutz.md`; the German text is authoritative.
+> **Note.** The controller details were taken from cretecycling.eu (as of October 2026). Retention periods (6 months / 5 years) are fixed; the legal review is complete and the texts are approved (22 Oct 2026). Translation of `docs/datenschutz.md`; the German text is authoritative.
 
 ---
 
