@@ -45,7 +45,7 @@ de = extract_de()
 if de is None:
     fail.append("audit_copy: I18N.de nicht auffindbar — Prüfung 1 ausgefallen (Skript prüfen!)")
 else:
-    VISIBLE_KEYS = {"lead", "title", "eyebrow", "slogan", "cta", "book", "submit", "to", "line"}
+    VISIBLE_KEYS = {"lead", "title", "eyebrow", "slogan", "cta", "book", "submit", "to", "line", "flyer"}
     for key, val in re.findall(r'(\w+): "((?:[^"\\]|\\.)*)"', de):
         if key not in VISIBLE_KEYS or len(val) < 6:
             continue
