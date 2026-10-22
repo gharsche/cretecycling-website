@@ -154,9 +154,11 @@ Erstattungen bei Stornierung erfolgen nach den Bedingungen in § 5 auf das urspr
 
 ---
 
-## § 8 Anwendbares Recht
+## § 8 Anwendbares Recht und Gerichtsstand
 
-Es gilt griechisches Recht. Gerichtsstand ist Heraklion, Griechenland.
+Es gilt griechisches Recht. Gerichtsstand für Streitigkeiten aus und im Zusammenhang mit den Verträgen über CreteCycling ist Heraklion, Griechenland.
+
+Beides lässt den Schutz unberührt, der dir als Verbraucher nach den nicht abdingbaren Vorschriften des Rechts des Staates deines gewöhnlichen Aufenthalts zusteht (Art. 6 Abs. 2 der Verordnung (EG) Nr. 593/2008 „Rom I“). Klagen eines Verbrauchers gegen CreteCycling können daher auch vor den Gerichten des Ortes erhoben werden, an dem der Verbraucher seinen gewöhnlichen Aufenthalt hat (Art. 18 der Verordnung (EU) Nr. 1215/2012 „Brüssel Ia“).
 
 ---
 

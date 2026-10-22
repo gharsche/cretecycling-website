@@ -35,7 +35,13 @@ The data is used exclusively to process your booking enquiry and is not passed o
 
 ### Hosting (GitHub Pages)
 
-This website is hosted via GitHub Pages (GitHub Inc., USA). When the page is accessed, GitHub may process IP addresses and other technical data in server logs. For details see the [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies).
+This website is hosted via GitHub Pages (GitHub Inc., USA). When the page is accessed, GitHub may process IP addresses and other technical data in server logs. Transfers of data to the United States rely on the European Commission's adequacy decision for the EU-US Data Privacy Framework (Art. 45 GDPR); GitHub Inc. is certified under that framework. For details see the [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies).
+
+---
+
+## Legal basis
+
+We process your data for the booking enquiry and for the performance of the contract on the basis of Art. 6(1)(b) GDPR. Technical access data required to operate and secure the website is processed on the basis of Art. 6(1)(f) GDPR.
 
 ---
 
@@ -58,6 +64,7 @@ You have the following rights:
 - **Erasure:** You may request the deletion of your data, insofar as no statutory retention periods oppose it.
 - **Objection:** You may object to the processing of your data.
 - **Data portability:** You may request that your data be issued in a machine-readable format.
+- **Complaint to a supervisory authority:** If you consider that the processing of your data violates data protection law, you may lodge a complaint with a supervisory authority, in particular in the Member State of your habitual residence, of your place of work, or of the place where the alleged infringement occurred (Art. 77 GDPR). The competent authority for CreteCycling is the Hellenic Data Protection Authority (Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα, ΑΠΔΠΧ), Leoforos Kifisias 1-3, 115 23 Athens, Greece, phone +30 210 6475600, email contact@dpa.gr, web www.dpa.gr.
 
 To exercise any of these rights, simply contact us by email at the address given above.
 

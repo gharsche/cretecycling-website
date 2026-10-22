@@ -35,7 +35,13 @@ Die Daten werden ausschließlich zur Bearbeitung deiner Buchungsanfrage verwende
 
 ### Hosting (GitHub Pages)
 
-Diese Website wird über GitHub Pages (GitHub Inc., USA) gehostet. Beim Aufruf der Seite kann GitHub IP-Adressen und weitere technische Daten in Server-Logs verarbeiten. Einzelheiten siehe [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies).
+Diese Website wird über GitHub Pages (GitHub Inc., USA) gehostet. Beim Aufruf der Seite kann GitHub IP-Adressen und weitere technische Daten in Server-Logs verarbeiten. Die Übertragung von Daten in die USA beruht auf dem Angemessenheitsbeschluss der EU-Kommission zum EU-US Data Privacy Framework (Art. 45 DSGVO); GitHub, Inc. ist nach diesem Rahmenwerk zertifiziert. Einzelheiten siehe [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies).
+
+---
+
+## Rechtsgrundlage
+
+Die Verarbeitung deiner Daten für die Buchungsanfrage und die Durchführung des Vertrags beruht auf Art. 6 Abs. 1 lit. b DSGVO. Technische Zugriffsdaten, die für den Betrieb und die Sicherheit der Website erforderlich sind, verarbeiten wir auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
 
 ---
 
@@ -58,6 +64,7 @@ Du hast folgende Rechte:
 - **Löschung:** Du kannst die Löschung deiner Daten verlangen, soweit keine gesetzlichen Aufbewahrungsfristen entgegenstehen.
 - **Widerspruch:** Du kannst der Verarbeitung deiner Daten widersprechen.
 - **Datenübertragbarkeit:** Du kannst die Herausgabe deiner Daten in einem maschinenlesbaren Format verlangen.
+- **Beschwerde bei der Aufsichtsbehörde:** Wenn du der Ansicht bist, dass die Verarbeitung deiner Daten gegen das Datenschutzrecht verstößt, kannst du dich bei einer Aufsichtsbehörde beschweren, insbesondere in dem Mitgliedstaat deines gewöhnlichen Aufenthalts, deines Arbeitsplatzes oder des Orts der mutmaßlichen Verletzung (Art. 77 DSGVO). Für CreteCycling ist die griechische Aufsichtsbehörde zuständig: Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (ΑΠΔΠΧ), Λ. Κηφισίας 1-3, Τ.Κ. 115 23 Αθήνα, Telefon +30 210 6475600, E-Mail contact@dpa.gr, Web www.dpa.gr.
 
 Wende dich dafür einfach per E-Mail an die oben genannte Adresse.
 

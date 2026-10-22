@@ -154,8 +154,10 @@ Refunds in the event of cancellation are made in accordance with the conditions 
 
 ---
 
-## § 8 Applicable law
+## § 8 Applicable law and jurisdiction
 
-Greek law applies. The place of jurisdiction is Heraklion, Greece.
+Greek law applies. The place of jurisdiction for disputes arising from or in connection with contracts with CreteCycling is Heraklion, Greece.
+
+Neither affects the protection afforded to you as a consumer by provisions that cannot be derogated from by agreement under the law of the country in which you have your habitual residence (Art. 6(2) of Regulation (EC) No 593/2008, "Rome I"). A consumer may therefore also bring proceedings against CreteCycling in the courts for the place where the consumer is domiciled (Art. 18 of Regulation (EU) No 1215/2012, "Brussels Ia").
 
 *Last updated: October 2026*
