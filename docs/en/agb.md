@@ -20,7 +20,7 @@ The daily rates in force at the time of booking apply:
 |---|---|
 | E-bike | €35 |
 | Gravel | €30 |
-| Mountain bike (MTB) | €30 |
+| Mountain bike (MTB) | €25 |
 | Children's bike | €15 |
 
 ### 2.2 Multi-day discounts

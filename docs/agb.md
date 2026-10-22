@@ -20,7 +20,7 @@ Es gelten die Tagessätze zum Zeitpunkt der Buchung:
 |---|---|
 | E-Bike | 35 € |
 | Gravel | 30 € |
-| MTB | 30 € |
+| MTB | 25 € |
 | Kind | 15 € |
 
 ### 2.2 Mehrtagesrabatte
