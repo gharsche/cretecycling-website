@@ -442,6 +442,8 @@ aside.draft{display:none}</style>
     document.querySelectorAll(".lang-switch button").forEach(function(b){
       b.setAttribute("aria-pressed", String(b.dataset.lang === lang)); });
     localStorage.setItem("cc-lang", lang);
+    var h = location.hash.slice(1);
+    if (h) { var base = h.replace(/-(de|en|el)$/, ""); var want = lang === "de" ? base : base + "-" + lang; if (h !== want && document.getElementById(want)) history.replaceState(null, "", "#" + want); }
     history.replaceState(null, "", location.pathname + (lang === "de" ? "" : "?lang=" + lang) + location.hash);
   }
   document.querySelectorAll(".lang-switch button").forEach(function(b){
