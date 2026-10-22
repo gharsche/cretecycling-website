@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CreteCycling — English</title>
+<!-- Redirect target for the printed flyer URL "…/en/" (QR on page 2).
+     Single-page site reads ?lang= (index.html, URLSearchParams), which wins over
+     localStorage and navigator.language. Works identically under
+     /cretecycling-website/en/ and an apex custom domain /en/. -->
+<meta http-equiv="refresh" content="0; url=../?lang=en">
+<link rel="canonical" href="../">
+</head>
+<body>
+<p>CreteCycling (Sisi, Crete) — <a href="../?lang=en">continue in English</a>.</p>
+<script>location.replace("../?lang=en");</script>
+</body>
+</html>
