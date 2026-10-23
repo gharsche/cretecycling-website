@@ -243,7 +243,7 @@ footer::before{top:0;bottom:auto;opacity:.5;filter:invert(1) sepia(1) saturate(1
 footer a{color:#f4c969}
 .sticky{background:rgba(246,236,214,.96);box-shadow:0 -4px 16px rgba(46,27,14,.18)}
 .lang-switch{display:flex;align-items:center;gap:.35rem;margin-left:1rem;flex-wrap:wrap}
-.lang-switch button{border:1px solid rgba(255,255,255,.65);background:transparent;color:#fff;border-radius:999px;padding:.5rem .95rem;min-height:2.4rem;font:inherit;font-weight:800;font-size:.92rem;letter-spacing:.02em;cursor:pointer;line-height:1}
+.lang-switch button{border:1px solid rgba(255,255,255,.65);background:transparent;color:#fff;border-radius:999px;padding:.45rem .7rem;min-width:2.8rem;min-height:2.8rem;font:inherit;font-weight:800;font-size:1.15rem;letter-spacing:0;cursor:pointer;line-height:1;display:inline-flex;align-items:center;justify-content:center}
 .nav.solid .lang-switch button{border-color:rgba(74,46,26,.25);background:#fff;color:var(--umber)}
 .lang-switch button[aria-pressed="true"]{background:var(--ochre);border-color:var(--ochre);color:#3a2616}
 :focus-visible{outline-color:var(--terra)}
@@ -276,7 +276,7 @@ aside.draft{background:#f6e7bd;border-left:5px solid var(--ochre);padding:.7rem 
 aside.draft{display:none}</style>
 </head>
 <body>
-<header class="nav"><div class="wrap"><a class="logo" href="index.html" aria-label="CreteCycling Startseite"><img class="logo-mark" src="assets/logo-cretecycling.jpg" width="40" height="40" alt="CreteCycling Logo"><span>Crete<b>Cycling</b></span></a><div class="lang-switch" role="group" aria-label="Sprache"><button type="button" data-lang="de" aria-pressed="true">DE</button><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="el" aria-pressed="false">EL</button></div><a class="btn btn-ochre" id="bookCta" href="index.html#kontakt">Jetzt buchen</a></div></header>
+<header class="nav"><div class="wrap"><a class="logo" href="index.html" aria-label="CreteCycling Startseite"><img class="logo-mark" src="assets/logo-cretecycling.jpg" width="40" height="40" alt="CreteCycling Logo"><span>Crete<b>Cycling</b></span></a><div class="lang-switch" role="group" aria-label="Sprache"><button type="button" data-lang="de" aria-pressed="true" aria-label="Auf Deutsch wechseln" title="Auf Deutsch wechseln">🇩🇪</button><button type="button" data-lang="en" aria-pressed="false" aria-label="Auf Englisch wechseln" title="Auf Englisch wechseln">🇬🇧</button><button type="button" data-lang="el" aria-pressed="false" aria-label="Auf Griechisch wechseln" title="Auf Griechisch wechseln">🇬🇷</button></div><a class="btn btn-ochre" id="bookCta" href="index.html#kontakt">Jetzt buchen</a></div></header>
 <main class="doc"><div class="wrap">
 <div class="lang-doc" data-lang="de">
 <p class="eyebrow">Rechtliches</p>
@@ -435,6 +435,7 @@ aside.draft{display:none}</style>
   var TITLES = {"de":"🐴 Impressum & Datenschutz — CreteCycling","en":"🐴 Imprint & Privacy Policy — CreteCycling","el":"🐴 Στοιχεία Εταιρείας & Πολιτική Απορρήτου — CreteCycling"};
   var BOOK = {de:"Jetzt buchen", en:"Book now", el:"Κλείστε τώρα"};
   var LABEL = {de:"Sprache", en:"Language", el:"Γλώσσα"};
+  var BUTTON_LABELS = {de:{de:"Auf Deutsch wechseln", en:"Auf Englisch wechseln", el:"Auf Griechisch wechseln"}, en:{de:"Switch to German", en:"Switch to English", el:"Switch to Greek"}, el:{de:"Μετάβαση στα Γερμανικά", en:"Μετάβαση στα Αγγλικά", el:"Μετάβαση στα Ελληνικά"}};
   function norm(x){ x=(x||"de").slice(0,2).toLowerCase(); return (x==="en"||x==="el")?x:"de"; }
   function pick(){
     var q = norm(new URLSearchParams(location.search).get("lang"));
@@ -451,7 +452,11 @@ aside.draft{display:none}</style>
     var book = document.getElementById("bookCta"); if (book) book.textContent = BOOK[lang];
     var grp = document.querySelector(".lang-switch"); if (grp) grp.setAttribute("aria-label", LABEL[lang]);
     document.querySelectorAll(".lang-switch button").forEach(function(b){
-      b.setAttribute("aria-pressed", String(b.dataset.lang === lang)); });
+      var label = (BUTTON_LABELS[lang] && BUTTON_LABELS[lang][b.dataset.lang]) || b.textContent;
+      b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+      b.setAttribute("aria-label", label);
+      b.setAttribute("title", label);
+    });
     localStorage.setItem("cc-lang", lang);
     var h = location.hash.slice(1);
     if (h) { var base = h.replace(/-(de|en|el)$/, ""); var want = lang === "de" ? base : base + "-" + lang; if (h !== want && document.getElementById(want)) history.replaceState(null, "", "#" + want); }

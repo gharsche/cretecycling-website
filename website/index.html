@@ -182,9 +182,13 @@ footer{background:#24160b;color:#ead9b3;padding:2.5rem 0;font-size:.92rem}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;align-items:center}
 footer a{color:var(--ochre)}
 footer .legal{flex-basis:100%;font-size:.85rem;opacity:.85;border-top:1px solid rgba(255,255,255,.12);padding-top:1rem}
-footer .f-social{display:flex;gap:1.1rem;flex-wrap:wrap;align-items:center}
+footer .f-social{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center}
 footer .f-social a{font-weight:600;text-decoration:none}
-footer .f-social a:hover{text-decoration:underline}
+footer .f-social a:hover{text-decoration:none}
+footer .icon-link{display:inline-flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;transition:transform .15s ease,background .15s ease}
+footer .icon-link:hover{background:rgba(255,255,255,.16);transform:translateY(-1px)}
+footer .icon-link .badge{font:800 1.1rem/1 system-ui,Segoe UI,Arial,sans-serif;display:inline-block;transform:translateY(-1px)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
@@ -251,7 +255,7 @@ footer::before{top:0;bottom:auto;opacity:.5;filter:invert(1) sepia(1) saturate(1
 footer a{color:#f4c969}
 .sticky{background:rgba(246,236,214,.96);box-shadow:0 -4px 16px rgba(46,27,14,.18)}
 .lang-switch{display:flex;align-items:center;gap:.35rem;margin-left:1rem;flex-wrap:wrap}
-.lang-switch button{border:1px solid rgba(255,255,255,.65);background:transparent;color:#fff;border-radius:999px;padding:.5rem .95rem;min-height:2.4rem;font:inherit;font-weight:800;font-size:.92rem;letter-spacing:.02em;cursor:pointer;line-height:1}
+.lang-switch button{border:1px solid rgba(255,255,255,.65);background:transparent;color:#fff;border-radius:999px;padding:.45rem .7rem;min-width:2.8rem;min-height:2.8rem;font:inherit;font-weight:800;font-size:1.15rem;letter-spacing:0;cursor:pointer;line-height:1;display:inline-flex;align-items:center;justify-content:center}
 .nav.solid .lang-switch button{border-color:rgba(74,46,26,.25);background:#fff;color:var(--umber)}
 .lang-switch button[aria-pressed="true"]{background:var(--ochre);border-color:var(--ochre);color:#3a2616}
 :focus-visible{outline-color:var(--terra)}
@@ -281,9 +285,9 @@ footer a{color:#f4c969}
     </ul></nav>
     <a class="btn btn-ochre" href="#kontakt">Jetzt buchen</a>
     <div class="lang-switch" role="group" aria-label="Sprache">
-      <button type="button" data-lang="de" aria-pressed="true">DE</button>
-      <button type="button" data-lang="en" aria-pressed="false">EN</button>
-      <button type="button" data-lang="el" aria-pressed="false">EL</button>
+    <button type="button" data-lang="de" aria-pressed="true" aria-label="Auf Deutsch wechseln" title="Auf Deutsch wechseln">🇩🇪</button>
+    <button type="button" data-lang="en" aria-pressed="false" aria-label="Auf Englisch wechseln" title="Auf Englisch wechseln">🇬🇧</button>
+    <button type="button" data-lang="el" aria-pressed="false" aria-label="Auf Griechisch wechseln" title="Auf Griechisch wechseln">🇬🇷</button>
     </div>
   </div>
 </header>
@@ -496,7 +500,7 @@ footer a{color:#f4c969}
     <div class="f-brand" style="display:flex;align-items:center;gap:.7rem"><img class="logo-mark" src="assets/logo-cretecycling.jpg" width="40" height="40" alt="CreteCycling Logo" style="border-color:rgba(255,255,255,.35)"><div><b class="slogan">CreteCycling — zwei Räder, eine Insel, dein Tag.</b></div></div>
     <div class="f-links"><a href="#verleih">Verleih</a> · <a href="#touren">Touren</a> · <a href="#workshops">Workshops</a> · <a href="#kontakt">Kontakt</a></div>
     <div class="f-flyer"><a class="btn btn-ochre flyer-btn" href="assets/CreteCycling-Flyer-2026.pdf" download="CreteCycling-Flyer-2026.pdf">Flyer herunterladen (PDF, EN · 0,7 MB)</a></div>
-    <div class="f-social"><a class="fb-link" href="https://www.facebook.com/CreteCyclingSissi" target="_blank" rel="noopener">Auf Facebook folgen</a><a class="bs-link" href="https://bsky.app/intent/compose?text=Bike%20rental%2C%20guided%20tours%20%26%20workshops%20in%20Sissi%2C%20Crete%20%E2%80%94%20%F0%9F%9A%B4%20cretecycling.eu" target="_blank" rel="noopener">Auf Bluesky teilen</a></div>
+    <div class="f-social"><a class="fb-link icon-link" href="https://www.facebook.com/CreteCyclingSissi" target="_blank" rel="noopener" aria-label="Auf Facebook folgen" title="Auf Facebook folgen"><span class="badge" aria-hidden="true">f</span><span class="sr-only">Auf Facebook folgen</span></a><a class="bs-link icon-link" href="https://bsky.app/intent/compose?text=Bike%20rental%2C%20guided%20tours%20%26%20workshops%20in%20Sissi%2C%20Crete%20%E2%80%94%20%F0%9F%9A%B4%20cretecycling.eu" target="_blank" rel="noopener" aria-label="Auf Bluesky teilen" title="Auf Bluesky teilen"><span class="badge" aria-hidden="true">b</span><span class="sr-only">Auf Bluesky teilen</span></a></div>
     <div class="legal"><a href="impressum-datenschutz.html#impressum">Impressum</a> · <a href="impressum-datenschutz.html#datenschutz">Datenschutz</a> · <a href="agb-storno.html#agb">AGB</a> · <a href="agb-storno.html#stornobedingungen">Stornobedingungen</a></div>
   </div>
 </footer>
@@ -924,8 +928,23 @@ const setText = (sel, value, r = document) => { const el = $(sel, r); if (el) el
 const setHTML = (sel, value, r = document) => { const el = $(sel, r); if (el) el.innerHTML = value; };
 const setAttr = (sel, name, value, r = document) => { const el = $(sel, r); if (el) el.setAttribute(name, value); };
 function setNodeText(el, value) { if (el && el.firstChild) el.firstChild.nodeValue = value; }
+const LANG_BUTTON_LABELS = {
+  de: {de: 'Auf Deutsch wechseln', en: 'Auf Englisch wechseln', el: 'Auf Griechisch wechseln'},
+  en: {de: 'Switch to German', en: 'Switch to English', el: 'Switch to Greek'},
+  el: {de: 'Μετάβαση στα Γερμανικά', en: 'Μετάβαση στα Αγγλικά', el: 'Μετάβαση στα Ελληνικά'}
+};
+const SOCIAL_LINK_LABELS = {
+  de: {fb: 'Auf Facebook folgen', bs: 'Auf Bluesky teilen'},
+  en: {fb: 'Follow us on Facebook', bs: 'Share on Bluesky'},
+  el: {fb: 'Ακολουθήστε μας στο Facebook', bs: 'Κοινοποίηση στο Bluesky'}
+};
 function syncLangButtons(lang) {
-  $$('.lang-switch button').forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang)));
+  $$('.lang-switch button').forEach(btn => {
+    const label = (LANG_BUTTON_LABELS[lang] && LANG_BUTTON_LABELS[lang][btn.dataset.lang]) || btn.textContent;
+    btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
+    btn.setAttribute('aria-label', label);
+    btn.setAttribute('title', label);
+  });
 }
 function applyLanguage(lang) {
   const t = I18N[lang] || I18N.de;
@@ -1043,8 +1062,18 @@ function applyLanguage(lang) {
   const fLegal = $('footer .legal');
   if (fLegal) fLegal.innerHTML = `<a href="impressum-datenschutz.html#impressum">${t.footer.legal[0]}</a> · <a href="impressum-datenschutz.html#datenschutz">${t.footer.legal[1]}</a> · <a href="agb-storno.html#agb">${t.footer.legal[2]}</a> · <a href="agb-storno.html#stornobedingungen">${t.footer.legal[3]}</a>`;
   // Class-based like the blocks above: the share hrefs stay untouched, only labels translate.
-  setText('footer .f-social .fb-link', t.footer.facebook);
-  setText('footer .f-social .bs-link', t.footer.bluesky);
+  const fb = $('footer .f-social .fb-link');
+  if (fb) {
+    fb.setAttribute('aria-label', t.footer.facebook);
+    fb.setAttribute('title', t.footer.facebook);
+    const sr = fb.querySelector('.sr-only'); if (sr) sr.textContent = t.footer.facebook;
+  }
+  const bs = $('footer .f-social .bs-link');
+  if (bs) {
+    bs.setAttribute('aria-label', t.footer.bluesky);
+    bs.setAttribute('title', t.footer.bluesky);
+    const sr = bs.querySelector('.sr-only'); if (sr) sr.textContent = t.footer.bluesky;
+  }
   if (t.flyer) $$('.flyer-btn').forEach(a => { a.textContent = t.flyer; });
   setText('.sticky .btn', t.sticky);
   syncLangButtons(currentLang);
