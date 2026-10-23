@@ -182,6 +182,9 @@ footer{background:#24160b;color:#ead9b3;padding:2.5rem 0;font-size:.92rem}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;align-items:center}
 footer a{color:var(--ochre)}
 footer .legal{flex-basis:100%;font-size:.85rem;opacity:.85;border-top:1px solid rgba(255,255,255,.12);padding-top:1rem}
+footer .f-social{display:flex;gap:1.1rem;flex-wrap:wrap;align-items:center}
+footer .f-social a{font-weight:600;text-decoration:none}
+footer .f-social a:hover{text-decoration:underline}
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
@@ -493,6 +496,7 @@ footer a{color:#f4c969}
     <div class="f-brand" style="display:flex;align-items:center;gap:.7rem"><img class="logo-mark" src="assets/logo-cretecycling.jpg" width="40" height="40" alt="CreteCycling Logo" style="border-color:rgba(255,255,255,.35)"><div><b class="slogan">CreteCycling — zwei Räder, eine Insel, dein Tag.</b></div></div>
     <div class="f-links"><a href="#verleih">Verleih</a> · <a href="#touren">Touren</a> · <a href="#workshops">Workshops</a> · <a href="#kontakt">Kontakt</a></div>
     <div class="f-flyer"><a class="btn btn-ochre flyer-btn" href="assets/CreteCycling-Flyer-2026.pdf" download="CreteCycling-Flyer-2026.pdf">Flyer herunterladen (PDF, EN · 0,7 MB)</a></div>
+    <div class="f-social"><a class="fb-link" href="https://www.facebook.com/CreteCyclingSissi" target="_blank" rel="noopener">Auf Facebook folgen</a><a class="bs-link" href="https://bsky.app/intent/compose?text=Bike%20rental%2C%20guided%20tours%20%26%20workshops%20in%20Sissi%2C%20Crete%20%E2%80%94%20%F0%9F%9A%B4%20cretecycling.eu" target="_blank" rel="noopener">Auf Bluesky teilen</a></div>
     <div class="legal"><a href="impressum-datenschutz.html#impressum">Impressum</a> · <a href="impressum-datenschutz.html#datenschutz">Datenschutz</a> · <a href="agb-storno.html#agb">AGB</a> · <a href="agb-storno.html#stornobedingungen">Stornobedingungen</a></div>
   </div>
 </footer>
@@ -635,7 +639,9 @@ const I18N = {
     footer: {
       slogan: "CreteCycling — zwei Räder, eine Insel, dein Tag.",
       links: ["Verleih", "Touren", "Workshops", "Kontakt"],
-      legal: ["Impressum", "Datenschutz", "AGB", "Stornobedingungen"]
+      legal: ["Impressum", "Datenschutz", "AGB", "Stornobedingungen"],
+      facebook: "Auf Facebook folgen",
+      bluesky: "Auf Bluesky teilen"
     },
     flyer: "Flyer herunterladen (PDF, EN · 0,7 MB)",
     sticky: "Jetzt anfragen →"
@@ -767,7 +773,9 @@ const I18N = {
     footer: {
       slogan: "CreteCycling — two wheels, one island, your day.",
       links: ["Rental", "Tours", "Workshops", "Contact"],
-      legal: ["Imprint", "Privacy", "Terms", "Cancellation"]
+      legal: ["Imprint", "Privacy", "Terms", "Cancellation"],
+      facebook: "Follow on Facebook",
+      bluesky: "Share on Bluesky"
     },
     flyer: "Download flyer (PDF, EN · 0.7 MB)",
     sticky: "Request now →"
@@ -899,7 +907,9 @@ const I18N = {
     footer: {
       slogan: "CreteCycling — δύο ρόδες, ένα νησί, η μέρα σου.",
       links: ["Ενοικίαση", "Περιηγήσεις", "Εργαστήρια", "Επικοινωνία"],
-      legal: ["Νομικά", "Απόρρητο", "Όροι", "Ακύρωση"]
+      legal: ["Νομικά", "Απόρρητο", "Όροι", "Ακύρωση"],
+      facebook: "Ακολουθήστε μας στο Facebook",
+      bluesky: "Κοινοποίηση στο Bluesky"
     },
     flyer: "Λήψη φυλλαδίου (PDF, EN · 0,7 MB)",
     sticky: "Ζητήστε τώρα →"
@@ -1032,6 +1042,9 @@ function applyLanguage(lang) {
   if (fLinks) fLinks.innerHTML = `<a href="#verleih">${t.footer.links[0]}</a> · <a href="#touren">${t.footer.links[1]}</a> · <a href="#workshops">${t.footer.links[2]}</a> · <a href="#kontakt">${t.footer.links[3]}</a>`;
   const fLegal = $('footer .legal');
   if (fLegal) fLegal.innerHTML = `<a href="impressum-datenschutz.html#impressum">${t.footer.legal[0]}</a> · <a href="impressum-datenschutz.html#datenschutz">${t.footer.legal[1]}</a> · <a href="agb-storno.html#agb">${t.footer.legal[2]}</a> · <a href="agb-storno.html#stornobedingungen">${t.footer.legal[3]}</a>`;
+  // Class-based like the blocks above: the share hrefs stay untouched, only labels translate.
+  setText('footer .f-social .fb-link', t.footer.facebook);
+  setText('footer .f-social .bs-link', t.footer.bluesky);
   if (t.flyer) $$('.flyer-btn').forEach(a => { a.textContent = t.flyer; });
   setText('.sticky .btn', t.sticky);
   syncLangButtons(currentLang);
