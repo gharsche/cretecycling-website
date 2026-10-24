@@ -37,6 +37,16 @@ The data is used exclusively to process your booking enquiry and is not passed o
 
 This website is hosted via GitHub Pages (GitHub Inc., USA). When the page is accessed, GitHub may process IP addresses and other technical data in server logs. Transfers of data to the United States rely on the European Commission's adequacy decision for the EU-US Data Privacy Framework (Art. 45 GDPR); GitHub Inc. is certified under that framework. For details see the [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies).
 
+### Comments on the Blog (Giscus)
+
+The comment function on the blog pages uses **Giscus**, a service of GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Giscus stores comments as public GitHub Discussions in our repository and **loads no data automatically**:
+
+- The comment area is hidden initially. Only when you click "Load comments" does your browser connect to github.com. Data is then transmitted — in particular your IP address and information about the page visited; GitHub may set its own cookies in the process.
+- The **legal basis** is your explicit consent under Article 6(1)(a) GDPR. You can revoke it at any time for the future by leaving the page without clicking "Load comments"; already loaded content can be removed by reloading the page.
+- If you post a comment yourself, your GitHub display name and comment become publicly visible worldwide. GitHub is responsible for the content and storage of the discussion.
+- **Deletion:** You can delete your comment directly on GitHub or ask us at info@cretecycling.eu to remove it from the discussion.
+- Details are in the GitHub Privacy Statement: <https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement>.
+
 ---
 
 ## Legal basis

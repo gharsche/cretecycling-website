@@ -283,6 +283,7 @@ footer a{color:#f4c969}
       <li><a href="#touren">Touren</a></li>
       <li><a href="#workshops">Workshops</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
+      <li><a href="blog/">Blog</a></li>
     </ul></nav>
     <a class="btn btn-ochre" href="#kontakt">Jetzt buchen</a>
     <div class="lang-switch" role="group" aria-label="Sprache">
@@ -524,7 +525,7 @@ const I18N = {
       ogTitle: "CreteCycling — Rad fahren auf Kreta",
       ogDescription: "Verleih, geführte Touren und Workshops in Sissi. Kleine Gruppen, lokale Guides."
     },
-    nav: {rental: "Verleih", tours: "Touren", workshops: "Workshops", contact: "Kontakt", book: "Jetzt buchen"},
+    nav: {rental: "Verleih", tours: "Touren", workshops: "Workshops", contact: "Kontakt", blog: "Blog", book: "Jetzt buchen"},
     hero: {
       greet: "👋 Kalós orísete in Sissi, Kreta",
       title: "Rad fahren, wo Kreta <em>am schönsten</em> ist.",
@@ -658,7 +659,7 @@ const I18N = {
       ogTitle: "CreteCycling — Ride Crete",
       ogDescription: "Rental, guided tours and workshops in Sissi. Small groups, local guides."
     },
-    nav: {rental: "Rental", tours: "Tours", workshops: "Workshops", contact: "Contact", book: "Book now"},
+    nav: {rental: "Rental", tours: "Tours", workshops: "Workshops", contact: "Contact", blog: "Blog", book: "Book now"},
     hero: {
       greet: "👋 Welcome to Sissi, Crete",
       title: "Ride where Crete is <em>at its best</em>.",
@@ -792,7 +793,7 @@ const I18N = {
       ogTitle: "CreteCycling — Ποδήλατο στην Κρήτη",
       ogDescription: "Ενοικίαση, οργανωμένες περιηγήσεις και εργαστήρια στη Σίσι. Μικρές ομάδες, τοπικοί οδηγοί."
     },
-    nav: {rental: "Ενοικίαση", tours: "Περιηγήσεις", workshops: "Εργαστήρια", contact: "Επικοινωνία", book: "Κράτηση τώρα"},
+    nav: {rental: "Ενοικίαση", tours: "Περιηγήσεις", workshops: "Εργαστήρια", contact: "Επικοινωνία", blog: "Ιστολόγιο", book: "Κράτηση τώρα"},
     hero: {
       greet: "👋 Καλώς ορίσατε στη Σίσι, Κρήτη",
       title: "Ποδήλατο εκεί που η Κρήτη <em>είναι στα καλύτερά της</em>.",
@@ -964,6 +965,7 @@ function applyLanguage(lang) {
   setText('.nav ul li:nth-child(2) a', t.nav.tours);
   setText('.nav ul li:nth-child(3) a', t.nav.workshops);
   setText('.nav ul li:nth-child(4) a', t.nav.contact);
+  setText('.nav ul li:nth-child(5) a', t.nav.blog);
   setText('.hero .greet', t.hero.greet);
   setHTML('.hero h1', t.hero.title);
   setText('.hero p', t.hero.lead);

@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog — CreteCycling</title>
+<meta name="description" content="Berichte und Fotos durchgefuehrter Touren von CreteCycling in Sissi, Kreta. Teilnehmer koennen Kommentare hinterlassen.">
+<meta name="theme-color" content="#4a2e1a">
+<link rel="icon" type="image/jpeg" href="../assets/favicon-64.jpg">
+<style>
+:root{
+  --terra:#b4532a; --terra-d:#8a3b1b; --olive:#7d8c4a; --olive-d:#5b6a33;
+  --ochre:#e2a93b; --sand:#f6ecd6; --sand-d:#ead9b3; --ink:#3a2616; --mute:#6e5a45;
+  --r:18px; --shadow:0 10px 30px -12px rgba(74,46,26,.35);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--sand);line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(1120px,92%);margin-inline:auto}
+h1,h2,h3{line-height:1.12;letter-spacing:-.02em}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:.5rem}
+.eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+.lead{font-size:1.15rem;color:var(--mute);max-width:56ch}
+:focus-visible{outline:3px solid var(--ochre);outline-offset:3px;border-radius:6px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.5rem;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;font-size:1rem;transition:transform .15s,box-shadow .15s,background .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-ochre{background:var(--ochre);color:#3a2616;box-shadow:0 8px 20px -8px rgba(226,169,59,.9)}
+.btn-ochre:hover{background:#ebbb57}
+.btn-ghost{border-color:rgba(255,255,255,.7);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.14)}
+.btn-terra{background:var(--terra);color:#fff}
+.btn-terra:hover{background:var(--terra-d)}
+
+/* Nav */
+header.nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .25s,box-shadow .25s}
+header.nav.solid{background:rgba(246,236,214,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.07)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:.55rem;font-weight:800;font-size:1.25rem;text-decoration:none;color:#fff;letter-spacing:-.02em}
+.logo-mark{width:40px;height:40px;border-radius:10px;object-fit:cover;border:1.5px solid rgba(255,255,255,.55);box-shadow:0 2px 10px -2px rgba(74,46,26,.45)}
+.nav.solid .logo-mark{border-color:rgba(74,46,26,.25)}
+.logo b{color:var(--ochre)}
+.nav.solid .logo{color:var(--terra-d)} .nav.solid .logo b{color:var(--olive-d)}
+.nav ul{display:flex;gap:1.6rem;list-style:none;padding:0}
+.nav ul a{text-decoration:none;font-weight:600;font-size:.95rem;color:#fff;opacity:.92}
+.nav.solid ul a{color:var(--ink)}
+.nav ul a:hover{opacity:1;text-decoration:underline;text-decoration-color:var(--ochre);text-underline-offset:6px;text-decoration-thickness:3px}
+.nav .btn{padding:.55rem 1.1rem;font-size:.9rem}
+@media(max-width:760px){.nav ul{display:none}}
+
+/* Hero */
+.hero{position:relative;min-height:100svh;display:grid;align-items:center;color:#fff;overflow:hidden;
+  background:linear-gradient(180deg,#2e1b0e 0%,#6b3a1d 34%,#b4622c 60%,#e0a24a 82%,#f0cf8b 100%)}
+.hero .sun{position:absolute;right:12%;top:16%;width:clamp(110px,16vw,210px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 40% 40%,#ffe2a0,#e2a93b 60%,#d08a1c);box-shadow:0 0 120px 40px rgba(226,169,59,.35);animation:glow 6s ease-in-out infinite alternate}
+@keyframes glow{to{box-shadow:0 0 150px 60px rgba(226,169,59,.45);transform:scale(1.04)}}
+.hero .hills{position:absolute;inset:auto 0 0 0;width:100%;height:46%}
+.hero .waves{position:absolute;left:0;bottom:0;width:200%;height:90px;animation:drift 22s linear infinite}
+@keyframes drift{to{transform:translateX(-50%)}}
+.hero-inner{position:relative;z-index:2;padding:110px 0 170px;max-width:720px}
+.hero-inner.wrap{margin-inline:max(4%,calc((100% - 1120px)/2))}
+.greet{display:inline-flex;gap:.5rem;align-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:.35rem .9rem;border-radius:999px;font-size:.9rem;margin-bottom:1.4rem;backdrop-filter:blur(6px)}
+.hero h1{font-size:clamp(2.4rem,min(7.5vw,10.5vh),5.2rem);font-weight:900;margin-bottom:1.1rem}
+.hero h1 em{font-style:normal;color:var(--ochre)}
+.hero p{font-size:clamp(1.05rem,2vw,1.3rem);max-width:46ch;opacity:.96;margin-bottom:2rem}
+.hero .cta{display:flex;gap:.9rem;flex-wrap:wrap}
+.cyclist{position:absolute;z-index:2;right:6%;bottom:17%;width:clamp(150px,22vw,300px);animation:ride 9s ease-in-out infinite alternate}
+@keyframes ride{from{transform:translateX(-30px)}to{transform:translateX(20px)}}
+.wheel{transform-origin:center;transform-box:fill-box;animation:spin 1.6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:700px){.cyclist{opacity:.5;right:-4%;bottom:15%}}
+
+/* Facts strip */
+.facts{background:var(--sand-d);border-bottom:1px solid rgba(0,0,0,.06)}
+.facts ul{list-style:none;padding:1.3rem 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem 2rem}
+.facts li{display:flex;gap:.7rem;align-items:center;font-weight:600;font-size:.95rem}
+.facts li span.i{flex:none;width:38px;height:38px;border-radius:12px;background:#fff;display:grid;place-items:center;font-size:1.2rem;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+
+section{padding:clamp(4rem,9vw,7rem) 0}
+.sec-head{margin-bottom:2.6rem}
+.sec-head .olive{width:84px;margin-bottom:.8rem}
+
+/* Rental */
+.rental-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem}
+.bike{background:#fff;border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .2s}
+.bike:hover{transform:translateY(-5px)}
+.bike svg{width:110px;height:64px;margin-bottom:.8rem;color:var(--terra)}
+.bike h3{font-size:1.25rem}
+.bike .price{font-size:2rem;font-weight:900;color:var(--terra-d);margin:.3rem 0}
+.bike .price small{font-size:.9rem;font-weight:600;color:var(--mute)}
+.bike p{color:var(--mute);font-size:.92rem}
+.bike .dep{margin-top:.6rem;font-size:.82rem;color:var(--mute);border-top:1px dashed #d8c49a;padding-top:.6rem}
+.tag{position:absolute;top:14px;right:14px;background:var(--ochre);font-size:.72rem;font-weight:800;padding:.2rem .6rem;border-radius:999px}
+.discount{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-top:1.6rem;background:var(--terra);color:#fff;border-radius:var(--r);padding:1.2rem 1.5rem}
+.discount strong{color:var(--ochre)}
+.calc{display:flex;gap:.8rem;align-items:flex-end;flex-wrap:wrap;margin-left:auto}
+.calc label{color:#fff;font-weight:600}
+.calc select,.calc input{padding:.6rem .8rem;border-radius:10px;border:0;font:inherit;background:#fff;color:var(--ink)}
+.calc input{width:80px}
+.calc output{font-size:1.5rem;font-weight:900;color:var(--ochre);min-width:7ch;padding-bottom:.35rem}
+
+.storno{display:inline-flex;align-items:center;gap:.35rem;margin-top:.5rem;font-size:.78rem;font-weight:700;color:var(--olive-d);background:#eef0dc;padding:.2rem .6rem;border-radius:999px}
+.storno::before{content:"✓"}
+.rental-cta{margin-top:1.6rem;text-align:center}
+.addons{border:1.5px solid #d8c49a;border-radius:12px;padding:.7rem .9rem;background:#fff}
+.addons legend{font-size:.85rem;font-weight:700;padding:0 .3rem}
+.card .addons label{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:.9rem;padding:.25rem 0;cursor:pointer}
+.card .addons input{width:auto;padding:0;accent-color:var(--terra)}
+.addons .ap{margin-left:auto;color:var(--mute);font-weight:700;font-size:.82rem}
+.est-sub{display:flex;justify-content:space-between;font-size:.82rem;color:var(--mute);margin-top:.35rem;padding:0 .3rem}
+.trust{list-style:none;padding:0;margin-top:.4rem;display:grid;grid-template-columns:1fr 1fr;gap:.35rem .9rem;font-size:.8rem;font-weight:600;color:var(--olive-d)}
+.trust li::before{content:"✓ "}
+@media(max-width:520px){.trust{grid-template-columns:1fr}}
+.slogan{color:#fff;font-weight:700}
+
+/* Tours */
+#touren{background:linear-gradient(180deg,var(--sand),#f0ead2)}
+#touren .eyebrow{color:var(--olive-d)}
+.tour-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.4rem}
+.tour{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 10px 30px -14px rgba(91,106,51,.5);display:flex;flex-direction:column}
+.tour .art{height:150px}
+.tour .body{padding:1.3rem 1.5rem 1.6rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.lvl{display:inline-flex;align-items:center;gap:.3rem;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.lvl i{width:9px;height:9px;border-radius:50%;background:#d6d6d6;display:inline-block}
+.lvl i.on{background:var(--olive-d)}
+.meta{display:flex;gap:1rem;color:var(--mute);font-size:.9rem;flex-wrap:wrap}
+.tour p{color:var(--mute)}
+.tour .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:.8rem}
+.tour .p{font-size:1.6rem;font-weight:900;color:var(--olive-d)}
+.tour .p small{font-size:.8rem;color:var(--mute);font-weight:600}
+.btn-olive{background:var(--olive-d);color:#fff;padding:.6rem 1.1rem;font-size:.9rem}
+.btn-olive:hover{background:#46531f}
+.incl{margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.6rem}
+.chip{background:#fff;border:1px solid rgba(91,106,51,.3);padding:.4rem .9rem;border-radius:999px;font-size:.88rem;font-weight:600}
+
+/* Workshops */
+.ws-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.ws{border-radius:var(--r);padding:1.7rem;background:#fff;border:2px solid var(--sand-d);transition:border-color .2s,transform .2s}
+.ws:hover{border-color:var(--ochre);transform:translateY(-4px)}
+.ws .ic{width:56px;height:56px;border-radius:16px;background:var(--ochre);display:grid;place-items:center;font-size:1.7rem;margin-bottom:1rem;transform:rotate(-4deg)}
+.ws h3{font-size:1.3rem;margin-bottom:.4rem}
+.ws p{color:var(--mute);font-size:.95rem}
+.ws .cap{display:inline-block;margin-top:.9rem;font-size:.82rem;font-weight:700;color:var(--terra-d);background:#f3dfc9;padding:.25rem .7rem;border-radius:999px}
+
+/* Booking */
+#kontakt{background:linear-gradient(160deg,#2e1b0e,#5a3519 70%,#6b3a1d);color:#fff}
+#kontakt .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;align-items:start}
+@media(max-width:860px){#kontakt .grid{grid-template-columns:1fr}}
+#kontakt .eyebrow{color:var(--ochre)}
+#kontakt .lead{color:rgba(255,255,255,.88)}
+.steps{list-style:none;padding:0;margin-top:1.8rem;display:grid;gap:1rem;counter-reset:s}
+.steps li{counter-increment:s;display:flex;gap:.9rem;align-items:flex-start}
+.steps li::before{content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;background:var(--ochre);color:#3a2616;font-weight:900;display:grid;place-items:center}
+.card{background:var(--sand);color:var(--ink);border-radius:24px;padding:clamp(1.3rem,3vw,2rem);box-shadow:0 30px 60px -25px rgba(0,0,0,.5)}
+.tabs{display:flex;gap:.4rem;background:var(--sand-d);padding:.3rem;border-radius:999px;margin-bottom:1.2rem}
+.tabs button{flex:1;border:0;background:transparent;padding:.6rem .4rem;border-radius:999px;font:inherit;font-weight:700;font-size:.9rem;cursor:pointer;color:var(--mute)}
+.tabs button[aria-selected=true]{background:var(--terra);color:#fff}
+form{display:grid;gap:.9rem}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+@media(max-width:520px){.f2{grid-template-columns:1fr}}
+.card label{display:grid;gap:.3rem;font-size:.85rem;font-weight:700}
+.card input,.card select,.card textarea{font:inherit;padding:.7rem .85rem;border:1.5px solid #d8c49a;border-radius:12px;background:#fff;color:var(--ink);width:100%}
+.card input:focus,.card select:focus,.card textarea:focus{outline:3px solid rgba(180,83,42,.35);border-color:var(--terra)}
+.hp{position:absolute;left:-9999px}
+.est{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1.5px dashed var(--terra);border-radius:12px;padding:.7rem 1rem;font-weight:700}
+.est strong{color:var(--terra-d);font-size:1.2rem}
+.fine{font-size:.78rem;color:var(--mute)}
+.status{font-weight:700;color:var(--olive-d);min-height:1.2em}
+[hidden]{display:none!important}
+
+footer{background:#24160b;color:#ead9b3;padding:2.5rem 0;font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;align-items:center}
+footer a{color:var(--ochre)}
+footer .legal{flex-basis:100%;font-size:.85rem;opacity:.85;border-top:1px solid rgba(255,255,255,.12);padding-top:1rem}
+footer .f-social{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center}
+footer .f-social a{font-weight:600;text-decoration:none}
+footer .f-social a:hover{text-decoration:none}
+footer .icon-link{display:inline-flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;transition:transform .15s ease,background .15s ease}
+footer .icon-link:hover{background:rgba(255,255,255,.16);transform:translateY(-1px)}
+footer .icon-link svg{width:18px;height:18px;display:inline-block;fill:currentColor}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:.7rem 1rem;background:rgba(246,236,214,.96);backdrop-filter:blur(8px);box-shadow:0 -4px 16px rgba(0,0,0,.12);display:none}
+.sticky .btn{width:100%;justify-content:center}
+@media(max-width:700px){.sticky{display:block}footer{padding-bottom:5rem}}
+
+/* ===== Logo-Theme: Pergament · Ocker · Umbra · Terrakotta (abgeleitet vom CreteCycling-Logo) ===== */
+:root{
+  --umber:#4a2e1a; --umber-d:#2e1b0e; --parch:#f6ecd6; --aegean:#2f6f7c;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L",Georgia,serif;
+  --key:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='16' viewBox='0 0 32 16'%3E%3Cpath d='M1 15V1h14v10H7V5h4v2M17 15V1h14' fill='none' stroke='%234a2e1a' stroke-width='2' stroke-linecap='square'/%3E%3C/svg%3E");
+}
+body{
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background-color:var(--sand);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .29 0 0 0 0 .18 0 0 0 0 .1 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+h1,h2,h3,.price,.tour .p,.logo{font-family:var(--serif)}
+h1,h2,h3{letter-spacing:-.01em}
+.hero h1{font-weight:800;text-shadow:0 2px 24px rgba(46,27,14,.45)}
+h2{font-weight:800;color:var(--umber)}
+.eyebrow{color:var(--terra-d);display:inline-flex;align-items:center;gap:.6rem}
+.eyebrow::before{content:"";width:32px;height:10px;flex:none;background:var(--key) repeat-x left center/auto 10px;opacity:.7}
+#kontakt .eyebrow::before{filter:invert(1) sepia(1) saturate(3) hue-rotate(5deg) brightness(1.1)}
+#kontakt h2{color:#fff}
+.logo{letter-spacing:0;font-weight:800}
+.nav.solid .logo{color:var(--umber)} .nav.solid .logo b{color:var(--terra)}
+.logo-mark{border-radius:50%;border:2px solid rgba(246,236,214,.75);box-shadow:0 2px 12px -2px rgba(46,27,14,.55)}
+.nav.solid .logo-mark{border-color:rgba(74,46,26,.35)}
+.btn-ochre{color:var(--umber-d);box-shadow:0 8px 20px -8px rgba(226,169,59,.95)}
+.btn-ochre:hover{background:#ebbb57}
+.btn-terra:hover{box-shadow:0 8px 20px -8px rgba(138,59,27,.8)}
+.nav.solid ul a{color:var(--umber)}
+.nav.solid{box-shadow:0 1px 0 rgba(74,46,26,.14)}
+.hero .sun{background:radial-gradient(circle at 40% 40%,#fff1c4,#f4c969 55%,#e2a93b);box-shadow:0 0 120px 40px rgba(244,201,105,.4)}
+.hero .sun::before,.hero .sun::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.hero .sun::before{inset:-16%;border:2px dashed rgba(246,236,214,.55);animation:spin 90s linear infinite}
+.hero .sun::after{inset:-30%;border:1px solid rgba(246,236,214,.28)}
+.greet{background:rgba(46,27,14,.28);border-color:rgba(246,236,214,.4)}
+.facts{background:var(--sand-d);border-bottom:0;position:relative}
+.facts::after,footer::before{content:"";position:absolute;left:0;right:0;bottom:0;height:16px;background:var(--key) repeat-x center/auto 16px;opacity:.35}
+.facts ul{padding-bottom:1.9rem}
+.facts li span.i{background:var(--parch);border:1px solid rgba(74,46,26,.15)}
+.bike,.tour,.ws,.doc section{border:1px solid rgba(74,46,26,.12)}
+.bike{box-shadow:0 10px 30px -14px rgba(74,46,26,.4)}
+.bike svg{color:var(--umber)}
+.bike .price{color:var(--terra-d)}
+.tour{box-shadow:0 10px 30px -14px rgba(74,46,26,.4)}
+#touren{background:linear-gradient(180deg,transparent,rgba(125,140,74,.14))}
+.ws .ic{background:var(--ochre);border:2px solid var(--umber);color:var(--umber)}
+.ws:hover{border-color:var(--terra)}
+.discount{background:linear-gradient(135deg,var(--umber-d),var(--umber))}
+.calc output{color:#f4c969}
+.discount strong{color:#f4c969}
+.steps li::before{background:var(--ochre);color:var(--umber-d);font-family:var(--serif)}
+.card{background:var(--parch);border:1px solid rgba(246,236,214,.5)}
+.tabs button[aria-selected=true]{background:var(--umber)}
+.est{border-color:var(--terra)}
+footer{position:relative;background:var(--umber-d);color:#ead9b3;padding-top:3.2rem}
+footer::before{top:0;bottom:auto;opacity:.5;filter:invert(1) sepia(1) saturate(1.6) brightness(.95)}
+footer a{color:#f4c969}
+.sticky{background:rgba(246,236,214,.96);box-shadow:0 -4px 16px rgba(46,27,14,.18)}
+.lang-switch{display:flex;align-items:center;gap:.35rem;margin-left:1rem;flex-wrap:wrap}
+.lang-switch button{border:1px solid rgba(255,255,255,.65);background:transparent;color:#fff;border-radius:999px;padding:.45rem .7rem;min-width:2.8rem;min-height:2.8rem;font:inherit;font-weight:800;font-size:1.15rem;letter-spacing:0;cursor:pointer;line-height:1;display:inline-flex;align-items:center;justify-content:center}
+.nav.solid .lang-switch button{border-color:rgba(74,46,26,.25);background:#fff;color:var(--umber)}
+.lang-switch button[aria-pressed="true"]{background:var(--ochre);border-color:var(--ochre);color:#3a2616}
+.lang-switch button svg{width:1.5rem;height:auto;display:block;max-height:1.1rem;object-fit:contain}
+:focus-visible{outline-color:var(--terra)}
+.hero :focus-visible,#kontakt :focus-visible,footer :focus-visible{outline-color:#f4c969}
+
+/* Blog-spezifische Stile */
+header.nav{position:sticky;top:0;z-index:50;background:rgba(246,236,214,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(74,46,26,.14)}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:1rem}
+header.nav .logo{color:var(--terra-d);text-decoration:none;font-weight:800;font-size:1.25rem;display:flex;align-items:center;gap:.55rem;letter-spacing:-.02em}
+header.nav .logo img{width:40px;height:40px;border-radius:10px;object-fit:cover;border:1.5px solid rgba(74,46,26,.25)}
+header.nav .logo b{color:var(--olive-d)}
+header.nav ul{display:flex;gap:1.6rem;list-style:none;padding:0}
+header.nav ul a{text-decoration:none;font-weight:600;font-size:.95rem;color:var(--ink);opacity:.92}
+header.nav ul a[aria-current="page"]{color:var(--terra-d);text-decoration:underline;text-decoration-color:var(--ochre);text-underline-offset:6px;text-decoration-thickness:3px;opacity:1}
+header.nav ul a:hover{opacity:1;text-decoration:underline;text-decoration-color:var(--ochre);text-underline-offset:6px;text-decoration-thickness:3px}
+header.nav .btn{padding:.55rem 1.1rem;font-size:.9rem}
+.lang-switch{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap}
+.lang-switch button{border:1px solid rgba(74,46,26,.25);background:#fff;color:var(--umber);border-radius:999px;padding:.45rem .7rem;min-width:2.8rem;min-height:2.8rem;font:inherit;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.lang-switch button[aria-pressed="true"]{background:var(--ochre);border-color:var(--ochre);color:#3a2616}
+.lang-switch button svg{width:1.5rem;height:auto;max-height:1.1rem;object-fit:contain}
+@media(max-width:860px){header.nav ul{display:none}}
+/* Blog page header */
+.pagehead{background:linear-gradient(180deg,#fff 0%,var(--sand) 100%);border-bottom:1px solid var(--sand-d);padding:clamp(2.5rem,6vw,4.5rem) 0 clamp(2rem,5vw,3rem)}
+.pagehead h1{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:900;margin:.4rem 0 .8rem}
+/* Meta chips */
+.chiprow{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{background:#fff;border:1px solid rgba(91,106,51,.3);padding:.4rem .9rem;border-radius:999px;font-size:.88rem;font-weight:600;display:inline-flex;align-items:center;gap:.4rem}
+.chip svg{width:15px;height:15px;color:var(--olive-d);flex:none}
+/* Blog card grid */
+.blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;margin-top:2.2rem}
+@media(max-width:760px){.blog-grid{grid-template-columns:1fr}}
+.post{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .2s}
+.post:hover{transform:translateY(-5px)}
+.post .thumb{aspect-ratio:16/9;position:relative}
+.post .thumb .badge{position:absolute;top:14px;left:14px;background:var(--ochre);font-size:.72rem;font-weight:800;padding:.25rem .7rem;border-radius:999px;color:#3a2616}
+.post .body{padding:1.4rem 1.5rem 1.5rem;display:flex;flex-direction:column;gap:.7rem;flex:1}
+.post h3{font-size:1.3rem}
+.post p{color:var(--mute);font-size:.94rem}
+.post .chiprow{margin-top:auto;padding-top:.6rem}
+.post .more{font-weight:800;color:var(--terra-d);font-size:.9rem}
+/* Article / detail page */
+.banner{height:clamp(220px,36vw,420px);position:relative}
+.banner .crumb{position:absolute;left:0;right:0;bottom:0;background:rgba(46,27,14,.55);backdrop-filter:blur(4px);color:#fff}
+.banner .crumb .wrap{padding:.6rem 0;font-size:.88rem;font-weight:600}
+.banner .crumb a{color:var(--ochre)}
+article.blog-article{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:2.5rem;align-items:start}
+@media(max-width:900px){article.blog-article{grid-template-columns:1fr}}
+article.blog-article h1{font-size:clamp(2rem,4.5vw,3rem);font-weight:900;margin:.5rem 0 1rem}
+.prose p{margin-bottom:1.1rem;max-width:62ch}
+.prose .meta-line{font-weight:700;color:var(--terra-d);font-size:.95rem;margin-bottom:1.2rem}
+.prose .callout{font-style:italic;color:var(--mute);border-left:3px solid var(--ochre);padding-left:1rem;margin:1.5rem 0}
+.prose h2{font-size:1.5rem;margin:2rem 0 .8rem}
+aside.tourdata{background:#fff;border:2px solid var(--sand-d);border-radius:var(--r);padding:1.4rem;position:sticky;top:88px}
+aside.tourdata h2{font-size:1.05rem;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.1em;color:var(--terra)}
+aside.tourdata dl{display:grid;grid-template-columns:auto 1fr;gap:.55rem .8rem;font-size:.92rem}
+aside.tourdata dt{color:var(--mute);font-weight:600}
+aside.tourdata dd{font-weight:800;text-align:right}
+aside.tourdata .btn{width:100%;justify-content:center;margin-top:1.2rem}
+/* Comments / consent */
+.comments{border-top:2px dashed #d8c49a;margin-top:3rem;padding-top:2.2rem}
+.consent{background:#fff;border:2px solid var(--sand-d);border-radius:var(--r);padding:1.6rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.consent p{flex:1;min-width:240px;font-size:.92rem;color:var(--mute)}
+.consent strong{color:var(--ink)}
+.consent svg{width:44px;height:44px;color:#2f6f7c;flex:none}
+.commentframe{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);padding:1.5rem;margin-top:1.5rem}
+.modnote{margin-top:1.2rem;font-size:.85rem;color:var(--mute)}
+.modnote a{color:var(--terra-d);font-weight:700}
+footer.blog-footer{background:var(--umber);color:#f4e6c8;padding:2.5rem 0;font-size:.9rem;margin-top:clamp(3rem,8vw,6rem)}
+footer.blog-footer a{color:var(--ochre)}
+footer.blog-footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></symbol>
+<symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="5" r="2.5"/><path d="M8.5 19H15a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h6.5"/></symbol>
+<symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-9 4 5 7-10"/><path d="M20 4h-4M20 4v4"/></symbol>
+<symbol id="i-gh" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.93c.57.1.78-.25.78-.55v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.04 1.77 2.72 1.26 3.39.96.1-.76.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.5 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.4-5.25 5.68.42.36.78 1.06.78 2.14v3.17c0 .31.2.66.79.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></symbol>
+</defs></svg>
+<header class="nav"><div class="wrap">
+<a class="logo" href="../index.html" aria-label="CreteCycling Startseite">
+<img src="../assets/logo-cretecycling.jpg" width="40" height="40" alt="CreteCycling Logo"><span>Crete<b>Cycling</b></span></a>
+<nav aria-label="Hauptnavigation"><ul>
+<li><a href="../index.html#touren" data-i18n="nav.tours">Touren</a></li>
+<li><a href="index.html" aria-current="page" data-i18n="nav.blog">Blog</a></li>
+<li><a href="../index.html#kontakt" data-i18n="nav.book">Buchen</a></li>
+</ul></nav>
+<div class="lang-switch" role="group" aria-label="Sprache"><button type="button" data-lang="de" aria-pressed="true" aria-label="Auf Deutsch wechseln" title="Auf Deutsch wechseln"><svg viewBox="0 0 30 18" width="20" height="12" aria-hidden="true"><rect width="30" height="6" fill="#000"/><rect y="6" width="30" height="6" fill="#d00"/><rect y="12" width="30" height="6" fill="#ffce00"/></svg></button><button type="button" data-lang="en" aria-pressed="false" aria-label="Auf Englisch wechseln" title="Auf Englisch wechseln"><svg viewBox="0 0 60 30" width="22" height="11" aria-hidden="true"><clipPath id="ukc0"><rect width="60" height="30"/></clipPath><g clip-path="url(#ukc0)"><rect width="60" height="30" fill="#012169"/><path d="M0,0L60,30M60,0L0,30" stroke="#fff" stroke-width="7"/><path d="M0,0L60,30M60,0L0,30" stroke="#c8102e" stroke-width="3"/><rect x="25" width="10" height="30" fill="#fff"/><rect x="27" width="6" height="30" fill="#c8102e"/><rect y="10" width="60" height="10" fill="#fff"/><rect y="12" width="60" height="6" fill="#c8102e"/></g></svg></button><button type="button" data-lang="el" aria-pressed="false" aria-label="Auf Griechisch wechseln" title="Auf Griechisch wechseln"><svg viewBox="0 0 27 18" width="20" height="13" aria-hidden="true"><rect width="27" height="18" fill="#fff"/><rect width="27" height="2" fill="#005eb8"/><rect y="4" width="27" height="2" fill="#005eb8"/><rect y="8" width="27" height="2" fill="#005eb8"/><rect y="12" width="27" height="2" fill="#005eb8"/><rect y="16" width="27" height="2" fill="#005eb8"/><rect width="10" height="10" fill="#005eb8"/><rect x="4" width="2" height="10" fill="#fff"/><rect y="4" width="10" height="2" fill="#fff"/></svg></button></div>
+</div></header>
+<main>
+<div class="pagehead"><div class="wrap">
+<span class="eyebrow" data-i18n="blog.eyebrow">Erlebte Touren</span>
+<h1 data-i18n="blog.title">Blog</h1>
+<p class="lead" data-i18n="blog.lead">Berichte von Touren, die wir wirklich gefahren sind — mit Fotos, Höhenmetern und ehrlichem Feedback. Und weil jede Tour Geschichten schreibt, können Teilnehmer unten auf jeder Seite ihre Eindrücke in die Kommentare legen.</p>
+</div></div>
+<section><div class="wrap">
+<div class="blog-grid">
+<a class="post" href="tour-sissi-matala.html">
+<div class="thumb" style="background:linear-gradient(160deg,#2f6f7c 0%,#68a5ad 45%,#e2a93b 100%)" role="img" aria-label="Tourfoto: Sissi – Milatos – Matala">
+</div>
+<div class="body">
+<div class="lang-doc" data-lang="de"><span class="badge">E-Bike</span><h3>Sissi nach Matala: Küste, Kaktusfeigen, Rückweg mit Gegenwind</h3><p>**12.05.2026 · 96 km · 640 hm · 5 Std. · E-Bike**</p><div class="chiprow"><span class="chip"><svg><use href="#i-cal"/></svg>12.05.2026</span><span class="chip"><svg><use href="#i-route"/></svg>96 km</span><span class="chip"><svg><use href="#i-up"/></svg>640 m</span><span class="chip"><svg><use href="#i-clock"/></svg>5 Std.</span></div></div>
+<div class="lang-doc" data-lang="en" hidden><span class="badge">E-Bike</span><h3>Sissi to Matala: coastline, prickly pears, headwind home</h3><p>**12 May 2026 · 96 km · 640 m · 5 hrs · E-bike**</p><div class="chiprow"><span class="chip"><svg><use href="#i-cal"/></svg>12 May 2026</span><span class="chip"><svg><use href="#i-route"/></svg>96 km</span><span class="chip"><svg><use href="#i-up"/></svg>640 m</span><span class="chip"><svg><use href="#i-clock"/></svg>5 hrs</span></div></div>
+<div class="lang-doc" data-lang="el" hidden><span class="badge">E-Bike</span><h3>Από το Σούσι στη Ματάλα: ακτογραμμή, φραγκόσυκα, αντίθετος αέρας στο γύρισμα</h3><p>**12/05/2026 · 96 χλμ. · 640 μ. · 5 ώρες · E-Bike**</p><div class="chiprow"><span class="chip"><svg><use href="#i-cal"/></svg>12/05/2026</span><span class="chip"><svg><use href="#i-route"/></svg>96 χλμ.</span><span class="chip"><svg><use href="#i-up"/></svg>640 μ.</span><span class="chip"><svg><use href="#i-clock"/></svg>5 ώρες</span></div></div>
+<span class="more" data-i18n="cta.read">Tourbericht lesen →</span>
+</div></a>
+</div>
+</div></section>
+</main>
+<footer class="blog-footer"><div class="wrap">
+<p><strong>CreteCycling</strong> — <span data-i18n="footer.tag">Rad fahren auf Kreta · Sissi, Kreta</span></p>
+<p><a href="../impressum-datenschutz.html" data-i18n="footer.privacy">Impressum & Datenschutz</a> · <a href="../agb-storno.html">AGB &amp; Storno</a> · <span data-i18n="footer.hint">Kommentare werden von GitHub (Giscus) bereitgestellt, erst nach Einwilligung geladen.</span></p>
+</div></footer>
+<script>
+(function(){
+var T={"nav.tours":{"de": "Touren", "en": "Tours", "el": "Περιηγήσεις"},"nav.blog":{"de": "Blog", "en": "Blog", "el": "Ιστολόγιο"},"nav.book":{"de": "Buchen", "en": "Book", "el": "Κράτηση"},"blog.eyebrow":{"de": "Erlebte Touren", "en": "Real Rides", "el": "Πραγματικές Βόλτες"},"blog.title":{"de": "Blog", "en": "Blog", "el": "Ιστολόγιο"},"blog.lead":{"de": "Berichte von Touren, die wir wirklich gefahren sind — mit Fotos, Höhenmetern und ehrlichem Feedback. Und weil jede Tour Geschichten schreibt, können Teilnehmer unten auf jeder Seite ihre Eindrücke in die Kommentare legen.", "en": "Reports from tours we actually rode — with photos, elevation and honest feedback. Every tour writes stories, so participants can leave their impressions in the comments on each page.", "el": "Αναφορές από διαδρομές που κάναμε στ' αλήθεια — με φωτογραφίες, υψόμετρο και ειλικρινή σχόλια. Κάθε διαδρομή γράφει ιστορίες, οπότε οι συμμετέχοντες μπορούν να αφήσουν τις εντυπώσεις τους στα σχόλια κάτω από κάθε σελίδα."},"cta.read":{"de": "Tourbericht lesen →", "en": "Read the tour report →", "el": "Διαβάστε την αναφορά →"},"crumb.back":{"de": "← Zurück zum Blog", "en": "← Back to the blog", "el": "← Επιστροφή στο ιστολόγιο"},"td.title":{"de": "Tourdaten", "en": "Tour data", "el": "Στοιχεία διαδρομής"},"td.date":{"de": "Datum", "en": "Date", "el": "Ημερομηνία"},"td.route":{"de": "Route", "en": "Route", "el": "Διαδρομή"},"td.dist":{"de": "Distanz", "en": "Distance", "el": "Απόσταση"},"td.elev":{"de": "Höhenmeter", "en": "Elevation", "el": "Υψόμετρο"},"td.time":{"de": "Dauer", "en": "Duration", "el": "Διάρκεια"},"td.bike":{"de": "Bike", "en": "Bike", "el": "Ποδήλατο"},"td.group":{"de": "Gruppe", "en": "Group", "el": "Ομάδα"},"td.cta":{"de": "Diese Tour buchen", "en": "Book this tour", "el": "Κλείσε αυτή τη διαδρομή"},"com.title":{"de": "Kommentare der Teilnehmer", "en": "Participant comments", "el": "Σχόλια συμμετεχόντων"},"com.lead":{"de": "Warst du auf dieser Tour? Erzähl uns deine Perspektive — Fotos aus dem Rucksack erlaubt.", "en": "Were you on this tour? Tell us your perspective — photos from the backpack allowed.", "el": "Ήσουν σε αυτή τη διαδρομή; Μοιράσου την οπτική σου — φωτογραφίες από το σάκο επιτρέπονται."},"com.consent.strong":{"de": "Kommentare werden von GitHub (Giscus) bereitgestellt.", "en": "Comments are provided by GitHub (Giscus).", "el": "Τα σχόλια παρέχονται από το GitHub (Giscus)."},"com.consent.body":{"de": "Mit dem Laden werden Daten zu github.com übertragen. Erst nach deiner Einwilligung sichtbar.", "en": "Loading transfers data to github.com. Visible only after your consent.", "el": "Η φόρτωση μεταφέρει δεδομένα στο github.com. Ορατά μόνο μετά τη συναίνεσή σου."},"com.btn":{"de": "▶ Kommentare laden", "en": "▶ Load comments", "el": "▶ Φόρτωση σχολίων"},"com.mod":{"de": "Moderation: Wir freuen uns über ehrliches Feedback. Beleidigungen und Spam löschen wir; Löschung deines eigenen Kommentars bitte an", "en": "Moderation: we welcome honest feedback. We delete insults and spam; to delete your own comment, please write to", "el": "Επιτήρηση σχολίων: δεχόμαστε ειλικρινή σχόλια. Ύβρεις και spam διαγράφονται· για διαγραφή του δικού σου σχολίου, γράψε στο"},"footer.tag":{"de": "Rad fahren auf Kreta · Sissi, Kreta", "en": "Cycling on Crete · Sissi, Crete", "el": "Ποδήλατο στην Κρήτη · Σίσι, Κρήτη"},"footer.privacy":{"de": "Impressum & Datenschutz", "en": "Imprint & Privacy", "el": "Εκδότης & Απόρρητο"},"footer.hint":{"de": "Kommentare werden von GitHub (Giscus) bereitgestellt, erst nach Einwilligung geladen.", "en": "Comments are provided by GitHub (Giscus) and load only after your consent.", "el": "Τα σχόλια παρέχονται από το GitHub (Giscus) και φορτώνουν μόνο μετά τη συναίνεσή σου."},"unit.km":{"de": "km", "en": "km", "el": "χλμ."},"unit.m":{"de": "m", "en": "m", "el": "μ."},"unit.h":{"de": "Std.", "en": "hrs", "el": "ώρες"}};
+var lang=(new URLSearchParams(location.search).get("lang")||localStorage.getItem("cc-lang")||"de").slice(0,2).toLowerCase();
+if(!T["nav.blog"][lang])lang="de";
+function apply(l){
+  lang=l;document.documentElement.lang=l;
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    var k=el.getAttribute("data-i18n");var v=T[k]&&T[k][l];
+    if(v)el.textContent=v;
+  });
+  document.querySelectorAll(".lang-switch button").forEach(function(b){
+    b.setAttribute("aria-pressed",String(b.dataset.lang===l));
+  });
+  localStorage.setItem("cc-lang",l);
+  var h=location.hash.slice(1);
+  if(h){var base=h.replace(/-(de|en|el)$/,"");var want=lang==="de"?base:base+"-"+lang;if(h!==want&&document.getElementById(want))history.replaceState(null,"","#"+want);}
+  history.replaceState(null,"",location.pathname+(l==="de"?"":"?lang="+l)+location.hash);
+}
+document.querySelectorAll(".lang-switch button").forEach(function(b){
+  b.addEventListener("click",function(){apply(b.dataset.lang);});
+});
+apply(lang);
+window.__ccLang=lang;
+window.__ccApply=apply;
+})();
+</script>
+</body>
+</html>
