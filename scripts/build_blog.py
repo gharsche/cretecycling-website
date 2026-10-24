@@ -107,6 +107,12 @@ I18N = {
     "td.bike": {"de": "Bike", "en": "Bike", "el": "Ποδήλατο"},
     "td.group": {"de": "Gruppe", "en": "Group", "el": "Ομάδα"},
     "td.cta": {"de": "Diese Tour buchen", "en": "Book this tour", "el": "Κλείσε αυτή τη διαδρομή"},
+    "td.v.date": {"de": "12.05.2026", "en": "12 May 2026", "el": "12/05/2026"},
+    "td.v.route": {"de": "Sissi – Milatos – Matala", "en": "Sissi – Milatos – Matala", "el": "Σούσι – Μιλάτος – Ματάλα"},
+    "td.v.dist": {"de": "96 km", "en": "96 km", "el": "96 χλμ."},
+    "td.v.elev": {"de": "640 m", "en": "640 m", "el": "640 μ."},
+    "td.v.time": {"de": "5 Std.", "en": "5 hrs", "el": "5 ώρες"},
+    "td.v.group": {"de": "4 + 1 Guide", "en": "4 + 1 guide", "el": "4 + 1 οδηγός"},
     "com.title": {"de": "Kommentare der Teilnehmer", "en": "Participant comments", "el": "Σχόλια συμμετεχόντων"},
     "com.lead": {
         "de": "Warst du auf dieser Tour? Erzähl uns deine Perspektive — Fotos aus dem Rucksack erlaubt.",
@@ -491,13 +497,13 @@ def build_tour_page(tour):
     sidebar = f"""<aside class="tourdata">
 <h2 data-i18n="td.title">{T("td.title", "de")}</h2>
 <dl>
-<dt data-i18n="td.date">{T("td.date", "de")}</dt><dd class="dv-date">{date_de}</dd>
-<dt data-i18n="td.route">{T("td.route", "de")}</dt><dd>{html.escape(route_de)}</dd>
-<dt data-i18n="td.dist">{T("td.dist", "de")}</dt><dd class="dv-dist">{dist_de} {T("unit.km", "de")}</dd>
-<dt data-i18n="td.elev">{T("td.elev", "de")}</dt><dd class="dv-elev">{elev_de} {T("unit.m", "de")}</dd>
-<dt data-i18n="td.time">{T("td.time", "de")}</dt><dd class="dv-time">{dur_de} {T("unit.h", "de")}</dd>
+<dt data-i18n="td.date">{T("td.date", "de")}</dt><dd data-i18n="td.v.date">{T("td.v.date", "de")}</dd>
+<dt data-i18n="td.route">{T("td.route", "de")}</dt><dd data-i18n="td.v.route">{T("td.v.route", "de")}</dd>
+<dt data-i18n="td.dist">{T("td.dist", "de")}</dt><dd data-i18n="td.v.dist">{T("td.v.dist", "de")}</dd>
+<dt data-i18n="td.elev">{T("td.elev", "de")}</dt><dd data-i18n="td.v.elev">{T("td.v.elev", "de")}</dd>
+<dt data-i18n="td.time">{T("td.time", "de")}</dt><dd data-i18n="td.v.time">{T("td.v.time", "de")}</dd>
 <dt data-i18n="td.bike">{T("td.bike", "de")}</dt><dd>{html.escape(bike_de)}</dd>
-<dt data-i18n="td.group">{T("td.group", "de")}</dt><dd>{html.escape(group_de)}</dd>
+<dt data-i18n="td.group">{T("td.group", "de")}</dt><dd data-i18n="td.v.group">{T("td.v.group", "de")}</dd>
 </dl>
 <a class="btn btn-ochre" href="../index.html#kontakt" data-i18n="td.cta">{T("td.cta", "de")}</a>
 </aside>"""
@@ -557,7 +563,6 @@ document.getElementById("loadComments").addEventListener("click", function(){
 {footer}
 {js}
 {giscus_script}
-{SIDEBAR_UPDATE_JS}
 </body>
 </html>"""
     out = WEB / "blog" / f"tour-{slug}.html"
