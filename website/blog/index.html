@@ -375,10 +375,15 @@ function apply(l){
     var k=el.getAttribute("data-i18n");var v=T[k]&&T[k][l];
     if(v)el.textContent=v;
   });
+  document.querySelectorAll(".lang-doc").forEach(function(el){
+    el.hidden = el.getAttribute("data-lang") !== l;
+  });
   document.querySelectorAll(".lang-switch button").forEach(function(b){
     b.setAttribute("aria-pressed",String(b.dataset.lang===l));
   });
   localStorage.setItem("cc-lang",l);
+  window.__ccLang=l;
+  window.dispatchEvent(new CustomEvent("cc:lang",{detail:{lang:l}}));
   var h=location.hash.slice(1);
   if(h){var base=h.replace(/-(de|en|el)$/,"");var want=lang==="de"?base:base+"-"+lang;if(h!==want&&document.getElementById(want))history.replaceState(null,"","#"+want);}
   history.replaceState(null,"",location.pathname+(l==="de"?"":"?lang="+l)+location.hash);

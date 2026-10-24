@@ -319,10 +319,15 @@ function apply(l){
     var k=el.getAttribute("data-i18n");var v=T[k]&&T[k][l];
     if(v)el.textContent=v;
   });
+  document.querySelectorAll(".lang-doc").forEach(function(el){
+    el.hidden = el.getAttribute("data-lang") !== l;
+  });
   document.querySelectorAll(".lang-switch button").forEach(function(b){
     b.setAttribute("aria-pressed",String(b.dataset.lang===l));
   });
   localStorage.setItem("cc-lang",l);
+  window.__ccLang=l;
+  window.dispatchEvent(new CustomEvent("cc:lang",{detail:{lang:l}}));
   var h=location.hash.slice(1);
   if(h){var base=h.replace(/-(de|en|el)$/,"");var want=lang==="de"?base:base+"-"+lang;if(h!==want&&document.getElementById(want))history.replaceState(null,"","#"+want);}
   history.replaceState(null,"",location.pathname+(l==="de"?"":"?lang="+l)+location.hash);
@@ -570,10 +575,7 @@ document.getElementById("loadComments").addEventListener("click", function(){
 SIDEBAR_UPDATE_JS = """<script>
 // Nach Sprachwechsel: Sidebar-Werte aus dem aktiven lang-doc-Block lesen
 (function(){
-  var origApply = window.__ccApply;
-  if(!origApply) return;
-  window.__ccApply = function(l){
-    origApply(l);
+  function update(l){
     // Datum aus dem aktiven .lang-doc .eyebrow
     var active = document.querySelector('.lang-doc[data-lang="'+l+'"]');
     if(!active) return;
@@ -590,10 +592,9 @@ SIDEBAR_UPDATE_JS = """<script>
       elevDd.textContent = chips[1].textContent.trim();
       timeDd.textContent = chips[2].textContent.trim();
     }
-  };
-  // Initiale Anwendung
-  var lang = window.__ccLang || 'de';
-  window.__ccApply(lang);
+  }
+  window.addEventListener('cc:lang', function(e){ update((e.detail && e.detail.lang) || window.__ccLang || 'de'); });
+  update(window.__ccLang || 'de');
 })();
 </script>"""
 
